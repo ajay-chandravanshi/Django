@@ -20,5 +20,8 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',views.home,name='home')
+    path('home/',views.home,name='home'),
+    path('json/',views.json,name='json'),
+    path('new/',views.new,name='new'),
+    path('link/',views.link,name='link')
 ]
