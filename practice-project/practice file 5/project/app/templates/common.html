@@ -9,7 +9,9 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <title>Hello, world!</title>
+    <title>{% block title %} Hello, world! {% endblock %}</title>
+    {% block css %} {% endblock %}
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
       * {
@@ -19,8 +21,7 @@
         font-family: "Open Sans", sans-serif;
       }
       .content {
-        height: 300px;
-        background-color: aqua;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -242,7 +243,9 @@
     </nav>
 
     <div class="content">
+      {% block content %}
       <h1>Content Part</h1>
+      {% endblock %}
     </div>
 
     <!-- footer part  -->
