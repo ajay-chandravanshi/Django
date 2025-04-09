@@ -15,9 +15,12 @@ def link(request):
     return redirect('https://www.google.com')
 
 def new(request):
+    # x={}
     # z=[{'name':'Ajay','age':24,'degree':'B.tech'},{'name':'Aniket','age':21,'degree':'parmacy'}]
+    # x['key1']=z
+    # print(x)
     # return render(request,'index.html',{'key1':z})
-
-    data={'name':'Ajay','age':24,'degree':'B.tech'}
-    return render(request,'index.html',data)
+    
+    # data={'name':'Ajay','age':24,'degree':'B.tech'}
+    # return render(request,'index.html',data)
    
