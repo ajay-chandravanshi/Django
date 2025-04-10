@@ -11,7 +11,8 @@
       crossorigin="anonymous"
     />
 
-    <title>Hello, world!</title>
+    <title>{% block title  %} Hello, world! {% endblock %}</title>
+    {% block css %} {% endblock %}
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 * {
@@ -20,15 +21,18 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
 }
+.contant{
+  color:blue;
+  height:100vh;
+  background-color:aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .footer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 1280px;
-  width: 95%;
-  background: #10182F;
-  border-radius: 6px;
+  width:100%;
+  background:#10182F;
+  border-radius:6px;
 }
 .footer .footer-row {
   display: flex;
@@ -209,7 +213,11 @@
       </div>
     </nav>
 
-    <div class="content">content</div>
+    <div class="contant">
+    {% block content %}
+    <h1> content<h1/>
+    {% endblock %}
+   </div>
 
     <section class="footer">
         <div class="footer-row">
