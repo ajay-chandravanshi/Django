@@ -1,14 +1,17 @@
 {% extends "common.html" %}
 {% load static %}
-{% block title %} 
+{% block title %}
 Register
 {% endblock %}
+
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
+
+
 {% block content %}
-<div class="formbody">
-    <form action="{% url 'registerdata' %}" method="post" enctype="multipart/form-data">
+<h1>Register form</h1>
+<form action="{% url 'registerdata' %}" method="post" enctype="multipart/form-data">
 
     {% csrf_token %}
    <label for="username">Name:</label>
@@ -54,5 +57,4 @@ Register
    <input type="submit" value="Submit">
 
 </form>
-</div>
 {% endblock %}
