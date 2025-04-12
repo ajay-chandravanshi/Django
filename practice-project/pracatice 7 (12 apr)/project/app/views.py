@@ -3,7 +3,23 @@ from django.shortcuts import render
 # Create your views here.
 
 def home(request):
-    return render(request,'home.html')
+    x={'name':'Ajay','age':23,'quali':'btech'}
+    first=[1,2,3]
+    second=[4,5,6]
+    y={}
+    
+    data=[
+    {"name": "zed", "age": 19},
+    {"name": "amy", "age": 22},
+    {"name": "joe", "age": 31},
+    ]
+
+    y['key1']=data
+    return render(request,'home.html',y)
+
+
+
+
 def about(request):
     return render(request,'about.html')
 def contact(request):
