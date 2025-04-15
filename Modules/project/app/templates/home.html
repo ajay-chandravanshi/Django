@@ -1,0 +1,17 @@
+{% extends "common.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<h1>Home Page</h1>
+<h1>{{name}}</h1><br>
+<h1>{{age}}</h1><br>
+<h1>{{quali}}</h1><br>
+<h1>{{ quali|upper }}</h1><br>
+<h1>{{ quali|wordcount }}<h1>
+<h1>"{{ name|center:"15" }}"</h1>
+
+{{ key1|dictsort:"name" }}
+{% endblock %}
