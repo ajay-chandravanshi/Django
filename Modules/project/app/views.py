@@ -7,7 +7,6 @@ def home(request):
     first=[1,2,3]
     second=[4,5,6]
     y={}
-    
     data=[
     {"name": "zed", "age": 19},
     {"name": "amy", "age": 22},
@@ -24,8 +23,16 @@ def about(request):
     return render(request,'about.html')
 def contact(request):
     return render(request,'contact.html')
+
 def login(request):
-    return render(request,'login.html')
+    if request.method=='POST':
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        print(email,password)
+    else:    
+        return render(request,'login.html')
+    
+
 def register(request):
     return render(request,'register.html')
 
@@ -40,9 +47,24 @@ def registerdata(request):
     dob=request.POST.get('dob')
     subscribe=request.POST.getlist('subscribe')
     gender=request.POST.get('gender')
-    password=request.POST.get('password')
-    cpassword=request.POST.get('cpassword')
     image = request.FILES.get('profile-pic')
     document = request.FILES.get('resume')
+    password=request.POST.get('password')
+    cpassword=request.POST.get('cpassword')
+   
     print(username,email,detail,phone,dob,subscribe,gender,password,cpassword)
-    student.objects.create(stu_name=username,stu_email=email,stu_dis=detail,stu_contact=phone,stu_dob=dob,stu_quali=subscribe,stu_gender=gender,stu_image=image,stu_document=document,stu_password=password)
+
+    user=student.objects.filter(stu_email=email)
+    if user:
+        msg="user already exist"
+        return render(request,'register.html',{'msg':msg})
+    else:
+        if password==cpassword:
+            student.objects.create(stu_name=username,stu_email=email,stu_dis=detail,    stu_contact=phone,stu_dob=dob,stu_quali=subscribe,stu_gender=gender, stu_image=image,stu_document=document,stu_password=password)
+
+            msg="Registration successfully"
+            return render(request,'login.html',{'msg':msg})
+        else:
+            msg="Password and CPassword is not matched"
+            userdata={'username':username,'email':email,'detail':detail,'phone':phone,'dob':dob,'subscribe':subscribe,'gender':gender,'image':image,'document':document}
+            return render(request,'register.html',{'msg':msg,'data':userdata})
