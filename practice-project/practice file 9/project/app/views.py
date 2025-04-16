@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from models
 # Create your views here.
 
 def home(request):
@@ -18,10 +18,12 @@ def registerdata(request):
     print(request.POST)
 
     username=request.POST.get('username')
-    username=request.POST.get('username')
-    username=request.POST.get('username')
-    username=request.POST.get('username')
-    username=request.POST.get('username')
-    username=request.POST.get('username')
-    username=request.POST.get('username')
-    username=request.POST.get('username')
+    email=request.POST.get('email')
+    detail=request.POST.get('detail')
+    phone=request.POST.get('phone')
+    dob=request.POST.get('dob')
+    subscribe=request.POST.getlist('subscribe')
+    gender=request.POST.get('gender')
+    password=request.POST.get('password')
+    print(username,email,detail,phone,dob,subscribe,gender,password)
+
