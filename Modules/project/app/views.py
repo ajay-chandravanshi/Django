@@ -37,7 +37,22 @@ def logindata(request):
         e=request.POST.get('email')
         p=request.POST.get('password')
         user=student.objects.get(stu_email=e)
-       
+        if user:
+            userdata=student.objects.get(stu_email=e)
+            print(userdata.stu_name)
+            print(userdata.stu_email)
+            p1=userdata.stu_password
+            if p==p1:
+                return render(request,'dashboard.html',{'userdata':userdata})
+            else:
+                pmsg="password not match"
+                return render(request,'login.html',{'email':e})
+        else:
+            msg="email not Exist",
+            return render(request,'register.html')
+    else:
+        return render(request,'login.html')    
+
     
 
 def register(request):
