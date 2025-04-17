@@ -32,6 +32,13 @@ def login(request):
     else:    
         return render(request,'login.html')
     
+def logindata(request):
+    if request.method=='POST':
+        e=request.POST.get('email')
+        p=request.POST.get('password')
+        user=student.objects.get(stu_email=e)
+       
+    
 
 def register(request):
     return render(request,'register.html')

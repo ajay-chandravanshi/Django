@@ -1,7 +1,8 @@
 .new{
-    background-color: aqua;
+    background-color: rgb(84, 204, 60);
+    color: rgb(255, 255, 255);
 }
 #message{
-    color: green;
+    color: rgb(128, 55, 0);
     background-color: rgb(247, 240, 240);
 }
