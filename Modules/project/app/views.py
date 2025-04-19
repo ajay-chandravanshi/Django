@@ -42,6 +42,7 @@ def logindata(request):
             userdata=student.objects.get(stu_email=e)
             print(userdata.stu_name)
             print(userdata.stu_email)
+            print(userdata.stu_password)
             p1=userdata.stu_password
             
 
