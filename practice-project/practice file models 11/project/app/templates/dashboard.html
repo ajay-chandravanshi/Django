@@ -1,0 +1,16 @@
+{% extends "common.html" %}
+{% block content %}
+DashBoard Page
+<p>Username={{userdata.stu_name}}</p>
+<p>Email={{userdata.stu_email}}</p>
+<p>Detail={{userdata.stu_dis}}</p>
+<p>Contact={{userdata.stu_contact}}</p>
+<p>DOB={{userdata.stu_dob}}</p>
+<p>Qualification={{userdata.stu_quali}}</p>
+<p>Gender={{userdata.stu_gender}}</p>
+<img src="{{userdata.stu_image.url}}" height="100px" width="100px" alt="">
+<p>Document={{userdata.stu_document}}</p>
+<p>Password={{userdata.stu_password}}</p>
+<p>ID={{userdata.id}}</p>
+<a href="{{userdata.stu_document.url}}" style="color:white; background-color: blue;" target="_blank" download>Download</a>
+{% endblock %}
