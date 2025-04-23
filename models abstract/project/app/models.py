@@ -18,5 +18,8 @@ class Employee(BaseInfo):
 class Client(BaseInfo):
     project=models.CharField(max_length=15)
 
+class User(BaseInfo):
+    User_id=models.IntegerField()
+
     def __str__(self):
         return self.name
