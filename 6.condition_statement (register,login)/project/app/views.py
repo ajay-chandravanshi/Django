@@ -14,3 +14,17 @@ def login(request):
     return render(request,'login.html')
 def register(request):
     return render(request,'register.html')
+def registerdata(request):
+    print(request.method)
+    print(request.POST)
+
+    username=request.method.GET('username')
+    email=request.method.POST('email')
+    detail=request.method.POST('detail')
+    phone=request.method.POST('phone')
+    dob=request.method.POST('dob')
+    subscribe=request.method.GETlist('subscribe')
+    gender=request.method.POST('gender')
+    password=request.method.POST('password')
+    cpassword=request.method.POST('cpassword')
+    print(username,email,detail,phone,dob,subscribe,gender,password,cpassword)
