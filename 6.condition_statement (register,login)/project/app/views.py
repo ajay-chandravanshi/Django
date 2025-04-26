@@ -25,7 +25,8 @@ def registerdata(request):
     dob=request.POST.get('dob')
     subscribe=request.POST.getlist('subscribe')
     gender=request.POST.get('gender')
-    image=request.POST.File
+    image=request.POST.get('profile-pic')
+    document=request.POST.get('resume')
     password=request.POST.get('password')
     cpassword=request.POST.get('cpassword')
-    print(username,email,detail,phone,dob,subscribe,gender,password,cpassword)
+    print(username,email,detail,phone,dob,subscribe,gender,image,document,password,cpassword)
