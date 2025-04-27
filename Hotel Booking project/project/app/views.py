@@ -14,8 +14,8 @@ def services(request):
     return render(request,'services.html')
 def book_event(request):
     return render(request,'book_event.html')
-def book_register(request):
-    return render(request,'book_register.html')
+def book_room(request):
+    return render(request,'book_room.html')
 def login(request):
     return render(request,'login.html')
 def register(request):
