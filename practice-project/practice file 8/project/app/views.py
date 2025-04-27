@@ -8,3 +8,5 @@ def landing(request):
 def home(request):
     data={'name':'Ajay','age':23,'quali':'Btech'}
     return render(request,'home.html',{'data':data})
+def about(request):
+    return render(request,'about.html')
