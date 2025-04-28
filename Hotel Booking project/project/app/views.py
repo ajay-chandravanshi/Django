@@ -30,10 +30,11 @@ def registerdata(request):
     phone=request.POST.get('phone')
     dob=request.POST.get('dob')
     gender=request.POST.get('gender')
-    image=request.POST.get('profile-pic')
+    image=request.FILES.get('profile-pic')
     detail=request.POST.get('detail')
     password=request.POST.get('password')
     cpassword=request.POST.get('cpassword')
-   
+    
+    print(username,email,phone,dob,gender,image,detail,password,cpassword)
     
     return render(request,'register.html')
