@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import UserApp
+from .models import Client
 # Create your views here.
 
 def home(request):
@@ -18,6 +18,9 @@ def book_room(request):
     return render(request,'book_room.html')
 def login(request):
     return render(request,'login.html')
+def logindata(request):
+
+    return render(request,'logindata.html')
 def register(request):
     return render(request,'register.html')
 
@@ -34,9 +37,20 @@ def registerdata(request):
     detail=request.POST.get('detail')
     password=request.POST.get('password')
     cpassword=request.POST.get('cpassword')
-    
     print(username,email,phone,dob,gender,image,detail,password,cpassword)
 
-    UserApp.objects.create(stu_username=username,stu_email=email,stu_phone=phone,stu_dob=dob,stu_gender=gender,stu_image=image,stu_detail=detail,stu_password=password,stu_cpassword=cpassword)
+    data=Client.objects.filter(clt_email=email)
+
+    if data:
+        msg = "Email already registered. Please log in"
+        return render(request, 'register.html', {'msg': msg, 'msg_type': 'email_error'})
     
-    return render(request,'register.html')
+    else:
+        if password==cpassword:
+            msg = "Registered Successfully!"
+            return render(request, 'login.html', {'msg': msg, 'msg_type': 'success'})
+        
+        else:
+            msg="Password and Confirm password not match"
+            userdata={'username':username,'email':email,'phone':phone,'detail':detail}
+            return render(request,'register.html',{'msg':msg,'msg_type': 'password_mismatch','data':userdata})

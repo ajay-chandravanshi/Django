@@ -1,9 +1,82 @@
 {% extends "common.html" %}
+{% load static %}
 
 {% block title %}
 Login
-{% endblock  %}
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'css/registration.css' %}"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
 
 {% block content %}
-<h1>Login Page</h1>
-{% endblock  %}
+
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'error' %}
+      <i class="fas fa-times-circle"></i>
+    {% elif msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
+
+<form class="form" action="{% url 'logindata' %}" method="post">
+  {% csrf_token %}
+
+  <h2 style="text-align:center; margin-bottom:20px;">Welcome Back!</h2>
+
+  <label>Email</label>
+  <div class="input-wrapper">
+    <i class="fas fa-envelope"></i>
+    <input type="email" name="email" placeholder="Enter your email" required>
+  </div>
+
+  <label>Password</label>
+  <div class="input-wrapper">
+    <i class="fas fa-lock"></i>
+    <input type="password" name="password" placeholder="Enter your password" required>
+  </div>
+
+  <input type="submit" value="Login">
+
+  <p style="text-align:center; margin-top:15px;">Don't have an account? 
+    <a href="{% url 'register' %}" style="color:#8360c3;">Register</a>
+  </p>
+
+</form>
+{% if msg %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+</script>
+{% endif %}
+
+<!-- all messages JS code End here -->
+
+{% endblock %}
