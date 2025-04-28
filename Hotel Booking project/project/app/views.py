@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import UserApp
 # Create your views here.
 
 def home(request):
@@ -36,5 +36,7 @@ def registerdata(request):
     cpassword=request.POST.get('cpassword')
     
     print(username,email,phone,dob,gender,image,detail,password,cpassword)
+
+    UserApp.objects.create(stu_username=username,stu_email=email,stu_phone=phone,stu_dob=dob,stu_gender=gender,stu_image=image,stu_detail=detail,stu_password=password,stu_cpassword=cpassword)
     
     return render(request,'register.html')
