@@ -29,4 +29,5 @@ urlpatterns = [
     path('book_room',views.book_room,name='book_room'),
     path('login',views.login,name='login'),
     path('register',views.register,name='register'),
+    path('registerdata',views.registerdata,name='registerdata'),
 ]

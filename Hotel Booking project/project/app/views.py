@@ -20,3 +20,20 @@ def login(request):
     return render(request,'login.html')
 def register(request):
     return render(request,'register.html')
+
+def registerdata(request):
+    print(request.method)
+    print(request.POST)
+
+    username=request.POST.get('username')
+    email=request.POST.get('email')
+    phone=request.POST.get('phone')
+    dob=request.POST.get('dob')
+    gender=request.POST.get('gender')
+    image=request.POST.get('profile-pic')
+    detail=request.POST.get('detail')
+    password=request.POST.get('password')
+    cpassword=request.POST.get('cpassword')
+   
+    
+    return render(request,'register.html')

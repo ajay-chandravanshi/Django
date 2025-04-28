@@ -1,9 +1,75 @@
 {% extends "common.html" %}
+{% load static %}
 
 {% block title %}
 Register
-{% endblock  %}
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
 
 {% block content %}
-<h1>Register Page</h1>
-{% endblock  %}
+
+<form class="form" action="{% url 'registerdata' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <label>Name</label>
+  <div class="input-wrapper">
+    <i class="fas fa-user"></i>
+    <input type="text" name="username" placeholder="Enter your name">
+  </div>
+
+  <label>Email</label>
+  <div class="input-wrapper">
+    <i class="fas fa-envelope"></i>
+    <input type="email" name="email" placeholder="Enter your email" required="True">
+  </div>
+
+  <label>Contact</label>
+  <div class="input-wrapper">
+    <i class="fas fa-phone"></i>
+    <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" placeholder="Enter your phone number">
+  </div>
+
+  <label>Date of Birth</label>
+  <div class="input-wrapper">
+    <i class="fas fa-calendar-alt"></i>
+    <input type="date" name="dob" min="2007-01-01">
+  </div>
+
+
+  <label>Gender</label><br>
+  <input type="radio" name="gender" value="male"> Male
+  <input type="radio" name="gender" value="female"> Female
+  <br><br>
+
+  <label>Upload Image</label>
+  <div class="input-wrapper">
+    <i class="fas fa-image"></i>
+    <input type="file" name="profile-pic" accept=".jpeg, .png">
+  </div>
+
+  <label>Description</label>
+  <div class="input-wrapper textarea">
+   	<i class="fas fa-pencil-alt"></i>
+    <textarea name="detail" cols="20" rows="2" placeholder="Tell us about yourself..."></textarea>
+  </div>
+
+  <label>Password</label>
+  <div class="input-wrapper">
+    <i class="fas fa-lock"></i>
+    <input type="password" name="password" placeholder="Enter Password Here">
+  </div>
+
+  <label>Confirm Password</label>
+  <div class="input-wrapper">
+    <i class="fas fa-lock"></i>
+    <input type="password" name="cpassword" placeholder="Enter Confirm Password Here">
+  </div>
+
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}
