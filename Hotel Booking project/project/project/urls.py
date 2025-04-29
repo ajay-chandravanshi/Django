@@ -28,7 +28,7 @@ urlpatterns = [
     path('book_event',views.book_event,name='book_event'),
     path('book_room',views.book_room,name='book_room'),
     path('login',views.login,name='login'),
-    path('logindata',views.logindata,name='logindata'),
     path('register',views.register,name='register'),
-    path('registerdata',views.registerdata,name='registerdata'),
+    
+    
 ]

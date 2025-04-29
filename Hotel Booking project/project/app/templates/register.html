@@ -34,7 +34,7 @@ Register
 
 <!-- all messages code End here -->
 
-<form class="form" action="{% url 'registerdata' %}" method="post" enctype="multipart/form-data">
+<form class="form" action="{% url 'register' %}" method="post" enctype="multipart/form-data">
   {% csrf_token %}
   
   <label>Name</label>

@@ -45,7 +45,6 @@ def logindata(request):
             print(userdata.stu_password)
             p1=userdata.stu_password
             
-
             if p==p1:
                 return render(request,'dashboard.html',{'userdata':userdata})
 

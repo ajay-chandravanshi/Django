@@ -1,5 +1,98 @@
 {% extends "common.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
 
 {% block content %}
-<h1>dashboard page</h1>
-{% endblock  %}
+
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
+<div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="user-panel">
+            {% if userdata.clt_image %}
+                <img src="{{ userdata.clt_image.url }}" class="user-avatar" alt="User">
+            {% endif %}
+            <h3>{{ userdata.clt_username }}</h3>
+            <p>{{ userdata.clt_email }}</p>
+        </div>
+        <nav class="sidebar-menu">
+            <ul>
+                <li class="active"><i class="fas fa-user"></i> Profile</li>
+                <li><i class="fas fa-bed"></i> My Bookings</li>
+                <li><i class="fas fa-gift"></i> Rewards</li>
+                <li><i class="fas fa-cog"></i> Settings</li>
+                <li><i class="fas fa-sign-out-alt"></i> Logout</li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="dashboard-content">
+        <h2>Account Overview</h2>
+
+        <div class="card-section">
+            <div class="card">
+                <h4>Personal Info</h4>
+                <p><strong>Name:</strong> {{ userdata.clt_username }}</p>
+                <p><strong>Date of Birth:</strong> {{ userdata.clt_dob|default:"Not provided" }}</p>
+                <p><strong>Gender:</strong> {{ userdata.clt_gender|default:"Not provided" }}</p>
+                <p><strong>Bio:</strong> {{ userdata.clt_detail|default:"Not provided" }}</p>
+                <a href="#" class="edit-link">Edit Info</a>
+            </div>
+
+            <div class="card">
+                <h4>Contact Info</h4>
+                <p><strong>Email:</strong> {{ userdata.clt_email }}</p>
+                <p><strong>Phone:</strong> {{ userdata.clt_phone|default:"Not provided" }}</p>
+                <p><strong>Address:</strong> Not provided</p>
+                <a href="#" class="edit-link">Update Contact</a>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- all messages JS code Start here -->
+{% if msg %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+</script>
+{% endif %}
+
+<!-- all messages JS code End here -->
+{% endblock %}
