@@ -25,14 +25,50 @@
 
         <a class="navbar-brand active" href="#">HMS🏩</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
+        {% if userdata %}
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'home1' pk=userdata.id %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'about1' pk=userdata.id %}">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'gallery1' pk=userdata.id %}">Gallery</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'services1' pk=userdata.id %}">Sevices</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'contact1' pk=userdata.id %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'book_event1' pk=userdata.id %}">Book Event</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'book_room1' pk=userdata.id %}">Book Room</a>
+                </li>
 
+            </ul>
+            <form class="d-flex">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'home' pk=userdata.id %}">Logout</a>
+                </li>
+              </ul>
+            </form>
+          </div>
+        {% else %}
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
@@ -56,17 +92,19 @@
                 </li>
 
             </ul>
-          <form class="d-flex">
-           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
+            <form class="d-flex">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
-              </li>
-              <li class="nav-item">
+                </li>
+                <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Register</a>
-              </li>
-           </ul>
-          </form>
-        </div>
+                </li>
+              </ul>
+            </form>
+          </div>  
+
+        {% endif %}
       </div>
     </nav>
 
