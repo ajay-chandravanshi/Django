@@ -19,8 +19,6 @@ def book_room(request):
 
 def register(request):
     if request.method=='POST':
-        # print(request.method)
-        # print(request.POST)
 
         username=request.POST.get('username')
         email=request.POST.get('email')
