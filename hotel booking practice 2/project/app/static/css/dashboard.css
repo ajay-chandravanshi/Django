@@ -104,7 +104,7 @@ h2 {
 
 .toast {
     position: fixed;
-    top: 100px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%) translateY(-30px);
     background: #333;

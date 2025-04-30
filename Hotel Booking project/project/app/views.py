@@ -16,33 +16,11 @@ def book_event(request):
     return render(request,'book_event.html')
 def book_room(request):
     return render(request,'book_room.html')
-def login(request):
-    if request.method=='POST':
-        eml=request.POST.get('email')
-        psw=request.POST.get('password')
-        user=Client.objects.filter(clt_email=eml)
-
-        if user:
-            userdata=Client.objects.get(clt_email=eml)
-            psw1=userdata.clt_password
-            if psw==psw1:
-                msg="Login Successfully"
-                return render(request,'dashboard.html',{'userdata':userdata,'msg':msg,'msg_type': 'success'})
-            else:
-                msg="Passwords don’t match"
-                return render(request,'login.html',{'email':eml,'msg':msg,'msg_type': 'password_mismatch'})
-
-        else:
-            msg="Email address not found."
-            return render(request,'register.html',{'msg':msg,'msg_type': 'email_error'})
-
-    else:
-        return render(request,'login.html')       
 
 def register(request):
     if request.method=='POST':
-        print(request.method)
-        print(request.POST)
+        # print(request.method)
+        # print(request.POST)
 
         username=request.POST.get('username')
         email=request.POST.get('email')
@@ -73,4 +51,55 @@ def register(request):
             
     else:
         return render(request,'register.html')
-       
+
+def login(request):
+    if request.method=='POST':
+        eml=request.POST.get('email')
+        psw=request.POST.get('password')
+        user=Client.objects.filter(clt_email=eml)
+
+        if user:
+            userdata=Client.objects.get(clt_email=eml)
+            psw1=userdata.clt_password
+            if psw==psw1:
+                msg="Login Successfully"
+                return render(request,'dashboard.html',{'userdata':userdata,'msg':msg,'msg_type': 'success'})
+            else:
+                msg="Passwords don’t match"
+                return render(request,'login.html',{'email':eml,'msg':msg,'msg_type': 'password_mismatch'})
+
+        else:
+            msg="Email address not found."
+            return render(request,'register.html',{'msg':msg,'msg_type': 'email_error'})
+
+    else:
+        return render(request,'login.html')
+    
+    
+def home1(request,pk):
+    userdata=Client.objects.get(id=pk)
+    return render(request,'home.html',{'userdata':userdata})
+
+def about1(request,pk):
+    userdata=Client.objects.get(id=pk)
+    return render(request,'about.html',{'userdata':userdata})
+
+def gallery1(request,pk):
+    userdata=Client.objects.get(id=pk)
+    return render(request,'gallery.html',{'userdata':userdata})
+
+def services1(request,pk):
+    userdata=Client.objects.get(id=pk)
+    return render(request,'services.html',{'userdata':userdata})
+
+def contact1(request,pk):
+    userdata=Client.objects.get(id=pk)
+    return render(request,'contact.html',{'userdata':userdata})
+
+def book_event1(request,pk):
+    userdata=Client.objects.get(id=pk)
+    return render(request,'book_event.html',{'userdata':userdata})
+
+def book_room1(request,pk):
+    userdata=Client.objects.get(id=pk)
+    return render(request,'book_room.html',{'userdata':userdata})
