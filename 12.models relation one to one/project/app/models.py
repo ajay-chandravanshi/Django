@@ -15,3 +15,6 @@ class Student(models.Model):
     contact=models.IntegerField()
     roll=models.IntegerField()
     aadhar=models.OneToOneField(Aadhar,on_delete=models.PROTECT,to_field="adharno")
+
+    def __str__(self):
+        return self.name
