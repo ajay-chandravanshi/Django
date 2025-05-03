@@ -5,7 +5,7 @@ from django.db import models
 class UserProfile(models.Model):
     quail=[("1",'bba'),("2",'mba')]
 
-    username=models.CharField(max_length=30, null=True,unique=True,db_index=True,blank=False,help_text="enter a username")
+    username=models.CharField(max_length=30, null=True,unique=True,db_index=True,blank=False,help_text="username")
 
     email=models.EmailField(max_length=255, unique=True,blank=False,db_index=True)
 
