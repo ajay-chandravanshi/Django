@@ -9,7 +9,7 @@ class UserProfile(models.Model):
 
     email=models.EmailField(max_length=255, unique=True,blank=False,db_index=True)
 
-    bio=models.CharField(max_length=50,blank=True,null=True,db_index=True,help_text="write a short bio about your")
+    bio=models.CharField(max_length=50,blank=True,null=True,db_index=True,help_text="write a short bio")
 
     is_active= models.BooleanField(default=False,db_index=True)
 
