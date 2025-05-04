@@ -37,7 +37,7 @@ urlpatterns = [
     path('services/<int:pk>',views.services1,name='services1'),
     path('book_event/<int:pk>',views.book_event1,name='book_event1'),
     path('book_room/<int:pk>',views.book_room1,name='book_room1'),
-    
+    path('dashboard/<int:pk>',views.dashboard,name='dashboard'),
     
     
 ]
