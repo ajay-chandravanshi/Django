@@ -101,3 +101,4 @@ def book_event1(request,pk):
 def book_room1(request,pk):
     userdata=Client.objects.get(id=pk)
     return render(request,'book_room.html',{'userdata':userdata})
+
