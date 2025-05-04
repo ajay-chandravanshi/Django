@@ -102,3 +102,6 @@ def book_room1(request,pk):
     userdata=Client.objects.get(id=pk)
     return render(request,'book_room.html',{'userdata':userdata})
 
+def dashboard(request,pk):
+    userdata=Client.objects.get(id=pk)
+    return render(request,'dashboard.html',{'userdata':userdata})
