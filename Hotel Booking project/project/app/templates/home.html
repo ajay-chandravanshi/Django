@@ -1,9 +1,67 @@
 {% extends "common.html" %}
-
+{% load static %}
 {% block title %}
 Home
-{% endblock  %}
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
 {% block content %}
-<h1>Home Page</h1>
-{% endblock  %}
+
+<!-- ✅ Hero Section Start -->
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content text-center">
+    <h1 class="hero-title">TOP HOTEL IN THE CITY</h1>
+    <div class="hero-subtitle">
+      <span></span>
+      Hotel & Resort
+      <span></span>
+    </div>
+  </div>
+
+  <div class="container booking-form-container">
+    <div class="row justify-content-center">
+      <div class="col-md-11 col-lg-10">
+        <form class="row g-3 align-items-end bg-white p-3 rounded shadow booking-form">
+          <div class="col-md-2">
+            <label class="form-label">Check In Date</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Check Out Date</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Adults</label>
+            <select class="form-select">
+              <option>1</option><option>2</option><option>3</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Children</label>
+            <select class="form-select">
+              <option>0</option><option>1</option><option>2</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Rooms</label>
+            <select class="form-select">
+              <option>1</option><option>2</option><option>3</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-warning w-100">Check Availability</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ Hero Section End -->
+
+{% endblock %}
