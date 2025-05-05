@@ -10,4 +10,4 @@ class Department(models.Model):
 class Student(models.Model):
     stu_name=models.CharField(max_length=50)
     stu_email=models.EmailField()
-    stu_dep=models.ForeignKey(Department,on_delete=models.PROTECT,to_field='dep_name')
+    stu_dep=models.ForeignKey(Department,on_delete=models.PROTECT,to_field='dep_name',related_name='depart')
