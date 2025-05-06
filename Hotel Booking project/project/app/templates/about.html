@@ -1,9 +1,39 @@
 {% extends "common.html" %}
+{% load static %}
 
 {% block title %}
 About
-{% endblock  %}
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
 
 {% block content %}
-<h1>About Page</h1>
+<header>
+  <h1>About Us</h1>
+</header>
+
+<div class="section">
+  <h2>Welcome to Unwind</h2>
+  <p>We are dedicated to offering an unforgettable hotel experience, blending luxury and comfort with unmatched hospitality. Our team ensures every guest feels at home while enjoying the finest services.</p>
+</div>
+
+<div class="section special-offer">
+  <h2>Special Offer</h2>
+  <p>Book your stay now and enjoy 20% off on all spa services. Offer valid this month only!</p>
+</div>
+
+<div class="testimonials">
+  <h2>What Our Guests Say</h2>
+  <blockquote>"A wonderful experience! The staff was attentive, and the ambiance was perfect for a relaxing weekend."</blockquote>
+  <blockquote>"Truly the best resort we've stayed at. Clean rooms, amazing food, and stunning views."</blockquote>
+</div>
+
+<footer>
+  <p>&copy; 2025 Unwind Resort. All rights reserved.</p>
+</footer>
+
 {% endblock  %}

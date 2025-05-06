@@ -1,12 +1,13 @@
 .hero-section {
   position: relative;
   background-image: url('/static/image/home.webp');
+ 
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
-  background-color: aqua;
+  /* background-color: aqua; */
 }
 
 .hero-overlay {
