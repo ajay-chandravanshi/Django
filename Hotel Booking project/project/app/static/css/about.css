@@ -21,6 +21,7 @@
     
     height: 100vh;
     display: flex;
+    background-color: aqua;
     align-items: center;
     justify-content: center;
     color: white;
