@@ -9,6 +9,9 @@ class Fuel(models.Model):
 class Vehicles(models.Model):
     Vehicle_name=models.CharField(max_length=50)
     Fuel_name = models.ManyToManyField(Fuel,related_name='vehical')
+
     def __str__(self):
         return self.Vehicle_name
-   
+
+class Student(models.Model):
+    stu_name= models.CharField(max_length=50)
