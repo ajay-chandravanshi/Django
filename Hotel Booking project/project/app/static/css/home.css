@@ -1,6 +1,7 @@
 .hero-section {
   position: relative;
   background-image: url('/static/image/home.webp');
+ 
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -37,7 +38,6 @@
   letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 10px;
-  background-color: aquamarine;
 }
 
 .hero-subtitle {
@@ -98,6 +98,20 @@
   .booking-form {
     padding: 15px;
   }
+}
+/* naabar is black after 90vh scroll code  */
+.navbar {
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: rgb(0, 0, 0,0.925);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 480px) {

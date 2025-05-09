@@ -1,39 +1,103 @@
 {% extends "common.html" %}
 {% load static %}
-
 {% block title %}
 About
 {% endblock %}
-
 {% block css %}
 {{ block.super }}
-<link rel="stylesheet" href="{% static 'css/about.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/about.css' %}" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
 {% endblock %}
-
 {% block content %}
 <header>
   <h1>About Us</h1>
 </header>
 
-<div class="section">
-  <h2>Welcome to Unwind</h2>
-  <p>We are dedicated to offering an unforgettable hotel experience, blending luxury and comfort with unmatched hospitality. Our team ensures every guest feels at home while enjoying the finest services.</p>
-</div>
+<section class="about-detail">
+  <div class="about-grid">
+    <div class="about-box">
+      <div class="icon">😴</div>
+      <h3>Cozy Room</h3>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia.
+      </p>
+    </div>
 
-<div class="section special-offer">
-  <h2>Special Offer</h2>
-  <p>Book your stay now and enjoy 20% off on all spa services. Offer valid this month only!</p>
-</div>
+    <img
+      src="{% static 'image/about-image-2.jpg' %}"
+      alt="About Image 2"
+      class="about-img"
+    />
+    <img
+      src="{% static 'image/about-image-3.jpg' %}"
+      alt="About Image 3"
+      class="about-img"
+    />
 
-<div class="testimonials">
-  <h2>What Our Guests Say</h2>
-  <blockquote>"A wonderful experience! The staff was attentive, and the ambiance was perfect for a relaxing weekend."</blockquote>
-  <blockquote>"Truly the best resort we've stayed at. Clean rooms, amazing food, and stunning views."</blockquote>
-</div>
+    <div class="about-box">
+      <div class="icon">⭐</div>
+      <h3>Special Offers</h3>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia.
+      </p>
+    </div>
+  </div>
+
+  <div class="about-right">
+    <small>ABOUT US</small>
+    <h2>Unwind A Hotel<br />Booking Agency</h2>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia
+      and Consonantia, there live the blind texts. Separated they live in
+      Bookmarksgrove right at the coast of the Semantics, a large language
+      ocean.
+    </p>
+    <button class="book-btn">BOOK YOUR ROOM NOW</button>
+  </div>
+</section>
+
+<section class="section-2">
+  <div class="section-body">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h4>Find Best Hotel For Leaving</h4>
+        <h1>Find the Best Hotel in Your Next Vacation</h1>
+      </div>
+      <a href="#" class="book-btn button">BOOK NOW</a>
+    </div>
+  </div>
+</section>
+
+<section class="hero-section">
+  <section class="tour-section">
+    <div class="tour-content">
+      <small>WATCH OUR LUXURIOUS HOTEL</small>
+      <h1 class="tour">Take A Tour</h1>
+      <a href="#" class="play-btn">&#9658;</a>
+    </div>
+  </section>
+</section>
 
 <footer>
   <p>&copy; 2025 Unwind Resort. All rights reserved.</p>
 </footer>
 
-{% endblock  %}
+{% block script %}
+<script>
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const triggerPoint = window.innerHeight * 0.9;
+
+    if (window.scrollY >= triggerPoint) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>
+{% endblock %}
+
+{% endblock %}
