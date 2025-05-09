@@ -33,7 +33,11 @@
 .hero-title {
   font-family: 'Noto Serif', serif;
   font-style: normal;
- 
+  font-size: 3.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
   
 }
 
