@@ -8,6 +8,8 @@ Home
 {{ block.super }}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
 {% endblock %}
 
 {% block content %}
@@ -65,11 +67,71 @@ Home
 
 <!-- ✅ Hero Section End -->
 
+<!-- section second   -->
+<section class="testimonial-wrapper">
+  <div class="testimonial-card">
+    <div class="testimonial-left">
+      <h1>Welcome!</h1>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+        there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
+        Semantics, a large language ocean.
+      </p>
+      <div class="testimonial-btn-group">
+        <a href="#" class="testimonial-btn">Learn More</a>
+        <span>or</span>
+        <a href="#" class="testimonial-link">SEE VIDEO</a>
+      </div>
+    </div>
+
+    <div class="testimonial-right">
+      <div class="testimonial-img-wrapper">
+        <img src="/static/image/home-2.jpg" alt="Main" class="main-img">
+        <img src="/static/image/home-1.jpg" alt="Circle" class="circle-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- section third  -->
+
+<section class="rooms-section">
+  <div class="rooms-header">
+    <h2>Rooms & Suites</h2>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,<br>
+      there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the<br>
+      Semantics, a large language ocean.
+    </p>
+  </div>
+
+  <div class="rooms-container">
+    <div class="room-box">
+      <img src="/static/image/single-room.jpg" alt="Single Room">
+      <h2>Single Room</h2>
+      <span>90$ / PER NIGHT</span>
+    </div>
+
+    <div class="room-box">
+      <img src="/static/image/family-room.jpg" alt="Family Room">
+      <h2>Family Room</h2>
+      <span>120$ / PER NIGHT</span>
+    </div>
+
+    <div class="room-box">
+      <img src="/static/image/presidential-room.jpg" alt="Presidential Room">
+      <h2>Presidential Room</h2>
+      <span>250$ / PER NIGHT</span>
+    </div>
+  </div>
+</section>
+
+
 {% block script %}
 <script>
   window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");
-    const triggerPoint = window.innerHeight * 0.9; // 90% of viewport height
+    const triggerPoint = window.innerHeight * 0.8; // 90% of viewport height
 
     if (window.scrollY >= triggerPoint) {
       navbar.classList.add("scrolled");

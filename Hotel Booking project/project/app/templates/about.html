@@ -10,16 +10,28 @@ About
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 />
+<style>
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
 {% endblock %}
 {% block content %}
 <header>
-  <h1>About Us</h1>
+  <h1 class="fade-in-up">About Us</h1>
 </header>
 
 <section class="about-detail">
   <div class="about-grid">
-    <div class="about-box">
-      <div class="icon">😴</div>
+    <div class="about-box fade-in-up">
+      <div class="icon">🛌</div>
       <h3>Cozy Room</h3>
       <p>
         Far far away, behind the word mountains, far from the countries Vokalia.
@@ -29,15 +41,15 @@ About
     <img
       src="{% static 'image/about-image-2.jpg' %}"
       alt="About Image 2"
-      class="about-img"
+      class="about-img fade-in-up"
     />
     <img
       src="{% static 'image/about-image-3.jpg' %}"
       alt="About Image 3"
-      class="about-img"
+      class="about-img fade-in-up"
     />
 
-    <div class="about-box">
+    <div class="about-box fade-in-up">
       <div class="icon">⭐</div>
       <h3>Special Offers</h3>
       <p>
@@ -46,7 +58,7 @@ About
     </div>
   </div>
 
-  <div class="about-right">
+  <div class="about-right fade-in-up">
     <small>ABOUT US</small>
     <h2>Unwind A Hotel<br />Booking Agency</h2>
     <p>
@@ -59,7 +71,7 @@ About
   </div>
 </section>
 
-<section class="section-2">
+<section class="section-2 fade-in-up">
   <div class="section-body">
     <div class="hero-overlay">
       <div class="hero-content">
@@ -71,19 +83,78 @@ About
   </div>
 </section>
 
-<section class="hero-section">
+<section class="hero-section fade-in-up">
   <section class="tour-section">
     <div class="tour-content">
       <small>WATCH OUR LUXURIOUS HOTEL</small>
       <h1 class="tour">Take A Tour</h1>
-      <a href="#" class="play-btn">&#9658;</a>
+      <a href="#" class="play-btn">▸</a>
     </div>
   </section>
 </section>
 
-<footer>
-  <p>&copy; 2025 Unwind Resort. All rights reserved.</p>
-</footer>
+<section class="testimonial-section">
+  <div class="testimonial-title fade-in-up">
+    <span>TESTIMONIAL</span>
+    <h2>Happy Guests</h2>
+  </div>
+
+  <div class="testimonial-wrapper">
+    <div class="testimonial-card fade-in-up">
+      <div class="user-info">
+        <img src="/static/image/person_1.webp" alt="Guest 1">
+        <div>
+          <h3>Roger Scott</h3>
+          <p>Financial Controller</p>
+        </div>
+      </div>
+      <p class="testimonial-text">preparing and analyzing financial statements, including income statements, balance sheets, and cash flows through a hotel accounting software.</p>
+    </div>
+
+    <div class="testimonial-card fade-in-up">
+      <div class="user-info">
+        <img src="/static/image/person_2.webp" alt="Guest 2">
+        <div>
+          <h3>Anderson</h3>
+          <p>Food & Beverage Manager</p>
+        </div>
+      </div>
+      <p class="testimonial-text">managing and coordinating all the F&B team members, including the executive chef, servers, bartenders, and support staff</p>
+    </div>
+
+    <div class="testimonial-card fade-in-up">
+      <div class="user-info">
+        <img src="/static/image/person_3.webp" alt="Guest 3">
+        <div>
+          <h3>Lawrence </h3>
+          <p>Sales & Marketing Manager</p>
+        </div>
+      </div>
+      <p class="testimonial-text">developing sales plans and targets - identifying the key markets and potential guests and clientele</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section fade-in-up">
+  <div class="gallery-row">
+    <div class="gallery-box fade-in-up">
+      <img src="/static/image/gallery-1.webp" alt="Gallery 1" />
+    </div>
+    <div class="gallery-box fade-in-up">
+      <img src="/static/image/gallery-2.webp" alt="Gallery 2" />
+    </div>
+    <div class="gallery-box fade-in-up">
+      <img src="/static/image/gallery-3.webp" alt="Gallery 3" />
+    </div>
+    <div class="gallery-box fade-in-up">
+      <img src="/static/image/gallery-4.webp" alt="Gallery 4" />
+    </div>
+    <div class="gallery-box fade-in-up">
+      <img src="/static/image/gallery-5.webp" alt="Gallery 5" />
+    </div>
+  </div>
+</section>
+
 
 {% block script %}
 <script>
@@ -97,7 +168,18 @@ About
       navbar.classList.remove("scrolled");
     }
   });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  document.querySelectorAll('.fade-in-up').forEach(el => {
+    observer.observe(el);
+  });
 </script>
 {% endblock %}
-
 {% endblock %}
