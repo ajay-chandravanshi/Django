@@ -22,4 +22,5 @@ urlpatterns = [
     path('home',views.home,name='home'),
     path('',views.index,name='index'),
     path('first/',views.first,name='first'),
+    path('last/',views.last,name='last'),
 ]

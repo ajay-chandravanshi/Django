@@ -27,3 +27,6 @@ def index(request):
 def first(request):
     x=Student.objects.first()
     return render(request,'index.html',{'data':x})
+def first(request):
+    y=Student.objects.first()
+    return render(request,'index.html',{'data':y})
