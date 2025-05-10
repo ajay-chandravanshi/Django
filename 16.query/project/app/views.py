@@ -26,7 +26,7 @@ def index(request):
     return render(request,'index.html')
 def first(request):
     x=Student.objects.first()
-    return render(request,'index.html',{'data':x})
-def first(request):
-    y=Student.objects.first()
-    return render(request,'index.html',{'data':y})
+    return render(request,'index.html',{'data1':x})
+def last(request):
+    y=Student.objects.last()
+    return render(request,'index.html',{'data2':y})

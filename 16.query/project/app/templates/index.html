@@ -12,7 +12,8 @@
   </head>
   <body>
     <h1>Hello, world!</h1>
-    <a  href="{% url 'first' %}">First Element</a>
+    <button><a  href="{% url 'first' %}">First Element</a></button>
+    <button><a  href="{% url 'last' %}">Last Element</a></button>
     <table border="1">
       <tr>
         <th>S.No</th>
@@ -21,8 +22,13 @@
       </tr>
       <tr>
         <td>{{forloop.counter}}</td>
-        <td>{{data.name}}</td>
-        <td>{{data.email}}</td>
+        <td>{{data1.name}}</td>
+        <td>{{data1.email}}</td>
+      </tr>
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data2.name}}</td>
+        <td>{{data2.email}}</td>
       </tr>
 
     </table>
