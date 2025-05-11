@@ -23,4 +23,5 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('first/',views.first,name='first'),
     path('last/',views.last,name='last'),
+    path('first_five/',views.first_five,name='first_five'),
 ]

@@ -27,6 +27,11 @@ def index(request):
 def first(request):
     x=Student.objects.first()
     return render(request,'index.html',{'data1':x})
+
 def last(request):
     y=Student.objects.last()
     return render(request,'index.html',{'data2':y})
+
+def first_five(request):
+    z= Student.objects.all()[:5]
+    return render(request,'index.html',{'data3':z})
