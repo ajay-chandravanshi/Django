@@ -1,9 +1,24 @@
 {% extends "common.html" %}
-
+{% load static %}
 {% block title %}
 Gallery
-{% endblock  %}
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+{% endblock %}
 
 {% block content %}
-<h1>Gallery Page</h1>
+<!-- Hero Section -->
+<section class="gallery-hero">
+  <div class="hero-overlay">
+    <h1>Explore Our Hotel</h1>
+    <p>A glimpse into your luxurious stay experience</p>
+  </div>
+</section>
+
 {% endblock  %}

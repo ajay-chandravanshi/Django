@@ -1,0 +1,311 @@
+/* navbar section  */
+
+.navbar {
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: rgb(0, 0, 0,0.925);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+
+/* section first  */
+.services-hero {
+  position: relative;
+  background-image: url('/static/image/services-1.jpg');
+
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.services-hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
+  z-index: 1;
+}
+
+.services-hero .content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.services-hero span {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.services-hero h1 {
+  font-size: 48px;
+  /* font-weight: bold; */
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* section second  */
+
+.service-intro {
+  text-align: center;
+  padding: 80px 20px;
+  background-color: #ffffff;
+}
+
+.welcome-text {
+  color: #00c58e;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.main-heading {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #000000;
+}
+
+.service-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  padding: 30px 20px;
+  border-radius: 8px;
+  border: none;
+  width: 160px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  background-color: #e6fff4;
+}
+
+.icon {
+  margin-bottom: 15px;
+}
+.card:hover {
+  background-color: #20c997;
+}
+
+.card:hover .icon svg {
+  fill: #fff;
+}
+
+.card:hover p {
+  color: #fff;
+}
+
+/* section third  */
+
+.services-two {
+  /* padding: 80px 20px; */
+  background: #fff;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.services-two .section-subtitle {
+  color: #d49b6a;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.services-two .section-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.service-box {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid #eee;
+  padding: 40px 20px;
+  border-radius: 4px;
+  transition: color 0.3s ease;
+}
+
+/* Hover background sliding in from left */
+.service-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #20c997;
+  z-index: -1;
+  transition: all 0.5s ease;
+}
+
+.service-box:hover::before {
+  left: 0;
+}
+
+.service-box .icon {
+  font-size: 40px;
+  color: #d49b6a;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+
+.service-box h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #111;
+  transition: color 0.3s;
+}
+
+.service-box p {
+  color: #555;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.service-box:hover .icon,
+.service-box:hover h3,
+.service-box:hover p,
+.service-box.active .icon,
+.service-box.active h3,
+.service-box.active p {
+  color: #fff;
+}
+
+/* section Fourth  */
+
+.menu-section {
+  max-width: 1400px; /* और ज़्यादा चौड़ा किया */
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.small-heading {
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.main-heading {
+  text-align: center;
+  font-size: 36px;
+  margin: 10px 0 40px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.menu-card {
+  display: flex;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 160px; /* height कम की गई */
+}
+
+.menu-card img {
+  width: 180px;
+  height: 100%; /* image की height अब बराबर होगी text area के */
+  object-fit: cover;
+}
+
+.menu-info {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.menu-info h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 20px; 
+  flex-wrap: wrap; 
+}
+
+.menu-info h3 span {
+  color: blue;
+  white-space: nowrap; 
+  font-weight: bold;
+}
+
+.menu-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.menu-card:hover .menu-info {
+  background-color: #007bff;
+  color: white;
+}
+
+.menu-card:hover .menu-info p,
+.menu-card:hover .menu-info h3 span {
+  color: white;
+}
+
+@media (max-width: 992px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .menu-card img {
+    width: 100%;
+    height: auto;
+  }
+}

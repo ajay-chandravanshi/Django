@@ -86,7 +86,7 @@ def registerdata(request):
         return render(request,'register.html',{'msg':msg})
     else:
         if password==cpassword:
-            student.objects.create(stu_name=username,stu_email=email,stu_dis=detail,    stu_contact=phone,stu_dob=dob,stu_quali=subscribe,stu_gender=gender, stu_image=image,stu_document=document,stu_password=password)
+            student.objects.create(stu_name=username,stu_email=email,stu_dis=detail, stu_contact=phone,stu_dob=dob,stu_quali=subscribe,stu_gender=gender, stu_image=image,stu_document=document,stu_password=password)
 
             msg="Registration successfully"
             return render(request,'login.html',{'msg':msg})

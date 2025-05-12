@@ -6,8 +6,20 @@ def home(request):
     return render(request,'home.html')
 def about(request):
     return render(request,'about.html')
+
 def contact(request):
-    return render(request,'contact.html')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+
+        msg = "Message Send Successfully"
+        return render(request, 'contact.html', {'msg': msg, 'msg_type': 'success'})
+
+    return render(request, 'contact.html')
+
+
 def gallery(request):
     return render(request,'gallery.html')
 def services(request):
