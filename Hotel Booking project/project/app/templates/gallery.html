@@ -6,9 +6,10 @@ Gallery
 
 {% block css %}
 {{ block.super }}
-{% load static %}
 <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<!-- Lightbox2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -21,4 +22,106 @@ Gallery
   </div>
 </section>
 
-{% endblock  %}
+<!-- Gallery Filter Buttons -->
+<section class="gallery-section">
+  <div class="container">
+    <h2 class="gallery-heading">Hotel Gallery</h2>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="rooms">Rooms</button>
+      <button class="filter-btn" data-filter="lobby">Lobby</button>
+      <button class="filter-btn" data-filter="dining">Dining</button>
+      <button class="filter-btn" data-filter="pool">Pool</button>
+      <button class="filter-btn" data-filter="gym">Gym</button>
+      <button class="filter-btn" data-filter="outdoors">Outdoors</button>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Rooms -->
+      <a href="/static/image/gallery/gallery-1.jpg" data-lightbox="rooms"><img src="/static/image/gallery/gallery-1.jpg" class="gallery-item rooms" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-2.jpg" data-lightbox="rooms"><img src="/static/image/gallery/gallery-2.jpg" class="gallery-item rooms" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-3.jpg" data-lightbox="rooms"><img src="/static/image/gallery/gallery-3.jpg" class="gallery-item rooms" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-4.jpg" data-lightbox="rooms"><img src="/static/image/gallery/gallery-4.jpg" class="gallery-item rooms" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-5.jpg" data-lightbox="rooms"><img src="/static/image/gallery/gallery-5.jpg" class="gallery-item rooms" alt="" data-aos="zoom-in"></a>
+
+      <!-- Lobby -->
+      <a href="/static/image/gallery/gallery-6.jpg" data-lightbox="lobby"><img src="/static/image/gallery/gallery-6.jpg" class="gallery-item lobby" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-7.jpg" data-lightbox="lobby"><img src="/static/image/gallery/gallery-7.jpg" class="gallery-item lobby" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-8.jpg" data-lightbox="lobby"><img src="/static/image/gallery/gallery-8.jpg" class="gallery-item lobby" alt="" data-aos="zoom-in"></a>
+
+      <!-- Dining -->
+      <a href="/static/image/gallery/gallery-9.jpg" data-lightbox="dining"><img src="/static/image/gallery/gallery-9.jpg" class="gallery-item dining" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-10.jpg" data-lightbox="dining"><img src="/static/image/gallery/gallery-10.jpg" class="gallery-item dining" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-11.jpg" data-lightbox="dining"><img src="/static/image/gallery/gallery-11.jpg" class="gallery-item dining" alt="" data-aos="zoom-in"></a>
+
+      <!-- Pool -->
+      <a href="/static/image/gallery/gallery-12.jpg" data-lightbox="pool"><img src="/static/image/gallery/gallery-12.jpg" class="gallery-item pool" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-13.jpg" data-lightbox="pool"><img src="/static/image/gallery/gallery-13.jpg" class="gallery-item pool" alt="" data-aos="zoom-in"></a>
+
+      <!-- Gym -->
+      <a href="/static/image/gallery/gallery-14.jpg" data-lightbox="gym"><img src="/static/image/gallery/gallery-14.jpg" class="gallery-item gym" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-15.jpg" data-lightbox="gym"><img src="/static/image/gallery/gallery-15.jpg" class="gallery-item gym" alt="" data-aos="zoom-in"></a>
+
+      <!-- Outdoors -->
+      <a href="/static/image/gallery/gallery-16.jpg" data-lightbox="outdoors"><img src="/static/image/gallery/gallery-16.jpg" class="gallery-item outdoors" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-17.jpg" data-lightbox="outdoors"><img src="/static/image/gallery/gallery-17.jpg" class="gallery-item outdoors" alt="" data-aos="zoom-in"></a>
+      <a href="/static/image/gallery/gallery-18.jpg" data-lightbox="outdoors"><img src="/static/image/gallery/gallery-18.jpg" class="gallery-item outdoors" alt="" data-aos="zoom-in"></a>
+    </div>
+  </div>
+</section>
+
+<!-- section third  -->
+
+<!-- Video Section -->
+<!-- Video Section -->
+<section class="video-section">
+  <div class="video-wrapper">
+    <video class="bg-video" autoplay muted loop playsinline>
+      <source src="{% static 'video/home-video.mp4' %}" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="video-overlay">
+      <h2>Experience Luxury in Motion</h2>
+      <p>Watch the elegance of our hotel come alive</p>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const galleryItems = document.querySelectorAll(".gallery-item");
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelector(".filter-btn.active").classList.remove("active");
+      btn.classList.add("active");
+
+      const filter = btn.getAttribute("data-filter");
+
+      galleryItems.forEach(item => {
+        if (filter === "all" || item.classList.contains(filter)) {
+          item.parentElement.style.display = "inline-block";
+        } else {
+          item.parentElement.style.display = "none";
+        }
+      });
+    });
+  });
+
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const triggerPoint = window.innerHeight * 0.9;
+
+    if (window.scrollY >= triggerPoint) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>
+
+<!-- Lightbox2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+{% endblock %}

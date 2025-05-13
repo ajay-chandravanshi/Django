@@ -1,3 +1,20 @@
+/* navbar section  */
+
+.navbar {
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: rgb(0, 0, 0, 0.925);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* --- HERO SECTION --- */
 .gallery-hero {
   position: relative;
   background-image: url('/static/image/gallery/gallery-bg.jpg');
@@ -32,10 +49,189 @@
 .hero-overlay h1 {
   font-size: 48px;
   margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
 }
 
 .hero-overlay p {
   font-size: 18px;
   color: #ddd;
   font-weight: 600;
+}
+
+
+/* --- GALLERY SECTION --- */
+.gallery-section {
+  padding: 60px 20px;
+  background-color: #f4f6f8;
+  text-align: center;
+}
+
+.gallery-heading {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #333;
+  font-family: 'Playfair Display', serif;
+}
+
+.filter-buttons {
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: #00c851;
+  color: white;
+}
+
+/* --- GRID & IMAGE STYLING --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.gallery-grid a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-item {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Optional: Lightbox caption styling (if added later) */
+.lightbox .lb-caption {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* --- Responsive tweak --- */
+@media (max-width: 600px) {
+  .hero-overlay h1 {
+    font-size: 32px;
+  }
+  .gallery-heading {
+    font-size: 28px;
+  }
+}
+
+.gallery-grid a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.gallery-grid a:hover .gallery-item {
+  transform: scale(1.1);
+}
+
+/* Overlay category text */
+.gallery-grid a::after {
+  content: attr(data-category);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-grid a:hover::after {
+  opacity: 1;
+}
+
+/* section third video  */
+
+.video-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.video-overlay h2 {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.video-overlay p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
 }
