@@ -1,0 +1,217 @@
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f8;
+}
+
+/* Navbar */
+.login-nav {
+  background-color: #36d900;
+}
+
+.login-navcolor {
+  background-color: #28a745; /* Updated for softer tone */
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.login-navcolor .btn {
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 6px 16px;
+  margin-left: 10px;
+}
+.login-navcolor .btn-outline-light {
+  color: #fff;
+  border-color: #fff;
+}
+.login-navcolor .btn-outline-light:hover {
+  background-color: #fff;
+  color: #28a745;
+}
+
+/* Dashboard Layout */
+.dashboard {
+  display: flex;
+  position: relative;
+  top: 100px;
+  min-height: 100vh;
+  background-color: #00c851;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: #fff;
+  padding: 30px 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-right: 1px solid #eee;
+}
+
+.user-panel {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #eee;
+  margin-bottom: 10px;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  padding: 12px 10px;
+  font-size: 15px;
+  color: #444;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-menu li:hover,
+.sidebar-menu li.active {
+  background-color: #e0f0ff;
+  color: #007bff;
+  font-weight: 500;
+}
+
+/* Main Content */
+.dashboard-content {
+  flex: 1;
+  padding: 30px;
+  padding-top: 0px;
+  background-color: #f9fafc;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.heading{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.card-section {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Cards */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 25px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 500px;
+}
+.card.personal-info {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+  border-left: 4px solid #28a745; /* Optional: adds a green accent */
+}
+
+.card h4 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #343a40;
+}
+
+.card p {
+  font-size: 14px;
+  margin: 6px 0;
+  color: #555;
+}
+
+.edit-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Alert Toasts */
+.toast {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-30px);
+  background: #333;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 9999;
+  min-width: 280px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast.success {
+  background: linear-gradient(135deg, #00c851, #007e33);
+}
+
+.toast.error {
+  background: linear-gradient(135deg, #ff6a6a, #ff4e50);
+}
+
+.toast i {
+  font-size: 22px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  transform-origin: left;
+  animation: progress 3s linear forwards;
+  border-radius: 0px 0px 8px 8px;
+}
+
+@keyframes progress {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}

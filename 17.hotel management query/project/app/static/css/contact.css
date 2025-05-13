@@ -1,0 +1,200 @@
+/* navbar section  */
+
+.navbar {
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: rgb(0, 0, 0,0.925);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* First Section  */
+
+.contact-hero {
+  position: relative;
+  height: 100vh;
+  background-image: url('/static/image/contact-1.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.contact-hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content .mini-heading {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: #ddd;
+}
+
+.hero-content .main-heading {
+  font-size: 56px;
+  font-weight: bold;
+  color: #fff;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.contact-section {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.contact-content {
+  max-width: 550px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); /* Updated shadow */
+}
+
+.contact-content p {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.form-heading {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #666;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #e64e4e;
+}
+
+/* alert message Code Css Start Here */
+.toast {
+  position: fixed;
+  top: 80px;
+  left: 37%;
+  transform: translateX(-50%) translateY(-30px);
+  background: #333;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0px 6px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: all 1s ease;
+  z-index: 9999;
+  min-width: 280px;
+}
+
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast.success {
+  background: linear-gradient(135deg, #00c851, #007e33);
+}
+
+.toast.email_error {
+  background-color: #e53935; /* Deep Red for email already exists */
+  color: white;
+}
+
+.toast.password_mismatch {
+  background-color: #ff7043; /* Light Red-Orange for password mismatch */
+  color: white;
+}
+
+
+.toast i {
+  font-size: 22px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  transform-origin: left;
+  animation: progress 3s linear forwards;
+  border-radius: 0px 0px 8px 8px;
+}
+
+@keyframes progress {
+  0% { width: 100%; }
+  100% { width: 0%; }
+}
+ /* alert message Code Css End Here */

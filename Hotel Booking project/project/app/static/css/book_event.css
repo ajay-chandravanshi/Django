@@ -26,7 +26,11 @@ body {
 /* Hero Section */
 .hero-section {
   position: relative;
-  background: url('/static/image/hero-bg.jpg') center center/cover no-repeat;
+  background: url('/static/image/hero-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
   color: white;
   height: 100vh;
   display: flex;

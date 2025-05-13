@@ -35,7 +35,7 @@
 }
 
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.43);
   color: #fff;
   height: 100vh;
   display: flex;

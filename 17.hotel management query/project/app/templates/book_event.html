@@ -1,0 +1,103 @@
+{% extends "common.html" %}
+{% load static %}
+{% block title %}
+Book Your Premium Event
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/book_event.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section room-event-bg">
+  <div class="overlay">
+    <h1>Premium Event Experience</h1>
+    <p>Join us for an unforgettable evening</p>
+    <a href="#booking" class="btn-primary">Book Now</a>
+  </div>
+</section>
+
+<!-- Event Info Section -->
+<section class="event-info">
+  <div class="container">
+    <h2>Event Details</h2>
+    <p class="event-subtext"> Experience an unforgettable evening filled with elegance, world-class entertainment, and gourmet dining.</p>
+    <div class="event-meta">
+      <div>
+        <strong>Date:</strong> 25th June, 2025
+      </div>
+      <div>
+        <strong>Time:</strong> 7:00 PM - 11:00 PM
+      </div>
+      <div>
+        <strong>Location:</strong> Grand Hall, City Center
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Booking Form Section -->
+<section id="booking-form" class="booking-form">
+  <div class="form-wrapper">
+    <h2>Book Your Ticket</h2>
+    <form action="/submit-booking" method="POST">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="ticket-type">Select Ticket Type</label>
+        <select id="ticket-type" name="ticket_type">
+          <option value="vip">VIP</option>
+          <option value="general">General</option>
+        </select>
+      </div>
+
+      <button type="submit">Confirm Your Booking</button>
+    </form>
+  </div>
+</section>
+
+
+<!-- Packages Section -->
+<section class="packages">
+  <div class="container">
+    <h2>Event Packages</h2>
+    <div class="package-card">
+      <h3>VIP Package</h3>
+      <p>Exclusive luxury seating, backstage access, and VIP food & drinks.</p>
+      <div class="price">$500</div>
+      <a href="#booking-form" class="btn-primary">Book VIP</a>
+    </div>
+    <div class="package-card">
+      <h3>General Package</h3>
+      <p>Standard seating with access to all main event activities and food.</p>
+      <div class="price">$200</div>
+      <a href="#booking-form" class="btn-primary">Book General</a>
+    </div>
+  </div>
+</section>
+
+<script>
+      window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const triggerPoint = window.innerHeight * 0.9;
+
+    if (window.scrollY >= triggerPoint) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
+</script>
+{% endblock %}
