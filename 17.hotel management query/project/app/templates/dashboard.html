@@ -47,7 +47,18 @@ Dashboard
         </nav>
     </aside>
     <!-- Main content -->
- 
+    <main class="dashboard-content">
+        <div class="heading"><h2>Account Overview</h2></div>
+
+        <div class="card-section">
+            <div class="card personal-info">
+                <h4>Personal Info</h4>
+                <p><strong>Name:</strong> {{ userdata.clt_username }}</p>
+                <p><strong>Date of Birth:</strong> {{ userdata.clt_dob|default:"Not provided" }}</p>
+                <p><strong>Gender:</strong> {{ userdata.clt_gender|default:"Not provided" }}</p>
+                <p><strong>Bio:</strong> {{ userdata.clt_detail|default:"Not provided" }}</p>
+                <a href="#" class="edit-link">Edit Info</a>
+            </div>
 
             <div class="card personal-info">
                 <h4>Contact Info</h4>
