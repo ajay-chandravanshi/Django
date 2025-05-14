@@ -13,7 +13,11 @@ class Client(models.Model):
     clt_password=models.CharField(max_length=20)
     clt_cpassword=models.CharField(max_length=20)
 
+# for query code start
+
 class Query(models.Model):
     stu_name=models.CharField(max_length=50)
     stu_email=models.EmailField()
     stu_query=models.CharField(max_length=150)
+
+# for query code End

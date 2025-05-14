@@ -38,8 +38,11 @@ urlpatterns = [
     path('book_event/<int:pk>',views.book_event1,name='book_event1'),
     path('book_room/<int:pk>',views.book_room1,name='book_room1'),
     path('dashboard/<int:pk>',views.dashboard,name='dashboard'),
-    # for query 
-    path('query/<int:pk>',views.query,name='query'),
     
+    # for query code start
+    path('query/<int:pk>',views.query,name='query'),
+    path('allquery/<int:pk>',views.allquery,name='allquery'),
+    
+    # for query code end
     
 ]
