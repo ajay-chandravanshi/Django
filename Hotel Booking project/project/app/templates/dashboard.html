@@ -11,6 +11,7 @@ Dashboard
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 {% endblock %}
 
+
 {% block content %}
 
 {% if msg %}
@@ -67,8 +68,71 @@ Dashboard
                 <a href="#" class="edit-link">Update Contact</a>
             </div>
         </div>
-    </main>
+
+<!-- for query code start  -->
+
+<div class="query-section">
+
+    <div class="query-buttons">
+        <a href="{% url 'query' pk=userdata.id %}">Query</a>
+        <a href="{% url 'allquery' pk=userdata.id %}">All Query</a>
+    </div>
+
+    {% if query %}
+    <div class="query-form-container">
+        <h2>Submit Your Query</h2>
+
+        <form action="{% url 'query' pk=userdata.id %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" value="{{userdata.clt_username}}" readonly>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" value="{{userdata.clt_email}}" readonly>
+            </div>
+            <div class="form-group">
+                <label>Your Query</label>
+                <textarea name="query" required placeholder="Type your query..."></textarea>
+            </div>
+            <div class="form-submit">
+                <input type="submit" value="Send Query">
+            </div>
+        </form>
+    </div>
+
+    {% elif querydetail %}
+    <div class="all-query-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Query</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in querydetail %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.stu_name}}</td>
+                    <td>{{i.stu_email}}</td>
+                    <td>{{i.stu_query}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
 </div>
+<!-- for query code End  -->
+
+        </div>
+    </main>
+
+
 
 <!-- all messages JS code Start here -->
 {% if msg %}

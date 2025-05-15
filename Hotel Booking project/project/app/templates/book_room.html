@@ -4,6 +4,28 @@
 Book_room
 {% endblock  %}
 
+{% block css %}
+{{ block.super }}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/book_room.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+
+{% endblock %}
+
 {% block content %}
-<h1>Book_Room Page</h1>
+<!-- Book Room Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-heading">Discover Comfort,<br> Discover RoomRoot</h1>
+        <p class="hero-subheading">Where every stay feels like home.</p>
+    </div>
+</section>
+
+<!-- sections second  -->
+
+
+
+
 {% endblock  %}

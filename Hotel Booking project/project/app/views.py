@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Client
+from django.shortcuts import render,redirect
+from .models import Client,Query
+from django.urls import reverse
 # Create your views here.
 
 def home(request):
@@ -117,3 +118,31 @@ def book_room1(request,pk):
 def dashboard(request,pk):
     userdata=Client.objects.get(id=pk)
     return render(request,'dashboard.html',{'userdata':userdata})
+
+# for query code start
+
+def query(request,pk):
+    userdata=Client.objects.get(id=pk)
+
+    if request.method=="POST":
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        query=request.POST.get('query')
+
+        Query.objects.create(stu_name=name,stu_email=email,stu_query=query)
+        msg = "Query Send Successfully"
+        querydetail=Query.objects.filter(stu_email=userdata.clt_email)
+        #return redirect(reverse('query', kwargs={'pk': pk, }))
+        
+        return render(request,'dashboard.html',{'userdata':userdata,'msg': msg, 'msg_type': 'success'})
+        # return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})
+    
+    else:
+        return render(request,'dashboard.html',{'userdata':userdata,'query':userdata})
+
+def allquery(request,pk):
+    userdata=Client.objects.get(id=pk)
+    x=userdata.clt_email
+    querydetail=Query.objects.filter(stu_email=x)
+    return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})
+# for query code End

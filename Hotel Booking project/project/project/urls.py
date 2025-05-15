@@ -39,5 +39,10 @@ urlpatterns = [
     path('book_room/<int:pk>',views.book_room1,name='book_room1'),
     path('dashboard/<int:pk>',views.dashboard,name='dashboard'),
     
+    # for query code start
+    path('query/<int:pk>',views.query,name='query'),
+    path('allquery/<int:pk>',views.allquery,name='allquery'),
+    
+    # for query code end
     
 ]
