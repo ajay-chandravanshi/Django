@@ -145,4 +145,21 @@ def allquery(request,pk):
     x=userdata.clt_email
     querydetail=Query.objects.filter(stu_email=x)
     return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})
+
+def edit(request,pk):
+    editdata=Query.objects.get(id=pk)
+    email=editdata.stu_email
+    userdata=Client.objects.get(clt_email=email)
+    return render(request,'dashboard.html',{'userdata':userdata,'editdata':editdata})
+
+def queryupdate(request,pk):
+    if request.method=='POST':
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        query=request.POST.get('query')
+        old_query=Query.objects.get(id=pk)
+        old_query.stu_name=name
+        old_query.stu_email=email
+        old_query.stu_query=query
+        old_query.save()
 # for query code End

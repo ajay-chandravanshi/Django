@@ -42,6 +42,9 @@ Dashboard
                 <li><i class="fas fa-bed"></i> My Bookings</li>
                 <li><i class="fas fa-gift"></i> Rewards</li>
                 <li><i class="fas fa-cog"></i> Settings</li>
+                <li><i class="fa-solid fa-clipboard-question"></i> Query</li>
+                <li><i class="fas fa-comment-dots"></i> All Query</li>
+                <li><i class="fa-solid fa-pen-to-square fa-sm"></i>Edit Query</li>
                 <li><i class="fas fa-sign-out-alt"></i> Logout</li>
             </ul>
         </nav>
@@ -101,31 +104,7 @@ Dashboard
             </div>
         </form>
     </div>
-
-    {% elif querydetail %}
-    <div class="all-query-table">
-        <table>
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Query</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in querydetail %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{i.stu_name}}</td>
-                    <td>{{i.stu_email}}</td>
-                    <td>{{i.stu_query}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% endif %}
+  
 </div>
 <!-- for query code End  -->
 

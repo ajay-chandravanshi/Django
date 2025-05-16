@@ -42,6 +42,10 @@ urlpatterns = [
     # for query code start
     path('query/<int:pk>',views.query,name='query'),
     path('allquery/<int:pk>',views.allquery,name='allquery'),
+
+    path('edit/<int:pk>',views.edit,name='edit'),
+
+    path('queryupdate/<int:pk>',views.queryupdate,name='queryupdate'),
     
     # for query code end
     

@@ -22,12 +22,49 @@ Book_room
         <p class="hero-subheading">Where every stay feels like home.</p>
     </div>
 </section>
-<!-- Section filter for room check  -->
+
  
 <!-- sections second  -->
+  <!-- heading for room card section  -->
+<div class="room-heading">
+  <h2>Discover Our Luxurious Rooms</h2>
+  <p>Choose the perfect stay for your comfort and style.</p>
+</div>
 
+<!-- Room Filter Section -->
+<div class="room-filter-section">
+  <h2 class="filter-title">Filter Rooms</h2>
+  <form id="roomFilterForm" class="filter-form">
+    <div class="form-group">
+      <label for="priceFilter">Price (less than):</label>
+      <input type="number" id="priceFilter" placeholder="e.g. 200">
+    </div>
+    <div class="form-group">
+      <label for="capacityFilter">Capacity:</label>
+      <select id="capacityFilter">
+        <option value="">All</option>
+        <option value="2">Max person 2</option>
+        <option value="3">Max person 3</option>
+        <option value="4">Max person 4</option>
+        <option value="5">Max person 5</option>
+        <option value="6">Max person 6</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="serviceFilter">Services:</label>
+      <input type="text" id="serviceFilter" placeholder="e.g. Wifi, TV">
+    </div>
+    <div class="form-buttons">
+      <button type="submit" class="apply-btn">Apply Filter</button>
+      <button type="button" id="resetFilter" class="reset-btn">Reset</button>
+    </div>
+  </form>
+</div>
+
+<!-- filter section end here  -->
+ 
+<!-- card section start here  -->
 <div class="section">
-
   <!-- Card 1 -->
 
   <div class="card">
@@ -748,6 +785,51 @@ Book_room
 
 
 
+<script>
+  document.getElementById("roomFilterForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const maxPrice = parseFloat(document.getElementById("priceFilter").value) || Infinity;
+    const capacity = document.getElementById("capacityFilter").value;
+    const servicesInput = document.getElementById("serviceFilter").value.toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+      const priceText = card.querySelector(".price-green").innerText.replace("$", "");
+      const price = parseFloat(priceText);
+
+      const capacityText = card.innerText.match(/Max person \d+/);
+      const cardCapacity = capacityText ? capacityText[0].match(/\d+/)[0] : null;
+
+      const servicesText = card.innerText.toLowerCase();
+
+      let matches = true;
+
+      if (price > maxPrice) matches = false;
+
+      if (capacity && cardCapacity !== capacity) matches = false;
+
+      if (servicesInput.length) {
+        for (const service of servicesInput) {
+          if (!servicesText.includes(service)) {
+            matches = false;
+            break;
+          }
+        }
+      }
+
+      card.style.display = matches ? "flex" : "none";
+    });
+  });
+
+  document.getElementById("resetFilter").addEventListener("click", function () {
+    document.getElementById("roomFilterForm").reset();
+    document.querySelectorAll(".card").forEach(card => {
+      card.style.display = "flex";
+    });
+  });
+</script>
 
 <script>
     window.addEventListener("scroll", function () {
