@@ -104,7 +104,58 @@ Dashboard
             </div>
         </form>
     </div>
-  
+    {% elif editdata %}
+    <div class="query-form-container">
+        <h2>Update Your Query</h2>
+
+        <form action="{% url 'queryupdate' pk=editdata.id %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" value="{{editdata.stu_name}}" readonly>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" value="{{editdata.stu_email}}" readonly>
+            </div>
+            <div class="form-group">
+                <label>Your Query</label>
+                <textarea name="query" required placeholder="Type your query...">{{editdata.stu_query}}</textarea>
+            </div>
+            <div class="form-submit">
+                <input type="submit" value="Edit Query">
+            </div>
+        </form>
+    </div>
+
+    {% elif querydetail %}
+    <div class="all-query-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Query</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in querydetail %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.stu_name}}</td>
+                    <td>{{i.stu_email}}</td>
+                    <td>{{i.stu_query}}</td>
+                    <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
+                    <td><a href="">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
 </div>
 <!-- for query code End  -->
 
