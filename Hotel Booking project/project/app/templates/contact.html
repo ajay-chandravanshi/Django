@@ -64,6 +64,7 @@ Services
 
 {% if msg %}
 <script>
+
 document.addEventListener("DOMContentLoaded", function() {
     var toast = document.getElementById("toast");
     var closeBtn = document.getElementById("close-toast");
@@ -84,6 +85,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
  
+
+</script>
+{% endif %}
+<script>
     window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");
     const triggerPoint = window.innerHeight * 0.9;
@@ -94,6 +99,6 @@ document.addEventListener("DOMContentLoaded", function() {
       navbar.classList.remove("scrolled");
     }
     });
+
 </script>
-{% endif %}
 {% endblock  %}

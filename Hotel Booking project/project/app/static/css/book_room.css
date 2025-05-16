@@ -76,11 +76,14 @@
     font-size: 14px;
   }
 }
+/* section filter for room check  */
+
 
 /* section second  */
 
 .section {
   display: flex;
+  flex-direction: row;
   gap: 30px;
   justify-content: center;
   flex-wrap: wrap;
@@ -91,19 +94,23 @@
   height: 515px;
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
 }
 
 .card .text {
-  /* padding: 40px 30px; */
-  /* padding: 3rem; */
   padding: 1rem;
   text-align: center;
+  transition: 0.3s ease;
 }
 
 .card .text h2 {
   font-size: 28px;
+  font-family: 'Times New Roman', Times, serif;
   margin-bottom: 15px;
   color: #000;
+  transition: 0.3s ease;
 }
 
 .card .text p {
@@ -111,15 +118,17 @@
   line-height: 1.7;
   color: #999;
   margin-bottom: 20px;
+  transition: 0.3s ease;
 }
 
 .card .text .price {
   color: #c59d5f;
   font-weight: bold;
-  /* margin-bottom: 20px; */
   font-size: 17px;
+  transition: 0.3s ease;
 }
-.price-part{
+
+.price-part {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,20 +138,18 @@
 .card .text button {
   padding: 10px 20px;
   border: 1px solid #000;
-  background: white;
+  background: rgb(20, 20, 20);
+  color: white;
   cursor: pointer;
   transition: 0.3s ease;
-}
-
-.card .text button:hover {
-  background: #000;
-  color: white;
 }
 
 .card .image {
   height: 280px;
   overflow: hidden;
+  position: relative;
 }
+
 
 .card .image img {
   width: 100%;
@@ -151,11 +158,92 @@
 }
 
 /* Alternate layout (image on top) */
-.card.alt .text {
+/* .card.alt .text {
   order: 2;
 }
 
 .card.alt .image {
   order: 1;
+} */
+
+/* 🟡 Overlay Layer */
+.card .image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 280px;
+  background: rgba(0, 0, 0, 0);
+  transition: 0.3s ease;
+  z-index: 1;
 }
 
+/* 🔥 Hover Effect */
+.card:hover .image::after {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.card:hover .text {
+  background: #111;
+  color: white;
+}
+
+.card:hover .text h2,
+.card:hover .text p {
+  color: white;
+}
+
+
+
+.card:hover .text button {
+  background: #310add;
+  color: white;
+  border: 1px solid white;
+}
+
+/* ✅ Additions based on new layout */
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.price-green {
+  font-size: 22px;
+  color: #33c6a4;
+  font-weight: bold;
+}
+
+.per-day {
+  font-size: 14px;
+  color: #b0b4bf;
+}
+
+.room-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 1rem;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.room-info strong {
+  color: #a3a6b2;
+  font-weight: 500;
+}
+/* Keep strong light */
+.room-info strong {
+  color: #a3a6b2;
+}
+
+/* Make only values white on hover */
+.card:hover .room-info span {
+  color: white;
+  opacity: 0.9;
+}
