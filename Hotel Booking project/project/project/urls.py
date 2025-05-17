@@ -46,7 +46,7 @@ urlpatterns = [
     path('edit/<int:pk>',views.edit,name='edit'),
 
     path('queryupdate/<int:pk>',views.queryupdate,name='queryupdate'),
-    
+    path('delete/<int:pk>',views.delete,name='delete'),
     
     # for query code end
     
