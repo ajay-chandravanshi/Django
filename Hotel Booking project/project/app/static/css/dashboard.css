@@ -63,6 +63,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* side-bar menu css  */
 .sidebar-menu ul {
   list-style: none;
   padding: 0;
@@ -72,21 +73,31 @@ body {
 .sidebar-menu li {
   padding: 12px 10px;
   font-size: 15px;
-  color: #444;
-  cursor: pointer;
   border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-menu li a {
+  text-decoration: none !important;
+  color: #444 !important;
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.2s ease;
 }
 
 .sidebar-menu li:hover,
 .sidebar-menu li.active {
-  background-color: #e0f0ff;
-  color: #007bff;
-  font-weight: 500;
+  background-color: #e0f0ff !important;
+  font-weight: 500 !important;
 }
+
+.sidebar-menu li:hover a,
+.sidebar-menu li.active a {
+  color: #007bff !important;
+}
+
+
+/* sidebar menu css end here  */
 
 /* Main Content */
 .dashboard-content {
