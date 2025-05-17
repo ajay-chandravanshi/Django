@@ -164,6 +164,15 @@ def queryupdate(request,pk):
         old_query.save()
         querydetail=Query.objects.filter(stu_email=email)
         userdata=Client.objects.get(clt_email=email)
-'querydetail':querydetail,'msg': msg, 'msg_type': 'success'})
+        return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})
+    
+def delete(request,pk):
+    deledata=Query.objects.get(id=pk)
+    email=deledata.stu_email
+    deledata.delete()
+    querydetail=Query.objects.filter(stu_email=email)
+    userdata=Client.objects.get(clt_email=email)
+    msg="Deleted Successfully"
+    return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail,'msg': msg, 'msg_type': 'success'})
 
 # for query code End
