@@ -131,7 +131,7 @@
   <div class="container">
     <div class="row gy-5">
       <div class="col-lg-3 col-md-6">
-        <h3 class="footer-title">Unwind</h3>
+        <h3 class="footer-title">RoomRoot</h3>
         <p class="footer-subtitle">HOTEL BOOKING</p>
         <p class="footer-text">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
         <div class="footer-social">
@@ -185,5 +185,22 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+  // Close navbar collapse on outside click (mobile)
+  document.addEventListener('click', function(event) {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    if (
+      navbarCollapse.classList.contains('show') &&
+      !navbarCollapse.contains(event.target) &&
+      !navbarToggler.contains(event.target)
+    ) {
+      navbarToggler.click(); // Trigger collapse
+    }
+  });
+</script>
+
   </body>
 </html>

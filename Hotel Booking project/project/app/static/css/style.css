@@ -1,3 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 /* Navbar background */
 
 .navcolor {
@@ -164,4 +171,124 @@
   font-size: 14px;
   color: #999;
   margin-top: 30px;
+}
+
+/* ----------------------------------------------
+   Media Queries for Responsiveness
+-------------------------------------------------*/
+
+/* Laptop & Below (<= 1230px) */
+@media (max-width: 1230px) {
+  .navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+    order: 2;
+  }
+
+  .navbar-brand {
+    order: 1;
+    flex-grow: 1;
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.97);
+    padding-bottom: 1rem;
+    z-index: 999;
+    text-align: center;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 10px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+
+  form ul.navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  form ul.navbar-nav .nav-link {
+    width: 100%;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .collapse:not(.show) {
+    display: none;
+  }
+
+  .collapse.show {
+    display: block;
+  }
+
+  .footer-title,
+  .footer-subtitle,
+  .footer-text,
+  .footer-links,
+  .footer-contact,
+  .footer-social {
+    text-align: center;
+  }
+
+  .footer-social a {
+    margin: 0 10px;
+  }
+}
+
+/* Mobile (<= 768px) */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+
+  .custom-footer .row > div {
+    margin-bottom: 30px;
+  }
+
+  .custom-footer .row.mt-5 .col {
+    padding: 0 15px;
+  }
+}
+
+/* Small mobile (<= 480px) */
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .nav-link,
+  form ul.navbar-nav .nav-link {
+    font-size: 1rem;
+    padding: 8px 20px;
+  }
+
+  .custom-footer {
+    padding: 40px 10px;
+  }
+
+  .footer-contact li {
+    font-size: 14px;
+  }
 }

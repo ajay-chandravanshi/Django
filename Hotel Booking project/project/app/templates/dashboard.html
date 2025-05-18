@@ -38,7 +38,7 @@ Dashboard
         </div>
         <nav class="sidebar-menu">
             <ul>
-                <li class="active">
+                <li class="{% if request.path == '/dashboard/1' %}active{% endif %}">
                     <a href="{% url 'dashboard' pk=userdata.id %}">
                         <i class="fas fa-user"></i> Profile
                     </a>

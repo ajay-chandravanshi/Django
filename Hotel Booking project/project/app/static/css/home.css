@@ -488,7 +488,7 @@
 /*----------------------------------*/
 /* 📱 RESPONSIVE STYLES */
 /*----------------------------------*/
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
   .blog-card {
     width: calc(33.33% - 15px);
   }
@@ -553,5 +553,96 @@
 
   .main-heading {
     font-size: 28px;
+  }
+} */
+
+/* 📱✅ Combined Responsive Media Queries */
+@media (max-width: 1200px) {
+  .blog-card {
+    width: calc(33.33% - 15px);
+  }
+}
+
+@media (max-width: 992px) {
+  .row>* {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .insta-item {
+    width: calc(50% - 10px);
+  }
+
+  .rooms-container {
+    overflow-x: auto;
+  }
+
+  .rooms-container {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    gap: 10px;
+  }
+
+  .booking-form-container {
+    opacity: 0;
+  }
+
+  .testimonial-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .testimonial-btn-group {
+    justify-content: center;
+    align-items: center;
+  }
+  .circle-img {
+    bottom: -40px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .blog-card {
+    width: calc(50% - 10px);
+  }
+
+  .insta-item {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .hero-subtitle span {
+    display: none;
+  }
+
+  .blog-card,
+  .insta-item {
+    width: 100%;
+  }
+
+  .main-heading {
+    font-size: 28px;
+  }
+
+  .circle-img {
+    max-width: 150px;
   }
 }
