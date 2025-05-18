@@ -58,7 +58,7 @@ header h1 {
 
 /* navbar code hambergur Start*/
 .navbar-toggler{
-    margin-right: 80px;
+    margin-right: 0px;
 }
 /* navbar code hambergur End */
 .section {
@@ -515,7 +515,9 @@ background-color: #ca9a57;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
   }
-
+.formedia{
+  visibility: visible;
+}
   .hero-content {
     width: 50%;
   }
