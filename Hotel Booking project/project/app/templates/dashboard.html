@@ -193,9 +193,10 @@ Dashboard
             </tbody>
         </table>
     </div>
-    {% elif querydetail %}
+    
 
     {% elif data %}
+    {% elif querydetail %}
     <div class="all-query-table">
     <form action="{% url 'search' pk=userdata.id %}" method="post">
         {% csrf_token %}
