@@ -175,4 +175,12 @@ def delete(request,pk):
     msg="Deleted Successfully"
     return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail,'msg': msg, 'msg_type': 'success'})
 
+from django.db.models import Q
+def search(request,pk):
+    userdata=Client.objects.get(id=pk)
+    data=request.POST.get('search')
+
+    all_data=Query.objects.filter(Q(stu_name__icontains=data) | Q(stu_email__icontains=data) | Q(stu_query__icontains=data))
+
+    return render(request,'dashboard.html',{'userdata':userdata,'data':all_data})
 # for query code End

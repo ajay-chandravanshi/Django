@@ -120,6 +120,8 @@
 
 .testimonial-btn-group {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 
@@ -577,7 +579,8 @@
   }
 
   .rooms-container {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 

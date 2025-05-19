@@ -165,8 +165,38 @@ Dashboard
             </div>
         </form>
     </div>
+
+    {% elif data %}
+    <div class="all-query-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Query</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in querydetail %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.stu_name}}</td>
+                    <td>{{i.stu_email}}</td>
+                    <td>{{i.stu_query}}</td>
+                    <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
+                    <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     {% elif querydetail %}
     <div class="all-query-table">
+    
+    
         <table>
             <thead>
                 <tr>

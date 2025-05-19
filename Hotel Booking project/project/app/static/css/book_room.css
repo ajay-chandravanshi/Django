@@ -352,3 +352,95 @@
   color: white;
   opacity: 0.9;
 }
+
+
+/* 📱 Mobile Devices (up to 576px) */
+@media (max-width: 576px) {
+  .section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    height: auto;
+  }
+
+  .card .image {
+    height: 200px;
+  }
+
+  .hero-heading {
+    font-size: 24px;
+  }
+
+  .hero-subheading {
+    font-size: 14px;
+  }
+
+  .room-heading h2 {
+    font-size: 28px;
+  }
+
+  .room-heading p {
+    font-size: 16px;
+  }
+
+  .room-info {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  /* .filter-form {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .apply-btn, .reset-btn {
+    width: 100%;
+  } */
+}
+
+/* 📱📲 Tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .section {
+    justify-content: center;
+  }
+
+  .card {
+    width: 80%;
+    height: auto;
+  }
+
+  .card .image {
+    height: 240px;
+  }
+
+  .room-info {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* .filter-form {
+    gap: 15px;
+  } */
+}
+
+/* 💻 Small Laptops (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    width: 320px;
+    height: auto;
+  }
+
+  .card .image {
+    height: 260px;
+  }
+
+  .room-info {
+    grid-template-columns: 1fr 1fr;
+  }
+}

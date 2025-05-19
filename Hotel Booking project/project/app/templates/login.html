@@ -29,7 +29,7 @@ Login
   <div class="progress-bar"></div>
 </div>
 {% endif %}
-
+<div class="form-div">
 <form class="form" action="{% url 'login' %}" method="post">
   {% csrf_token %}
 
@@ -54,6 +54,7 @@ Login
   </p>
 
 </form>
+</div>
 {% if msg %}
 <script>
 document.addEventListener("DOMContentLoaded", function() {

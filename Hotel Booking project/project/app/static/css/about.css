@@ -279,7 +279,7 @@ footer {
 .book-btn {
   padding-bottom: 36px;
   height: 40px;
-  background-color: rgb(192, 169, 106,0); /* Cream color */
+  /* background-color: rgb(192, 169, 106,0); Cream color */
   color: white;
   border: none;
   font-weight: bold;
@@ -516,6 +516,14 @@ background-color: #ca9a57;
     grid-template-rows: auto;
   }
 
+  .hero-overlay{
+    display:flow-root;
+    padding-top: 10px;
+  }
+
+ .buton{
+  visibility: hidden;
+ }
   .hero-content {
     width: 50%;
   }
@@ -564,13 +572,14 @@ background-color: #ca9a57;
   }
 
   .gallery-row {
+    width: 100%;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .gallery-box {
     width: 45%;
-    height: 200px;
+    height: 500px;
   }
 }
 
