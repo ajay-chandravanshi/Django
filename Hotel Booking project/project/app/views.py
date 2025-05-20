@@ -74,7 +74,8 @@ def login(request):
             psw1=userdata.clt_password
             if psw==psw1:
                 msg="Login Successfully"
-                return render(request,'dashboard.html',{'userdata':userdata,'msg':msg,'msg_type': 'success'})
+                return render(request,'dashboard.html',{'userdata':userdata,'msg':msg,'msg_type': 'success','dashboard': True})
+            
             else:
                 msg="Passwords don’t match"
                 return render(request,'login.html',{'email':eml,'msg':msg,'msg_type': 'password_mismatch'})
@@ -176,11 +177,31 @@ def delete(request,pk):
     return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail,'msg': msg, 'msg_type': 'success'})
 
 from django.db.models import Q
-def search(request,pk):
-    userdata=Client.objects.get(id=pk)
-    searchData =request.POST.get('search')
 
-    all_data=Query.objects.filter(Q(stu_name__icontains=searchData) | Q(stu_email__icontains=searchData) | Q(stu_query__icontains=searchData))
+def search(request, pk):
+    userdata = Client.objects.get(id=pk)
+    searchData = request.POST.get('search')
 
-    return render(request,'dashboard.html',{'userdata':userdata,'all_data': all_data,'searchData':searchData})
+    # Agar "Reset All Data" button dabaya gaya ho to
+    if request.POST.get('action') == "Reset All Data":
+        x = userdata.clt_email
+        querydetail = Query.objects.filter(stu_email=x)
+        return render(request, 'dashboard.html', {
+            'userdata': userdata,
+            'querydetail': querydetail,
+        })
+
+    # Agar search kiya gaya ho to
+    all_data = Query.objects.filter(
+        Q(stu_name__icontains=searchData) |
+        Q(stu_email__icontains=searchData) |
+        Q(stu_query__icontains=searchData)
+    )
+
+    return render(request, 'dashboard.html', {
+        'userdata': userdata,
+        'querydetail': all_data,  # 👈 ye point important hai
+        'searchData': searchData
+    })
+
 # for query code End

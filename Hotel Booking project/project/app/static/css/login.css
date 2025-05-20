@@ -3,15 +3,15 @@ body {
   font-family: "Poppins", sans-serif;
   margin-top: 150px;
 }
-/* .login-nav {
-  background-color: #36d900;
+.login-nav {
+  background-color: #2ebf91;
 }
 .login-navcolor {
-  background-color: #41e700;
+  background: linear-gradient(to right, #8360c3, #2ebf91);
   padding: 0.8rem 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   z-index: 1000;
-} */
+}
 
 
 .form {

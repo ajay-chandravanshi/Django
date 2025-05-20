@@ -247,6 +247,46 @@ h2 {
     background-color: #218838;
 }
 
+.search-form {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        margin: 20px 0;
+        flex-wrap: wrap;
+  }
+
+    .search-form input[type="search"] {
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .search-form input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-form input[type="submit"]:hover {
+        background-color: #218838;
+    }
+
+    .search-form input[value="Reset All Data"] {
+        background-color: #dc3545;
+    }
+
+    .search-form input[value="Reset All Data"]:hover {
+        background-color: #c82333;
+    }
 .all-query-table {
     max-width: 70vw;
     overflow-x: auto;

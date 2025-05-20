@@ -91,6 +91,7 @@ Dashboard
     </aside>
     <!-- Main content -->
     <main class="dashboard-content">
+        
         {% if dashboard %}
         <div class="heading">
             <h2>Account Overview</h2>
@@ -167,42 +168,64 @@ Dashboard
         </div>
 
         {% elif querydetail %}
-        <div class="all-query-table">  
-
-            <table>
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Query</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in querydetail %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{i.stu_name}}</td>
-                    <td>{{i.stu_email}}</td>
-                    <td>{{i.stu_query}}</td>
-                    <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
-                    <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-            </table>
-        <form action="{% url 'search' pk=userdata.id %}" method="post">
-        {% csrf_token %}
-        <div class="">
-            <input type="search" name="search">
-        </div>
-        <input type="submit" value="Search">
-        <input type="submit" value="Reset All Data" >
-        </form>
-        </div>
         
+        <div class="all-query-table">
+
+            <!-- Search Form -->
+            <form class="search-form" action="{% url 'search' pk=userdata.id %}" method="post">
+            {% csrf_token %}
+            <input type="search" name="search" placeholder="Search...">
+            <input type="submit" name="action" value="Search">
+            <input type="submit" name="action" value="Reset All Data">
+            </form>
+
+            <!-- Table -->
+            <table>
+                <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Query</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+                </thead>
+                <tbody>
+                    {% if querydetail %}
+                        {% for i in querydetail %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ i.stu_name }}</td>
+                                <td>{{ i.stu_email }}</td>
+                                <td>{{ i.stu_query }}</td>
+                                <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
+                                <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+
+                    {% elif all_data %}
+                        {% for i in all_data %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ i.stu_name }}</td>
+                                <td>{{ i.stu_email }}</td>
+                                <td>{{ i.stu_query }}</td>
+                                <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
+                                <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+
+                    {% else %}
+                        <tr>
+                            <td colspan="6">No results found.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+
+        </div>
+
         {% endif %}
         </div>
         <!-- for query code End  -->

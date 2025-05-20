@@ -4,17 +4,17 @@ body {
   margin-top: 128px;
 }
 .register-nav{
-  background-color: #8700d9;
+  background: linear-gradient(to right, #8360c3, #2ebf91);
 }
 .register-navcolor{
-    background-color: #9400e7;
+    background: linear-gradient(to right, #8360c3, #2ebf91);
     padding: 0.8rem 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
 
 .form {
-  max-width: 600px;
+  max-width: 550px;
   margin: 50px auto;
   padding: 30px 40px;
   background-color: #ffffff;
