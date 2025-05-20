@@ -91,8 +91,10 @@ Dashboard
     </aside>
     <!-- Main content -->
     <main class="dashboard-content">
-    
-        <div class="heading"><h2>Account Overview</h2></div>
+        {% if dashboard %}
+        <div class="heading">
+            <h2>Account Overview</h2>
+        </div>
 
         <div class="card-section">
             <div class="card personal-info">
@@ -113,14 +115,12 @@ Dashboard
             </div>
         </div>
 
- <!-- for query code start  -->
+        <!-- for query code start  -->
 
-<div class="query-section">
+        <div class="query-section">
 
-    
-
-    {% if query %}
-    <div class="query-form-container">
+        {% elif query %}
+        <div class="query-form-container">
         <h2>Submit Your Query</h2>
 
         <form action="{% url 'query' pk=userdata.id %}" method="post">
@@ -141,9 +141,9 @@ Dashboard
                 <input type="submit" value="Send Query">
             </div>
         </form>
-    </div>
-    {% elif editdata %}
-    <div class="query-form-container">
+        </div>
+        {% elif editdata %}
+        <div class="query-form-container">
         <h2>Update Your Query</h2>
 
         <form action="{% url 'queryupdate' pk=editdata.id %}" method="post">
@@ -164,77 +164,51 @@ Dashboard
                 <input type="submit" value="Edit Query">
             </div>
         </form>
-    </div>
-
-    {% elif data %}
-    <div class="all-query-table">
-        <table>
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Query</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in querydetail %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{i.stu_name}}</td>
-                    <td>{{i.stu_email}}</td>
-                    <td>{{i.stu_query}}</td>
-                    <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
-                    <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    
-
-    {% elif data %}
-    {% elif querydetail %}
-    <div class="all-query-table">
-    <form action="{% url 'search' pk=userdata.id %}" method="post">
-        {% csrf_token %}
-        <input type="search" name="search">
-        <input type="submit" name="search">
-    </form>   
-    
-        <table>
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Query</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in querydetail %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{i.stu_name}}</td>
-                    <td>{{i.stu_email}}</td>
-                    <td>{{i.stu_query}}</td>
-                    <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
-                    <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% endif %}
-</div>
-<!-- for query code End  -->
-
         </div>
+
+        {% elif querydetail %}
+        <div class="all-query-table">  
+
+            <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Query</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in querydetail %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.stu_name}}</td>
+                    <td>{{i.stu_email}}</td>
+                    <td>{{i.stu_query}}</td>
+                    <td><a href="{% url 'edit' pk=i.id %}">Edit</a></td>
+                    <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        <form action="{% url 'search' pk=userdata.id %}" method="post">
+        {% csrf_token %}
+        <div class="">
+            <input type="search" name="search">
+        </div>
+        <input type="submit" value="Search">
+        <input type="submit" value="Reset All Data" >
+        </form>
+        </div>
+        
+        {% endif %}
+        </div>
+        <!-- for query code End  -->
     </main>
+</div>
+    
 
 
 
@@ -262,6 +236,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const menuItems = document.querySelectorAll(".sidebar-menu li");
@@ -277,8 +252,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 </script>
-
-
 
 {% endif %}
 

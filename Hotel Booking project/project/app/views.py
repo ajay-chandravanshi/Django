@@ -117,7 +117,7 @@ def book_room1(request,pk):
 
 def dashboard(request,pk):
     userdata=Client.objects.get(id=pk)
-    return render(request,'dashboard.html',{'userdata':userdata})
+    return render(request,'dashboard.html',{'userdata':userdata,'dashboard': True})
 
 # for query code start
 
@@ -134,7 +134,7 @@ def query(request,pk):
         querydetail=Query.objects.filter(stu_email=userdata.clt_email)
         #return redirect(reverse('query', kwargs={'pk': pk, }))
         
-        return render(request,'dashboard.html',{'userdata':userdata,'msg': msg, 'msg_type': 'success'})
+        return render(request,'dashboard.html',{'userdata':userdata,'msg': msg, 'msg_type': 'success','dashboard': True})
         # return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})
     
     else:
@@ -178,9 +178,9 @@ def delete(request,pk):
 from django.db.models import Q
 def search(request,pk):
     userdata=Client.objects.get(id=pk)
-    data=request.POST.get('search')
+    searchData =request.POST.get('search')
 
-    all_data=Query.objects.filter(Q(stu_name__icontains=data) | Q(stu_email__icontains=data) | Q(stu_query__icontains=data))
+    all_data=Query.objects.filter(Q(stu_name__icontains=searchData) | Q(stu_email__icontains=searchData) | Q(stu_query__icontains=searchData))
 
-    return render(request,'dashboard.html',{'userdata':userdata,'data':all_data})
+    return render(request,'dashboard.html',{'userdata':userdata,'all_data': all_data,'searchData':searchData})
 # for query code End
