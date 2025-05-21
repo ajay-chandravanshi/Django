@@ -192,7 +192,11 @@ def search(request, pk):
         })
 
     # Agar search kiya gaya ho to
-
+    all_data = Query.objects.filter(
+        Q(stu_name__icontains=searchData) |
+        Q(stu_email__icontains=searchData) |
+        Q(stu_query__icontains=searchData)
+    )
 
     return render(request, 'dashboard.html', {
         'userdata': userdata,
