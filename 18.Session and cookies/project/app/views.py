@@ -19,6 +19,8 @@ def register(req):
         x.set_cookie("name",uname)
         x.set_cookie('passw',passw)
         x.set_cookie('dob',dob)
+        x.set_cookie('dob',email)
+        x.set_cookie('dob',phone)
         return x
 
 
