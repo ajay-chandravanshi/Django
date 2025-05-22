@@ -252,6 +252,7 @@ h2 {
         flex-direction: row;
         gap: 10px;
         align-items: center;
+        margin-bottom: 15px;
         margin: 20px 0;
         flex-wrap: wrap;
   }
@@ -288,7 +289,7 @@ h2 {
         background-color: #c82333;
     }
 .all-query-table {
-    max-width: 70vw;
+    width: 100%;
     overflow-x: auto;
     margin-top: 30px;
     background-color: white;
@@ -300,8 +301,9 @@ h2 {
 }
 
 .all-query-table table {
-    width: 100%;
-    border-collapse: collapse;
+  min-width: 800px;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 .all-query-table th, .all-query-table td {
@@ -401,5 +403,83 @@ h2 {
   }
   100% {
     width: 0%;
+  }
+}
+
+/* Mobile & Tablet (up to 768px) */
+@media (max-width: 768px) {
+  /* Dashboard layout stack ho jaye */
+  .dashboard {
+    flex-direction: column;
+  }
+
+  /* Sidebar full width ho jaye */
+  .sidebar {
+    width: 100%;
+    padding: 20px;
+    border-right: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Cards center align ho jaye */
+  .card-section {
+    justify-content: center;
+  }
+
+  /* Query buttons wrap ho jaye */
+  .query-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Query form full width le */
+  .query-form-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Table ko horizontally scrollable banाओ */
+  .all-query-table {
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+  }
+
+  .all-query-table::-webkit-scrollbar {
+  height: 8px;
+  }
+  .all-query-table table {
+    min-width: 500px; /* Minimum width so it scrolls on small screens */
+  }
+
+  .all-query-table th,
+  .all-query-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .all-query-table::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+  }
+  /* Search form ek ke niche ek aaye */
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-form input[type="submit"],
+  .search-form input[type="search"] {
+    min-width: 570px;
+  }
+
+  /* Toast messages center rahein */
+  .toast {
+    left: 10px;
+    right: 10px;
+    transform: none;
+    width: auto;
   }
 }
