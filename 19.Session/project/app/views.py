@@ -23,8 +23,14 @@ def addcard(request,pk):
     # print(pk)
     cart = request.session.get('cart',[])
     # print(cart)
-    cart.append(pk)
-    print(cart)
-    request.session['cart']=cart
-    all_items = Item.objects.all()
-    return render(request,'home.html',{'data':all_items})
+    if pk in cart:
+        msg = "Already added"
+        all_items = Item.objects.all()
+        return render(request,'home.html',{'data':all_items,'msg':msg})
+    else:
+        cart.append(pk)
+        # print(cart)
+        msg = 'Added Successfully...'
+        request.session['cart']=cart
+        all_items = Item.objects.all()
+        return render(request,'home.html',{'data':all_items,'msg':msg})

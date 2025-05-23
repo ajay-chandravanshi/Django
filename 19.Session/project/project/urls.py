@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     path('home1/',views.home1,name='home1'),
-    path('addcard/<int:pk>/',views.addcard,name='addcard')
+    path('addcard/<int:pk>/',views.addcard,name='addcard'),
+    path('showcards/',views.showcards,name='showcards')
 ]

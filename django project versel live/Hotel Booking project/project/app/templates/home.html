@@ -1,0 +1,420 @@
+{% extends "common.html" %}
+{% load static %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- ✅ Hero Section Start -->
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content text-center">
+    <h1 class="hero-title">TOP HOTEL IN THE CITY</h1>
+    <div class="hero-subtitle">
+      <span></span>
+      Hotel & Resort
+      <span></span>
+    </div>
+  </div>
+
+  <div class="container booking-form-container">
+    <div class="row justify-content-center">
+      <div class="col-md-11 col-lg-10">
+        <form class="row g-3 align-items-end bg-white p-3 rounded shadow booking-form">
+          <div class="col-md-2">
+            <label class="form-label">Check In Date</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Check Out Date</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Adults</label>
+            <select class="form-select">
+              <option>1</option><option>2</option><option>3</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Children</label>
+            <select class="form-select">
+              <option>0</option><option>1</option><option>2</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Rooms</label>
+            <select class="form-select">
+              <option>1</option><option>2</option><option>3</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-warning w-100">Check Availability</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ Hero Section End -->
+
+<!-- section second   -->
+<section class="testimonial-wrapper">
+  <div class="testimonial-card">
+    <div class="testimonial-left">
+      <h1>Welcome!</h1>
+      <p>
+        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+        there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
+        Semantics, a large language ocean.
+      </p>
+      <div class="testimonial-btn-group">
+        <a href="#" class="testimonial-btn">Learn More</a>
+        <span>or</span>
+        <a href="#" class="testimonial-link">SEE VIDEO</a>
+      </div>
+    </div>
+
+    <div class="testimonial-right">
+      <div class="testimonial-img-wrapper">
+        <img src="/static/image/home-2.jpg" alt="Main" class="main-img">
+        <img src="/static/image/home-1.jpg" alt="Circle" class="circle-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- section third  -->
+
+<section class="rooms-section">
+  <div class="rooms-header">
+    <h2>Rooms & Suites</h2>
+    <p>
+      Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,<br>
+      there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the<br>
+      Semantics, a large language ocean.
+    </p>
+  </div>
+
+  <div class="rooms-container">
+    <div class="room-box">
+      <img src="/static/image/single-room.jpg" alt="Single Room">
+      <h2>Single Room</h2>
+      <span>90$ / PER NIGHT</span>
+    </div>
+
+    <div class="room-box">
+      <img src="/static/image/family-room.jpg" alt="Family Room">
+      <h2>Family Room</h2>
+      <span>120$ / PER NIGHT</span>
+    </div>
+
+    <div class="room-box">
+      <img src="/static/image/presidential-room.jpg" alt="Presidential Room">
+      <h2>Presidential Room</h2>
+      <span>250$ / PER NIGHT</span>
+    </div>
+  </div>
+</section>
+
+<!-- section Fourth Counter  -->
+
+<section class="stats">
+  <div class="stats-section">
+    <div class="stat-box">
+      <div class="line"></div>
+      <div class="stat-number" data-target="38900">0</div>
+      <div class="stat-label"># of Happy Guests</div>
+    </div>
+    <div class="stat-box">
+      <div class="line"></div>
+      <div class="stat-number" data-target="320">0</div>
+      <div class="stat-label"># of Rooms</div>
+    </div>
+    <div class="stat-box">
+      <div class="line"></div>
+      <div class="stat-number" data-target="1000">0</div>
+      <div class="stat-label"># of Staffs</div>
+    </div>
+    <div class="stat-box">
+      <div class="line"></div>
+      <div class="stat-number" data-target="587">0</div>
+      <div class="stat-label"># of Destination</div>
+    </div>
+  </div>  
+</section>
+
+<!-- section Five Flip card  -->
+
+<section class="leadership-section">
+  <h2 class="section-title">Leadership</h2>
+  <div class="card-container">
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/static/image/person_1.webp" alt="Leader 1">
+          <div class="card-info">
+            <h4>Will Smith</h4>
+            <p>President</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Will is the visionary behind our mission, leading with innovation and integrity.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/static/image/person_2.webp" alt="Leader 2">
+          <div class="card-info">
+            <h4>Claire Williams</h4>
+            <p>Business Manager</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Claire ensures our operations run smoothly and our clients stay satisfied.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/static/image/person_3.webp" alt="Leader 3">
+          <div class="card-info">
+            <h4>Jane Johnson</h4>
+            <p>Marketing Director</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Jane drives brand awareness and connects us with our global audience.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Repeat for 4, 5, 6 -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/static/image/person_4.webp" alt="Leader 4">
+          <div class="card-info">
+            <h4>Jennie Ray</h4>
+            <p>Food Head</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Michael manages our financial planning and resource optimization.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/static/image/person_5.webp" alt="Leader 5">
+          <div class="card-info">
+            <h4>Evelyn Stone</h4>
+            <p>Manager Lead</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Emily focuses on building a happy, productive, and inclusive workforce.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="/static/image/person_6.webp" alt="Leader 6">
+          <div class="card-info">
+            <h4>Smith Black</h4>
+            <p>Marketing Officer</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Robert drives innovation and ensures our tech stays future-proof.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- section Six Blog Section  -->
+
+<section class="recent-blog-section">
+  <div class="container">
+    <p class="subheading">OUR BLOG</p>
+    <h2 class="main-heading">Recent Blog</h2>
+
+    <div class="blog-cards">
+      <!-- Blog 1 -->
+      <div class="blog-card">
+        <img src="/static/image/blog1.jpg" alt="Blog 1">
+        <div class="blog-meta">ADMIN &nbsp;&nbsp; APRIL 23, 2025 &nbsp;&nbsp; 3 COMMENTS</div>
+        <h3 class="blog-title">Best Hotel Near Beach in Hawaii</h3>
+        <p class="blog-text">
+          A small river named Duden flows by their place and supplies it with the necessary regelialia.
+        </p>
+      </div>
+
+      <!-- Blog 2 -->
+      <div class="blog-card">
+        <img src="/static/image/blog2.jpg" alt="Blog 2">
+        <div class="blog-meta">ADMIN &nbsp;&nbsp; APRIL 23, 2025 &nbsp;&nbsp; 3 COMMENTS</div>
+        <h3 class="blog-title">Best Hotel Near Beach in Hawaii</h3>
+        <p class="blog-text">
+          A small river named Duden flows by their place and supplies it with the necessary regelialia.
+        </p>
+      </div>
+
+      <!-- Blog 3 -->
+      <div class="blog-card">
+        <img src="/static/image/blog3.jpg" alt="Blog 3">
+        <div class="blog-meta">ADMIN &nbsp;&nbsp; APRIL 23, 2025 &nbsp;&nbsp; 3 COMMENTS</div>
+        <h3 class="blog-title">Best Hotel Near Beach in Hawaii</h3>
+        <p class="blog-text">
+          A small river named Duden flows by their place and supplies it with the necessary regelialia.
+        </p>
+      </div>
+
+      <!-- Blog 4 -->
+      <div class="blog-card">
+        <img src="/static/image/h1_hero.jpg" alt="Blog 4">
+        <div class="blog-meta">ADMIN &nbsp;&nbsp; APRIL 23, 2025 &nbsp;&nbsp; 3 COMMENTS</div>
+        <h3 class="blog-title">Best Hotel Near Beach in Hawaii</h3>
+        <p class="blog-text">
+          A small river named Duden flows by their place and supplies it with the necessary regelialia.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- section seven insta image  -->
+
+<section class="insta-gallery">
+  <div class="container">
+    <div class="insta-row">
+      <!-- Image 1 -->
+      <div class="insta-item">
+        <img src="/static/image/instra3.jpg" alt="Insta 1">
+        <div class="overlay">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+
+      <!-- Image 2 -->
+      <div class="insta-item">
+        <img src="/static/image/instra4.jpg" alt="Insta 2">
+        <div class="overlay">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+
+      <!-- Image 3 -->
+      <div class="insta-item">
+        <img src="/static/image/instra6.jpg" alt="Insta 3">
+        <div class="overlay">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+
+      <!-- Image 4 -->
+      <div class="insta-item">
+        <img src="/static/image/instra7.jpg" alt="Insta 4">
+        <div class="overlay">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+
+      <!-- Image 5 -->
+      <div class="insta-item">
+        <img src="/static/image/instra9.jpg" alt="Insta 5">
+        <div class="overlay">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+
+      <!-- Image 6 -->
+      <div class="insta-item">
+        <img src="/static/image/instra2.jpg"alt="Insta 6">
+
+        
+        <div class="overlay">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% block script %}
+<script>
+  // Navbar scroll effect
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const triggerPoint = window.innerHeight * 0.8;
+
+    if (window.scrollY >= triggerPoint) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
+  // Stats counter on scroll
+  let hasCounted = false;
+
+  function isInViewport(elem) {
+    const rect = elem.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  }
+
+  function runCounter() {
+    if (hasCounted) return;
+
+    const statsSection = document.querySelector('.stats-section');
+    if (!isInViewport(statsSection)) return;
+
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 100;
+
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = Math.ceil(target / speed);
+
+        if (count < target) {
+          counter.innerText = count + increment;
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+      updateCount();
+    });
+
+    hasCounted = true;
+  }
+
+  window.addEventListener('scroll', runCounter);
+</script>
+
+{% endblock %}
+
+{% endblock %}
