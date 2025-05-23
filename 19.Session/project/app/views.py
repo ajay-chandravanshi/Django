@@ -34,3 +34,15 @@ def addcard(request,pk):
         request.session['cart']=cart
         all_items = Item.objects.all()
         return render(request,'home.html',{'data':all_items,'msg':msg})
+
+def showcards(req):
+    cart = req.session.get('cart',[])
+    # print(cart)
+    all_data = []
+    total_amt=0
+    for i in cart:
+        item = Item.objects.get(id=i)
+        total_amt+=(item.item_quantity*item.item_price)
+        all_data.append(item)
+
+    return render(req,'home.html',{'cart':all_data,'total_amt':total_amt})
