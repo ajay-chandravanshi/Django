@@ -5,22 +5,13 @@
         <div class="card-body">
           <h5 class="card-title">{{i.item_name}}</h5>
           <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
-          <p class="card-text">{{i.item_des}}</p>
         </div>
         <h5 class="card-title">{{i.item_price}}</h5>
         <h5 class="card-title">{{i.item_quantity}}</h5>
+        <div class="card-body">
+          <a href="#" class="card-link">Buy Now</a>
+          <a href="{% url 'delete' pk=i.id %}" class="card-link">Delete</a>
+        </div>
         <div class="card-body">
           <a href="#" class="card-link">Buy Now</a>
           <a href="{% url 'delete' pk=i.id %}" class="card-link">Delete</a>
