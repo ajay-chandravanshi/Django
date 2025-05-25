@@ -137,6 +137,10 @@
   .gallery-heading {
     font-size: 28px;
   }
+
+  .gallery-hero {
+  background-attachment:unset;
+}
 }
 
 .gallery-grid a {

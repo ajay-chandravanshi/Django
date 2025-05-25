@@ -38,6 +38,21 @@ def addcard(request,pk):
 def showcards(req):
     cart = req.session.get('cart',[])
     # print(cart)
+    all_data1 = []
+    total_amt=0
+    for i in cart:
+        item = Item.objects.get(id=i)
+        total_amt+=(item.item_quantity*item.item_price)
+        all_data1.append(item)
+    return render(req,'home.html',{'cart':all_data1,'total_amt':total_amt})
+
+def delete(request,pk):
+    cart = request.session['cart']
+    print(cart)
+    if pk in cart:
+        cart.remove(pk)
+    # print(cart)
+    request.session['cart']=cart
     all_data = []
     total_amt=0
     for i in cart:
@@ -45,4 +60,5 @@ def showcards(req):
         total_amt+=(item.item_quantity*item.item_price)
         all_data.append(item)
 
-    return render(req,'home.html',{'cart':all_data,'total_amt':total_amt})
+    return render(request,'home.html',{'cart':all_data,'total_amt':total_amt})
+

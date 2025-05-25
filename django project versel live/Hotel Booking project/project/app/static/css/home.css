@@ -9,6 +9,7 @@
   height: 100vh;
   padding: 0;
   margin: 0;
+  overflow: hidden;
   /* width: 100%; */
 }
 
@@ -590,6 +591,18 @@
 }
 
 @media (max-width: 768px) {
+
+  .hero-section {
+  position: relative;
+  background: url('/static/image/home.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  
+  /* width: 100%; */
+}
   .hero-title {
     font-size: 2.5rem;
   }
@@ -646,6 +659,7 @@
 }
 .stats-section {
   margin-top: 0px;
+  margin-left: 10vw;
   width: 80vw;
   height: 100px;
   background: #000;

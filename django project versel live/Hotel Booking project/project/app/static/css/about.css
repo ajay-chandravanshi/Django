@@ -38,6 +38,7 @@ header {
   overflow: hidden;
 }
 
+
 header::before {
   content: "";
   position: absolute;
@@ -587,6 +588,22 @@ background-color: #ca9a57;
   .about-grid {
     grid-template-columns: 1fr;
   }
+
+  header {
+  position: relative;
+  background-image: url("/static/image/aboutpage.jpg");
+  background-repeat:unset;
+  background-position: center;
+  background-size: cover;
+  background-attachment:unset;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
 
   .hero-content h1 {
     font-size: 1.8rem;

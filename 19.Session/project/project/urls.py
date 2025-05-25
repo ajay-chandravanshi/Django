@@ -23,5 +23,7 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('home1/',views.home1,name='home1'),
     path('addcard/<int:pk>/',views.addcard,name='addcard'),
-    path('showcards/',views.showcards,name='showcards')
+    path('showcards/',views.showcards,name='showcards'),
+    path('delete/<int:pk>/',views.delete,name='delete'),
+
 ]

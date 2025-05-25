@@ -10,6 +10,7 @@
         <h5 class="card-title">{{i.item_quantity}}</h5>
         <div class="card-body">
           <a href="#" class="card-link">Buy Now</a>
+          <a href="{% url 'delete' pk=i.id %}" class="card-link">Delete</a>
         </div>
       </div>
 
@@ -41,7 +42,7 @@
         
         <input type="submit" value="Submit">
 
-      </form>
+      </form>   
 
       {{msg}}
       {% if data %}
