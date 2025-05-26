@@ -255,6 +255,7 @@ h2 {
         margin-bottom: 15px;
         margin: 20px 0;
         flex-wrap: wrap;
+        width: 100%;
   }
 
     .search-form input[type="search"] {
@@ -339,7 +340,7 @@ h2 {
 .toast {
   position: fixed;
   top: 100px;
-  left: 37%;
+  left: 50%;
   transform: translateX(-50%) translateY(-30px);
   background: #333;
   color: white;
@@ -474,7 +475,8 @@ h2 {
 
   .search-form input[type="submit"],
   .search-form input[type="search"] {
-    min-width: 570px;
+    min-width:500px;
+;
   }
 
   /* Toast messages center rahein */

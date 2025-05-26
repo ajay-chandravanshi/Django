@@ -51,4 +51,4 @@ urlpatterns = [
     
     # for query code end
     
-]
+] 

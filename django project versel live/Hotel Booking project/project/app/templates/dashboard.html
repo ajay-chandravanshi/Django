@@ -183,7 +183,7 @@ Dashboard
             <table>
                 <thead>
             <tr>
-                <th>S.No</th>
+                <th>id</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Query</th>
@@ -196,6 +196,7 @@ Dashboard
                         {% for i in querydetail %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
+                                <td>{{ i.id }}</td>
                                 <td>{{ i.stu_name }}</td>
                                 <td>{{ i.stu_email }}</td>
                                 <td>{{ i.stu_query }}</td>
@@ -208,6 +209,7 @@ Dashboard
                         {% for i in all_data %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
+                                <td>{{ i.id }}</td>
                                 <td>{{ i.stu_name }}</td>
                                 <td>{{ i.stu_email }}</td>
                                 <td>{{ i.stu_query }}</td>
@@ -218,7 +220,7 @@ Dashboard
 
                     {% else %}
                         <tr>
-                            <td colspan="6">No results found.</td>
+                            <td colspan="7">No results found.</td>
                         </tr>
                     {% endif %}
                 </tbody>
