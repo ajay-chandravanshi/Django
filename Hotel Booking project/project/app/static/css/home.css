@@ -1,10 +1,16 @@
-/*----------------------------------*/
-/* 🌆 HERO SECTION */
-/*----------------------------------*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .hero-section {
-  position: relative;
+  position: static;
   background: url('/static/image/home.webp') center/cover no-repeat fixed;
   height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  /* width: 100%; */
 }
 
 .hero-overlay {
@@ -585,6 +591,18 @@
 }
 
 @media (max-width: 768px) {
+
+  .hero-section {
+  position: relative;
+  background: url('/static/image/home.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  
+  /* width: 100%; */
+}
   .hero-title {
     font-size: 2.5rem;
   }
@@ -595,13 +613,34 @@
   }
 
   .booking-form-container {
-    opacity: 0;
+    /* opacity: 0; */
+    display: none;
   }
 
+  .testimonial-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
   .testimonial-card {
+    /* width: 100%; */
     flex-direction: column;
     text-align: center;
   }
+
+.testimonial-left {
+  flex: 1;
+  width: 20.46vw;
+  min-width: 316px;
+}
+
+.main-img {
+    width: 84vw;
+    height: auto;
+    border-radius: 10px;
+    display:unset;
+}
   .testimonial-btn-group {
     justify-content: center;
     align-items: center;
@@ -611,6 +650,47 @@
     right: 50%;
     transform: translateX(50%);
   }
+.stats{
+  width: 100vw;
+  height:fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stats-section {
+  margin-top: 0px;
+  margin-left: 10vw;
+  width: 80vw;
+  height: 100px;
+  background: #000;
+  color: #d6b17b;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.leadership-section {
+    padding: 2px 30px;
+    background: #f9f9f9;
+    text-align: center;
+}
+.stat-label {
+    font-size: 9px;
+    color: #ccc;
+}
+
+.line {
+    height: 25px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 auto;
+}
+.stat-number {
+    font-size: 20px;
+    color: #c5a880;
+    font-weight: 600;
+}
 
   .blog-card {
     width: calc(50% - 10px);

@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.admin-nav{
+    background-color: #36d900;
+} 
+.admin-navcolor{
+    background-color: #28a745; /* Updated for softer tone */
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.dashboard {
+  display: flex;
+  position: relative;
+  top: 80px;
+  height: 100vh;
+  background-color: #00c851;
+}

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Client,Query
 from django.urls import reverse
-# Create your views here.
+
 
 def home(request):
     return render(request,'home.html')
@@ -120,7 +120,7 @@ def dashboard(request,pk):
     userdata=Client.objects.get(id=pk)
     return render(request,'dashboard.html',{'userdata':userdata,'dashboard': True})
 
-# for query code start
+
 
 def query(request,pk):
     userdata=Client.objects.get(id=pk)
@@ -133,10 +133,10 @@ def query(request,pk):
         Query.objects.create(stu_name=name,stu_email=email,stu_query=query)
         msg = "Query Send Successfully"
         querydetail=Query.objects.filter(stu_email=userdata.clt_email)
-        #return redirect(reverse('query', kwargs={'pk': pk, }))
+        
         
         return render(request,'dashboard.html',{'userdata':userdata,'msg': msg, 'msg_type': 'success','dashboard': True})
-        # return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})
+        
     
     else:
         return render(request,'dashboard.html',{'userdata':userdata,'query':userdata})
@@ -182,7 +182,7 @@ def search(request, pk):
     userdata = Client.objects.get(id=pk)
     searchData = request.POST.get('search')
 
-    # Agar "Reset All Data" button dabaya gaya ho to
+    
     if request.POST.get('action') == "Reset All Data":
         x = userdata.clt_email
         querydetail = Query.objects.filter(stu_email=x)
@@ -191,7 +191,7 @@ def search(request, pk):
             'querydetail': querydetail,
         })
 
-    # Agar search kiya gaya ho to
+    
     all_data = Query.objects.filter(
         Q(stu_name__icontains=searchData) |
         Q(stu_email__icontains=searchData) |
@@ -200,8 +200,8 @@ def search(request, pk):
 
     return render(request, 'dashboard.html', {
         'userdata': userdata,
-        'querydetail': all_data,  # 👈 ye point important hai
+        'querydetail': all_data, 
         'searchData': searchData
     })
 
-# for query code End
+

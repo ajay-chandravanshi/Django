@@ -40,7 +40,9 @@ Register
   <label>Name</label>
   <div class="input-wrapper">
     <i class="fas fa-user"></i>
-    <input type="text" name="username" value="{{data.username}}" placeholder="Enter your name" required="True">
+    <input type="text" name="username" placeholder="Enter your name" pattern="[A-Za-z]+" title="Only letters allowed" required>
+    
+    <!-- <input type="text" name="username" value="{{data.username}}" placeholder="Enter your name" required="True"> -->
   </div>
 
   <label>Email</label>
@@ -70,7 +72,7 @@ Register
   <label>Upload Image</label>
   <div class="input-wrapper">
     <i class="fas fa-image"></i>
-    <input type="file" name="profile-pic" accept=".jpeg, .png" required="True">
+    <input type="file" name="profile-pic" accept=".jpeg, .png, .jpg" required="True">
   </div>
 
   <label>Description</label>

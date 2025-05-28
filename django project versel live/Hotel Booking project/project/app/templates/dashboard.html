@@ -195,8 +195,8 @@ Dashboard
                     {% if querydetail %}
                         {% for i in querydetail %}
                             <tr>
-                                {% comment %} <td>{{ forloop.counter }}</td> {% endcomment %}
-                                <td>{{ i.id }}</td>
+                                <td>{{ forloop.counter }}</td>
+                                {% comment %} <td>{{ i.id }}</td> {% endcomment %}
                                 <td>{{ i.stu_name }}</td>
                                 <td>{{ i.stu_email }}</td>
                                 <td>{{ i.stu_query }}</td>
@@ -208,8 +208,8 @@ Dashboard
                     {% elif all_data %}
                         {% for i in all_data %}
                             <tr>
-                                {% comment %} <td>{{ forloop.counter }}</td> {% endcomment %}
-                                <td>{{ i.id }}</td>
+                                <td>{{ forloop.counter }}</td>
+                                {% comment %} <td>{{ i.id }}</td> {% endcomment %}
                                 <td>{{ i.stu_name }}</td>
                                 <td>{{ i.stu_email }}</td>
                                 <td>{{ i.stu_query }}</td>

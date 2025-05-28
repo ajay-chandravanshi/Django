@@ -64,7 +64,17 @@ def register(request):
         return render(request,'register.html')
 
 def login(request):
+    # Admin login code Start here
+    adminemail='admin325@gmail.com'
+    adminpass='ajay123'
     if request.method=='POST':
+        em=request.POST.get('email')
+        ps=request.POST.get('password')
+        if em==adminemail and ps==adminpass:
+            return redirect('admindash')
+        # Admin login code End here
+
+        # User login code start here 
         eml=request.POST.get('email')
         psw=request.POST.get('password')
         user=Client.objects.filter(clt_email=eml)
@@ -83,6 +93,15 @@ def login(request):
         else:
             msg="Email address not found."
             return render(request,'register.html',{'msg':msg,'msg_type': 'email_error'})
+        
+        # User login code Ende here 
+
+        # Admin login code start here
+    elif request.method=='POST':
+        
+        
+        if em==adminemail and ps==adminpass:
+            return redirect('admindash')
 
     else:
         return render(request,'login.html')
@@ -120,6 +139,8 @@ def dashboard(request,pk):
     userdata=Client.objects.get(id=pk)
     return render(request,'dashboard.html',{'userdata':userdata,'dashboard': True})
 
+def admindash(request):
+    return render(request,'admindash.html')
 
 
 def query(request,pk):

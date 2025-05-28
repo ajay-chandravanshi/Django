@@ -255,6 +255,7 @@ h2 {
         margin-bottom: 15px;
         margin: 20px 0;
         flex-wrap: wrap;
+        width: 100%;
   }
 
     .search-form input[type="search"] {
@@ -350,6 +351,7 @@ h2 {
   flex-direction: column;
   gap: 8px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
   opacity: 0;
   transition: all 0.5s ease;
   z-index: 9999;
@@ -359,6 +361,7 @@ h2 {
 .toast.show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
 }
 
 .toast-content {
@@ -472,14 +475,16 @@ h2 {
 
   .search-form input[type="submit"],
   .search-form input[type="search"] {
-    min-width: 570px;
+    min-width:500px;
+;
   }
 
   /* Toast messages center rahein */
   .toast {
-    left: 10px;
-    right: 10px;
-    transform: none;
-    width: auto;
+    width: 75vw !important;
+    left: 50% !important;
+    top: 110px !important;
+    padding: 3px 9px;
+    transform: translateX(-50%) translateY(-30px) !important;
   }
 }

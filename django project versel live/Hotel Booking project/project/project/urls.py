@@ -43,13 +43,14 @@ urlpatterns = [
     # for query code start
     path('query/<int:pk>',views.query,name='query'),
     path('allquery/<int:pk>',views.allquery,name='allquery'),
-
     path('edit/<int:pk>',views.edit,name='edit'),
-
     path('queryupdate/<int:pk>',views.queryupdate,name='queryupdate'),
     path('delete/<int:pk>',views.delete,name='delete'),
     path('search/<int:pk>',views.search,name='search'),
-    
     # for query code end
     
+    # admin dashboard code
+    path('admindash/', views.admindash, name='admindash')
+
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
