@@ -1,0 +1,98 @@
+{% extends "common.html" %}
+{% load static %}
+
+{% block title %}
+Admindash
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
+
+
+{% block content %}
+
+<div class="dashboard-form-container dashboard">
+    <h2 class="form-heading">Add New Card Details</h2>
+
+    <form action="{% url 'admindash1' %}" method="post" enctype="multipart/form-data" class="dashboard-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>Room Image</label>
+            <input type="file" name="room-image" accept=".jpeg, .png, .jpg, .webp" required="True">
+        </div>
+
+
+        <div class="form-group">
+            <label for="room_name">Room Name</label>
+            <input type="text" name="room_name"  placeholder="Enter room name">
+        </div>
+
+        <div class="form-group">
+            <label for="room_price">Room Price</label>
+            <input type="text" name="room_price"  placeholder="Enter price">
+        </div>
+
+        <div class="form-group">
+            <label for="room_info">Room Info</label>
+            <input type="text" name="room_info"  placeholder="Enter description">
+        </div>
+
+        <div class="form-group submit-btn">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+{% if msg %}
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+ 
+
+</script>
+{% endif %}
+
+
+{% endblock %}
