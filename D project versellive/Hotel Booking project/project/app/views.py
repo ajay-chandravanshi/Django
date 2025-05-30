@@ -255,11 +255,9 @@ def addcard(request,cpk,pk):
     if cpk in cart:
         msg = "Already added"
         all_items = Room.objects.all()
-        return render(request,'book_room.html',{'userdata':userdata,'data':all_items,'msg':msg})
+        msg="Card Already Added"
+        return render(request,'book_room.html',{'userdata':userdata,'data':all_items,'msg': msg, 'msg_type': 'email_error'})
     else:
         cart.append(cpk)
         # print(cart)
         msg = 'Added Successfully...'
-        request.session['cart']=cart
-        all_items = Room.objects.all()
-        return render(request,'showcard.html',{'data':all_items,'msg':msg})    

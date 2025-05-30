@@ -14,6 +14,22 @@ Book_room
 {% endblock %}
 
 {% block content %}
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'email_error' %}
+      <i class="fas fa-envelope"></i>
+    {% elif msg_type == 'password_mismatch' %}
+      <i class="fas fa-lock"></i>
+    {% elif msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
 <!-- Book Room Hero Section -->
 <section class="hero-section">
     <div class="hero-overlay"></div>
@@ -898,4 +914,31 @@ Book_room
     });
 
 </script>
+
+<!-- all messages JS code Start here -->
+{% if msg %}
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+</script>
+{% endif  %}
+
 {% endblock  %}
