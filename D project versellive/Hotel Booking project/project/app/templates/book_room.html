@@ -105,9 +105,16 @@ Book_room
             <div class="room-info">
               {{i.room_info}}
             </div>
+            {% if userdata %}
+            <button><a href="{% url 'showcard' %}" class="anchstyle">BOOK NOW</a></button>
 
-            <button>BOOK NOW</button>
-            <button id="addcart">ADD TO CART</button>
+            <button id="addcart"><a href="{% url 'addcard' cpk=i.id pk=userdata.id %}" class="anchstyle">ADD TO CART</a></button>
+            
+            {% else %}
+            <button><a href="{% url 'login' %}" class="anchstyle">BOOK NOW</a></button>
+            <button id="addcart"><a href="{% url 'login' %}" class="anchstyle">ADD TO CART</a></button>
+            {% endif %}
+            
           </div>
         </div>
 

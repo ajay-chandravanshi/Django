@@ -270,6 +270,10 @@
   background: #fb641b; 
 
 }
+.anchstyle{
+  text-decoration: none;
+  color: white;
+}
 
 .card .image {
   height: 280px;
@@ -320,10 +324,15 @@
   color: white;
   border: 1px solid white;
 }
-.card:hover #addcart {
+.card:hover #addcart  {
   background: #310add;
   color: white;
   border: 1px solid white;
+}
+.card:hover .anchstyle  {
+  background:none;
+  color: white;
+  border:none;
 }
 
 /* ✅ Additions based on new layout */

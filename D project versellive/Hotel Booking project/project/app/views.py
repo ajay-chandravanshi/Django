@@ -3,7 +3,10 @@ from .models import Client,Query,Room
 from django.urls import reverse
 
 
-
+def home(request):
+    return render(request,'home.html')
+def about(request):
+    return render(request,'about.html')
 
 def contact(request):
     if request.method == 'POST':
@@ -239,3 +242,24 @@ def admindash1(request):
     else:
         return render(request,'admindash.html')
     # return render(request,'admindash.html')
+
+
+def showcard(request):
+    return render(request,'showcard.html')
+
+def addcard(request,cpk,pk):
+    userdata=Client.objects.get(id=pk)
+    # print(pk)
+    cart = request.session.get('cart',[])
+    # print(cart)
+    if cpk in cart:
+        msg = "Already added"
+        all_items = Room.objects.all()
+        return render(request,'book_room.html',{'userdata':userdata,'data':all_items,'msg':msg})
+    else:
+        cart.append(cpk)
+        # print(cart)
+        msg = 'Added Successfully...'
+        request.session['cart']=cart
+        all_items = Room.objects.all()
+        return render(request,'showcard.html',{'data':all_items,'msg':msg})    
