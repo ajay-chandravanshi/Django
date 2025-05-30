@@ -261,3 +261,6 @@ def addcard(request,cpk,pk):
         cart.append(cpk)
         # print(cart)
         msg = 'Added Successfully...'
+        request.session['cart']=cart
+        all_items = Room.objects.all()
+        return render(request,'showcard.html',{'data':all_items,'msg':msg})    
