@@ -244,8 +244,17 @@ def admindash1(request):
     # return render(request,'admindash.html')
 
 
-def showcard(request):
-    return render(request,'showcard.html')
+def showcard(request,pk):
+    userdata=Client.objects.get(id=pk)
+    cart = request.session.get('cart',[])
+    # print(cart)
+    all_data1 = []
+    total_amt=0
+    for i in cart:
+        item = Room.objects.get(id=i)
+        total_amt+=(item.room_price)
+        all_data1.append(item)
+    return render(request,'showcard.html',{'cart':all_data1,'total_amt':total_amt,'userdata':userdata})
 
 def addcard(request,cpk,pk):
     userdata=Client.objects.get(id=pk)

@@ -54,7 +54,7 @@ urlpatterns = [
     path('admindash1/', views.admindash1, name='admindash1'),
     path('addcard/<int:cpk>/<int:pk>',views.addcard,name='addcard'),
 
-    path('showcard/', views.showcard, name='showcard')
+    path('showcard/<int:pk>', views.showcard, name='showcard')
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

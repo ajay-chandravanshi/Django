@@ -122,7 +122,7 @@ Book_room
               {{i.room_info}}
             </div>
             {% if userdata %}
-            <button><a href="{% url 'showcard' %}" class="anchstyle">BOOK NOW</a></button>
+            <button><a href="{% url 'showcard' pk=userdata.id %}" class="anchstyle">BOOK NOW</a></button>
 
             <button id="addcart"><a href="{% url 'addcard' cpk=i.id pk=userdata.id %}" class="anchstyle">ADD TO CART</a></button>
             
