@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from .models import Client,Query,Room
 from django.urls import reverse
+from urllib.parse import urlencode
+
 
 
 def home(request):
@@ -68,11 +70,16 @@ def login(request):
     # Admin login code Start here
     adminemail='admin325@gmail.com'
     adminpass='ajay123'
+    a_name = 'Ajay'
+    a_id = 1
     if request.method=='POST':
         em=request.POST.get('email')
         ps=request.POST.get('password')
         if em==adminemail and ps==adminpass:
-            return redirect('admindash')
+            # return redirect('admindash',{'id':a_id,'name':a_name,'a_email':adminemail,'a_password':adminpass})
+            url = reverse('admindash')
+            data =urlencode({'id':a_id,'name':a_name,'a_email':adminemail,'a_password':adminpass})
+            return redirect(f'{url}?{data}')
         # Admin login code End here
 
         # User login code start here 
@@ -108,9 +115,11 @@ def login(request):
         return render(request,'login.html')
     
     
-def home1(request,pk):
+def home1(request,pk,ak):
+    admindata=request.GET.get(aid=ak)
+    print(admindata,"*******************************************************")
     userdata=Client.objects.get(id=pk)
-    return render(request,'home.html',{'userdata':userdata})
+    return render(request,'home.html',{'userdata':userdata,'admindata':admindata})
 
 def about1(request,pk):
     userdata=Client.objects.get(id=pk)
@@ -224,8 +233,13 @@ def search(request, pk):
     })
 
 def admindash(request):
+    x = request.GET.get("id")
+    y = request.GET.get("name")
+    z = request.GET.get("a_email")
+    print(x,y,z)
+    admindata={'id':x,'name':y,'email':z}
     all_card=Room.objects.all()
-    return render(request,'admindash.html',{'data':all_card})
+    return render(request,'admindash.html',{'data':all_card,'admindata':admindata})
 
 
 def admindash1(request):
@@ -267,9 +281,27 @@ def addcard(request,cpk,pk):
         msg="Card Already Added"
         return render(request,'book_room.html',{'userdata':userdata,'data':all_items,'msg': msg, 'msg_type': 'email_error'})
     else:
+        userdata=Client.objects.get(id=pk)
         cart.append(cpk)
         # print(cart)
         msg = 'Added Successfully...'
         request.session['cart']=cart
         all_items = Room.objects.all()
-        return render(request,'showcard.html',{'data':all_items,'msg':msg})    
+        return render(request,'book_room.html',{'data':all_items,'userdata':userdata,'msg':msg,'msg_type': 'success'})
+
+def delete(request,cpk,pk):
+    userdata=Client.objects.get(id=pk)
+    cart = request.session['cart']
+    print(cart)
+    if cpk in cart:
+        cart.remove(cpk)
+    # print(cart)
+    request.session['cart']=cart
+    all_data = []
+    total_amt=0
+    for i in cart:
+        item = Room.objects.get(id=i)
+        total_amt+=(item.room_price)
+        all_data.append(item)
+    msg="Deleted Successfully"
+    return render(request,'showcard.html',{'cart':all_data,'total_amt':total_amt,'userdata':userdata,'msg':msg,'msg_type': 'success'})

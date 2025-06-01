@@ -13,9 +13,21 @@ Home
 {% endblock %}
 
 {% block content %}
-
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
 
   <div class="section">
+  
     {% if cart %}
           {% for i in cart %}
             <div class="card alt">
@@ -35,10 +47,9 @@ Home
                 {% if userdata %}
                 <button><a href="{% url 'showcard' pk=userdata.id %}" class="anchstyle">BOOK NOW</a></button>
 
-                <button id="addcart"><a href="{% url 'addcard' cpk=i.id pk=userdata.id %}" class="anchstyle">ADD TO CART</a></button>
+                <button id="addcart"><a href="{% url 'delete' cpk=i.id pk=userdata.id %}" class="anchstyle">Delete</a></button>
             
                 {% else %}
-                <button><a href="{% url 'login' %}" class="anchstyle">BOOK NOW</a></button>
                 
                 {% endif %}
             
@@ -76,5 +87,31 @@ Home
     observer.observe(el);
   });
 </script>
+
+<!-- all messages JS code Start here -->
+{% if msg %}
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+</script>
+{% endif  %}
 {% endblock %}
 

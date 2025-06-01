@@ -80,6 +80,54 @@
               </ul>
             </form>
           </div>
+        {% elif admindata %}
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'home1' ak=admindata.id %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'about1' ak=admindata.id %}">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'gallery1' ak=admindata.id %}">Gallery</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'services1' ak=admindata.id %}">Sevices</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'contact1' ak=admindata.id %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'book_event1' ak=admindata.id %}">Book Event</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'book_room1' ak=admindata.id %}">Book Room</a>
+                </li>
+
+            </ul>
+            <form class="d-flex">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="cart_icon ">
+                  <a href="{% url 'showcard' pk=userdata.id %}"><img src="{% static 'image/cart_icon/header_cart-eed150.jpg' %}" alt=""></a>
+                </li>
+                <li class="nav-item dropdown">
+
+                  <a class="nav-link active dropdown-toggle" id="navbarDropdown" aria-current="page" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">{{ admindata.name }}</a>
+
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'admindash' ak=admindata.id %}">Profile</a></li>
+                  </ul>
+
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link active"  aria-current="page"   href="{% url 'home' %}">Logout</a>
+                </li>
+              </ul>
+            </form>
+          </div>
         {% else %}
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
