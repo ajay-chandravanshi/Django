@@ -31,8 +31,8 @@ urlpatterns = [
     path('login/',views.login,name='login'),
     path('register/',views.register,name='register'),
 
-    path('home/<int:pk>',views.home1,name='home1'),
-    path('about/<int:pk>',views.about1,name='about1'),
+    path('home/<int:pk>/<int:ak>',views.home1,name='home1'),
+    path('about/<int:pk>/<int:ak>',views.about1,name='about1'),
     path('contact/<int:pk>',views.contact1,name='contact1'),
     path('gallery/<int:pk>',views.gallery1,name='gallery1'),
     path('services/<int:pk>',views.services1,name='services1'),
