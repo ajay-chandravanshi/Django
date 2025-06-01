@@ -36,9 +36,9 @@ urlpatterns = [
     path('contact/<int:pk>/<int:ak>',views.contact1,name='contact1'),
     path('gallery/<int:pk>/<int:ak>',views.gallery1,name='gallery1'),
     path('services/<int:pk>/<int:ak>',views.services1,name='services1'),
-    path('book_event/<int:pk>',views.book_event1,name='book_event1'),
-    path('book_room/<int:pk>',views.book_room1,name='book_room1'),
-    path('dashboard/<int:pk>',views.dashboard,name='dashboard'),
+    path('book_event/<int:pk>/<int:ak>',views.book_event1,name='book_event1'),
+    path('book_room/<int:pk>/<int:ak>',views.book_room1,name='book_room1'),
+    path('dashboard/<int:pk>/<int:ak>',views.dashboard,name='dashboard'),
     
     # for query code start
     path('query/<int:pk>',views.query,name='query'),
