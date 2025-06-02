@@ -6,6 +6,8 @@ class StudentSerializer(serializers.Serializer):
     name=serializers.CharField(max_length=100)
     city=serializers.CharField(max_length=100)
     roll=serializers.IntegerField()
+    roll=serializers.IntegerField()
+    roll=serializers.IntegerField()
 
     def create(self, validated_data):
         return Student.objects.create(**validated_data)
