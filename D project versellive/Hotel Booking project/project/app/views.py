@@ -72,6 +72,7 @@ def login(request):
     adminpass='ajay123'
     a_name = 'Ajay'
     a_id = 1
+    print(a_id,"***************")
     if request.method=='POST':
         em=request.POST.get('email')
         ps=request.POST.get('password')
@@ -117,6 +118,7 @@ def login(request):
     
 def home1(request,pk,ak):
     admindata=request.GET.get(aid=ak)
+    
     print(admindata,"*******************************************************")
     userdata=Client.objects.get(id=pk)
     return render(request,'home.html',{'userdata':userdata,'admindata':admindata})
