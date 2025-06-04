@@ -30,7 +30,7 @@ urlpatterns = [
     path('book_room/',views.book_room,name='book_room'),
     path('login/',views.login,name='login'),
     path('register/',views.register,name='register'),
-
+    # for userdata use 
     path('home/<int:pk>',views.home1,name='home1'),
     path('about/<int:pk>',views.about1,name='about1'),
     path('contact/<int:pk>',views.contact1,name='contact1'),
@@ -51,12 +51,21 @@ urlpatterns = [
     
     # admin dashboard code
     # path('admindash/<int:id>/<str:a_name>/<str:a_email>/<str:a_password>', views.admindash, name='admindash'),
-    path('admindash/', views.admindash, name='admindash'),
+    # path('admindash/', views.admindash, name='admindash'),
     path('admindash1/', views.admindash1, name='admindash1'),
     path('addcard/<int:cpk>/<int:pk>',views.addcard,name='addcard'),
 
-    path('showcard/<int:pk>', views.showcard, name='showcard'),
-    path('delete/<int:pk>/<int:cpk>',views.delete,name='delete')
+    path('showcard/<int:ak>', views.showcard, name='showcard'),
+    path('delete/<int:pk>/<int:cpk>',views.delete,name='delete'),
+
+    path('home/<int:ak>',views.home1,name='home1'),
+    path('about/<int:ak>',views.about1,name='about1'),
+    path('contact/<int:ak>',views.contact1,name='contact1'),
+    path('gallery/<int:ak>',views.gallery1,name='gallery1'),
+    path('services/<int:ak>',views.services1,name='services1'),
+    path('book_event/<int:ak>',views.book_event1,name='book_event1'),
+    path('book_room/<int:ak>',views.book_room1,name='book_room1'),
+    
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

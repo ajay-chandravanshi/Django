@@ -111,14 +111,14 @@
             <form class="d-flex">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="cart_icon ">
-                  <a href="{% url 'showcard' pk=userdata.id %}"><img src="{% static 'image/cart_icon/header_cart-eed150.jpg' %}" alt=""></a>
+                  <a href="{% url 'showcard' ak=admindata.id %}"><img src="{% static 'image/cart_icon/header_cart-eed150.jpg' %}" alt=""></a>
                 </li>
                 <li class="nav-item dropdown">
 
                   <a class="nav-link active dropdown-toggle" id="navbarDropdown" aria-current="page" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">{{ admindata.name }}</a>
 
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'admindash' ak=admindata.id %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'admindash1' ak=admindata.id %}">Profile</a></li>
                   </ul>
 
                 </li>

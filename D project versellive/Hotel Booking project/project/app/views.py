@@ -72,13 +72,12 @@ def login(request):
     adminpass='ajay123'
     a_name = 'Ajay'
     a_id = 1
-    print(a_id,"***************")
     if request.method=='POST':
         em=request.POST.get('email')
         ps=request.POST.get('password')
         if em==adminemail and ps==adminpass:
             # return redirect('admindash',{'id':a_id,'name':a_name,'a_email':adminemail,'a_password':adminpass})
-            url = reverse('admindash')
+            url = reverse('admindash1', args=[a_id])
             data =urlencode({'id':a_id,'name':a_name,'a_email':adminemail,'a_password':adminpass})
             return redirect(f'{url}?{data}')
         # Admin login code End here
@@ -118,35 +117,39 @@ def login(request):
     
 def home1(request,pk,ak):
     admindata=request.GET.get(aid=ak)
-    
-    print(admindata,"*******************************************************")
     userdata=Client.objects.get(id=pk)
     return render(request,'home.html',{'userdata':userdata,'admindata':admindata})
 
-def about1(request,pk):
+def about1(request,pk,ak):
+    admindata=request.GET.get(aid=ak)
     userdata=Client.objects.get(id=pk)
-    return render(request,'about.html',{'userdata':userdata})
+    return render(request,'about.html',{'userdata':userdata,'admindata':admindata})
 
-def gallery1(request,pk):
+def gallery1(request,pk,ak):
+    admindata=request.GET.get(aid=ak)
     userdata=Client.objects.get(id=pk)
-    return render(request,'gallery.html',{'userdata':userdata})
+    return render(request,'gallery.html',{'userdata':userdata,'admindata':admindata})
 
-def services1(request,pk):
+def services1(request,pk,ak):
+    admindata=request.GET.get(aid=ak)
     userdata=Client.objects.get(id=pk)
-    return render(request,'services.html',{'userdata':userdata})
+    return render(request,'services.html',{'userdata':userdata,'admindata':admindata})
 
-def contact1(request,pk):
+def contact1(request,pk,ak):
+    admindata=request.GET.get(aid=ak)
     userdata=Client.objects.get(id=pk)
-    return render(request,'contact.html',{'userdata':userdata})
+    return render(request,'contact.html',{'userdata':userdata,'admindata':admindata})
 
-def book_event1(request,pk):
+def book_event1(request,pk,ak):
+    admindata=request.GET.get(aid=ak)
     userdata=Client.objects.get(id=pk)
-    return render(request,'book_event.html',{'userdata':userdata})
+    return render(request,'book_event.html',{'userdata':userdata,'admindata':admindata})
 
-def book_room1(request,pk):
+def book_room1(request,pk,ak):
+    admindata=request.GET.get(aid=ak)
     userdata=Client.objects.get(id=pk)
     all_card=Room.objects.all()
-    return render(request,'book_room.html',{'userdata':userdata,'data':all_card})
+    return render(request,'book_room.html',{'userdata':userdata,'data':all_card,'admindata':admindata})
 
 def dashboard(request,pk):
     userdata=Client.objects.get(id=pk)
@@ -234,18 +237,19 @@ def search(request, pk):
         'searchData': searchData
     })
 
-def admindash(request):
-    x = request.GET.get("id")
-    y = request.GET.get("name")
-    z = request.GET.get("a_email")
-    print(x,y,z)
-    admindata={'id':x,'name':y,'email':z}
-    all_card=Room.objects.all()
-    return render(request,'admindash.html',{'data':all_card,'admindata':admindata})
+# def admindash(request):
+    
+#     print(x,y,z)
+#     admindata={'id':x,'name':y,'email':z}
+#     all_card=Room.objects.all()
+#     return render(request,'admindash.html',{'data':all_card,'admindata':admindata})
 
 
-def admindash1(request):
+def admindash1(request,ak):
     if request.method=="POST":
+        x = request.GET.get("id")
+        y = request.GET.get("name")
+        z = request.GET.get("a_email")
         rimage = request.FILES.get('room-image')
         rname = request.POST.get('room_name')
         rprice = request.POST.get('room_price')
@@ -253,7 +257,6 @@ def admindash1(request):
         print(rimage,rname,rprice,rinfo)
         Room.objects.create(room_image=rimage,room_name=rname,room_price=rprice,room_info=rinfo)
         # all_card = Room.objects.all()
-        
         return redirect('book_room')
     else:
         return render(request,'admindash.html')
