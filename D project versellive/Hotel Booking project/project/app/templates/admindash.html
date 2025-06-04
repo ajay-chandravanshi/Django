@@ -30,7 +30,7 @@ Admindash
 <div class="dashboard-form-container dashboard">
     <h2 class="form-heading">Add New Card Details</h2>
 
-    <form action="{% url 'admindash1' %}" method="post" enctype="multipart/form-data" class="dashboard-form">
+    <form action="{% url 'admindash1' ak=admindata.id %}" method="post" enctype="multipart/form-data" class="dashboard-form">
         {% csrf_token %}
 
         <div class="form-group">

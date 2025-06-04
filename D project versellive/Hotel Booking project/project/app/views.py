@@ -114,42 +114,39 @@ def login(request):
     else:
         return render(request,'login.html')
     
-    
-def home1(request,pk,ak):
-    admindata=request.GET.get(aid=ak)
+# userdata code    
+def home1(request,pk):
     userdata=Client.objects.get(id=pk)
-    return render(request,'home.html',{'userdata':userdata,'admindata':admindata})
+    return render(request,'home.html',{'userdata':userdata})
 
-def about1(request,pk,ak):
-    admindata=request.GET.get(aid=ak)
+def about1(request,pk):
     userdata=Client.objects.get(id=pk)
-    return render(request,'about.html',{'userdata':userdata,'admindata':admindata})
+    return render(request,'about.html',{'userdata':userdata})
 
-def gallery1(request,pk,ak):
-    admindata=request.GET.get(aid=ak)
+def gallery1(request,pk):
     userdata=Client.objects.get(id=pk)
-    return render(request,'gallery.html',{'userdata':userdata,'admindata':admindata})
+    return render(request,'gallery.html',{'userdata':userdata})
 
-def services1(request,pk,ak):
-    admindata=request.GET.get(aid=ak)
+def services1(request,pk):
     userdata=Client.objects.get(id=pk)
-    return render(request,'services.html',{'userdata':userdata,'admindata':admindata})
+    return render(request,'services.html',{'userdata':userdata})
 
-def contact1(request,pk,ak):
-    admindata=request.GET.get(aid=ak)
+def contact1(request,pk):
     userdata=Client.objects.get(id=pk)
-    return render(request,'contact.html',{'userdata':userdata,'admindata':admindata})
+    return render(request,'contact.html',{'userdata':userdata})
 
-def book_event1(request,pk,ak):
-    admindata=request.GET.get(aid=ak)
+def book_event1(request,pk):
     userdata=Client.objects.get(id=pk)
-    return render(request,'book_event.html',{'userdata':userdata,'admindata':admindata})
+    return render(request,'book_event.html',{'userdata':userdata})
 
-def book_room1(request,pk,ak):
-    admindata=request.GET.get(aid=ak)
+def book_room1(request,pk):
     userdata=Client.objects.get(id=pk)
     all_card=Room.objects.all()
-    return render(request,'book_room.html',{'userdata':userdata,'data':all_card,'admindata':admindata})
+    return render(request,'book_room.html',{'userdata':userdata,'data':all_card})
+
+# admindata code 
+
+
 
 def dashboard(request,pk):
     userdata=Client.objects.get(id=pk)
@@ -245,22 +242,30 @@ def search(request, pk):
 #     return render(request,'admindash.html',{'data':all_card,'admindata':admindata})
 
 
-def admindash1(request,ak):
-    if request.method=="POST":
-        x = request.GET.get("id")
-        y = request.GET.get("name")
-        z = request.GET.get("a_email")
+def admindash1(request, ak):
+    if request.method == "POST":
+        # room add form se aaya h
         rimage = request.FILES.get('room-image')
         rname = request.POST.get('room_name')
         rprice = request.POST.get('room_price')
         rinfo = request.POST.get('room_info')
-        print(rimage,rname,rprice,rinfo)
-        Room.objects.create(room_image=rimage,room_name=rname,room_price=rprice,room_info=rinfo)
-        # all_card = Room.objects.all()
+        print(rimage, rname, rprice, rinfo)
+        Room.objects.create(room_image=rimage, room_name=rname, room_price=rprice, room_info=rinfo)
+        
         return redirect('book_room')
+
+    elif request.method == "GET":
+        # jab admin login karke redirect hota hai tab ye chalega
+        admindata = {
+            'id': request.GET.get("id"),
+            'name': request.GET.get("name"),
+            'email': request.GET.get("a_email")
+        }
+        return render(request, 'admindash.html', {'admindata': admindata})
+
     else:
-        return render(request,'admindash.html')
-    # return render(request,'admindash.html')
+        return render(request, 'login.html')
+
 
 
 def showcard(request,pk):

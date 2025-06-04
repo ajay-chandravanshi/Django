@@ -36,8 +36,8 @@ def student_detail(request,pk):
         stream = io.BytesIO(json_data)
         new_python_data = JSONParser().parse(stream)
         old_data = Student.objects.get(id=pk)
-        # serializer = StudentSerializer(old_data, data=python_data, partial = True)
-        serializer = StudentSerializer(old_data, data=new_python_data)
+        serializer = StudentSerializer(old_data, data=new_python_data, partial = True)
+        # serializer = StudentSerializer(old_data, data=new_python_data)
         if serializer.is_valid():
             serializer.save()
             res = {'msg':'Data Updated !!'}
