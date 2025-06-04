@@ -146,6 +146,33 @@ def book_room1(request,pk):
 
 # admindata code 
 
+def home2(request,ak):
+    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    return render(request,'home.html',{'admindata':admindata})
+
+def about2(request,ak):
+    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    return render(request,'about.html',{'admindata':admindata})
+
+def gallery2(request,ak):
+    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    return render(request,'gallery.html',{'admindata':admindata})
+
+def services2(request,ak):
+    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    return render(request,'services.html',{'admindata':admindata})
+
+def contact2(request,ak):
+    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    return render(request,'contact.html',{'admindata':admindata})
+
+def book_event2(request,ak):
+    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    return render(request,'book_event.html',{'admindata':admindata})
+
+def book_room2(request,ak):
+    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    return render(request,'book_room.html',{'admindata':admindata})
 
 
 def dashboard(request,pk):
