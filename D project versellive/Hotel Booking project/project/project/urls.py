@@ -38,13 +38,6 @@ urlpatterns = [
     path('services/<int:pk>',views.services1,name='services1'),
     path('book_event/<int:pk>',views.book_event1,name='book_event1'),
     path('book_room/<int:pk>',views.book_room1,name='book_room1'),
-    path('home/<int:pk>',views.home1,name='home1'),
-    path('about/<int:pk>',views.about1,name='about1'),
-    path('contact/<int:pk>',views.contact1,name='contact1'),
-    path('gallery/<int:pk>',views.gallery1,name='gallery1'),
-    path('services/<int:pk>',views.services1,name='services1'),
-    path('book_event/<int:pk>',views.book_event1,name='book_event1'),
-    path('book_room/<int:pk>',views.book_room1,name='book_room1'),
     path('dashboard/<int:pk>',views.dashboard,name='dashboard'),
     
     # for query code start
@@ -66,13 +59,13 @@ urlpatterns = [
     path('showcard/<int:pk>', views.showcard, name='showcard'),
     path('delete/<int:pk>/<int:cpk>',views.delete,name='delete'),
 
-    path('home/<int:ak>',views.home1,name='home2'),
-    path('about/<int:ak>',views.about1,name='about2'),
-    path('contact/<int:ak>',views.contact1,name='contact2'),
-    path('gallery/<int:ak>',views.gallery1,name='gallery2'),
-    path('services/<int:ak>',views.services1,name='services2'),
-    path('book_event/<int:ak>',views.book_event1,name='book_event2'),
-    path('book_room/<int:ak>',views.book_room1,name='book_room2'),
+    path('home/<int:ak>',views.home2,name='home2'),
+    path('about/<int:ak>',views.about2,name='about2'),
+    path('contact/<int:ak>',views.contact2,name='contact2'),
+    path('gallery/<int:ak>',views.gallery2,name='gallery2'),
+    path('services/<int:ak>',views.services2,name='services2'),
+    path('book_event/<int:ak>',views.book_event2,name='book_event2'),
+    path('book_room/<int:ak>',views.book_room2,name='book_room2'),
     
 
 

@@ -32,55 +32,8 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        {% if userdata %}
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-             
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'home1' pk=userdata.id %}">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'about1' pk=userdata.id %}">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'gallery1' pk=userdata.id %}">Gallery</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'services1' pk=userdata.id %}">Sevices</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'contact1' pk=userdata.id %}">Contact</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'book_event1' pk=userdata.id %}">Book Event</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'book_room1' pk=userdata.id %}">Book Room</a>
-                </li>
-
-            </ul>
-            <form class="d-flex">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="cart_icon ">
-                  <a href="{% url 'showcard' pk=userdata.id %}"><img src="{% static 'image/cart_icon/header_cart-eed150.jpg' %}" alt=""></a>
-                </li>
-                <li class="nav-item dropdown">
-
-                  <a class="nav-link active dropdown-toggle" id="navbarDropdown" aria-current="page" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">{{ userdata.clt_username }}</a>
-
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'dashboard' pk=userdata.id %}">Profile</a></li>
-                  </ul>
-
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link active"  aria-current="page"   href="{% url 'home' %}">Logout</a>
-                </li>
-              </ul>
-            </form>
-          </div>
-        {% elif admindata %}
+        {% if admindata %}
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -128,6 +81,54 @@
               </ul>
             </form>
           </div>
+        {% elif userdata %}
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'home1' pk=userdata.id %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'about1' pk=userdata.id %}">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'gallery1' pk=userdata.id %}">Gallery</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'services1' pk=userdata.id %}">Sevices</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'contact1' pk=userdata.id %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'book_event1' pk=userdata.id %}">Book Event</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'book_room1' pk=userdata.id %}">Book Room</a>
+                </li>
+
+            </ul>
+            <form class="d-flex">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="cart_icon ">
+                  <a href="{% url 'showcard' pk=userdata.id %}"><img src="{% static 'image/cart_icon/header_cart-eed150.jpg' %}" alt=""></a>
+                </li>
+                <li class="nav-item dropdown">
+
+                  <a class="nav-link active dropdown-toggle" id="navbarDropdown" aria-current="page" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">{{ userdata.clt_username }}</a>
+
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'dashboard' pk=userdata.id %}">Profile</a></li>
+                  </ul>
+
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link active"  aria-current="page"   href="{% url 'home' %}">Logout</a>
+                </li>
+              </ul>
+            </form>
+          </div>  
         {% else %}
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">

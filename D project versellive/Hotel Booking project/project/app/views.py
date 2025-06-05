@@ -70,8 +70,8 @@ def login(request):
     # Admin login code Start here
     adminemail='admin325@gmail.com'
     adminpass='ajay123'
-    a_name = 'Ajay'
-    a_id = 1
+    a_name = 'Anjali'
+    a_id = 122
     if request.method=='POST':
         em=request.POST.get('email')
         ps=request.POST.get('password')
@@ -114,7 +114,8 @@ def login(request):
     else:
         return render(request,'login.html')
     
-# userdata code    
+# userdata code
+    
 def home1(request,pk):
     userdata=Client.objects.get(id=pk)
     return render(request,'home.html',{'userdata':userdata})
@@ -147,31 +148,35 @@ def book_room1(request,pk):
 # admindata code 
 
 def home2(request,ak):
-    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    admindata = {
+            'id': request.GET.get("id"),
+            'name': request.GET.get("name"),
+            'email': request.GET.get("a_email")
+        }
     return render(request,'home.html',{'admindata':admindata})
 
 def about2(request,ak):
-    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
     return render(request,'about.html',{'admindata':admindata})
 
 def gallery2(request,ak):
-    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
     return render(request,'gallery.html',{'admindata':admindata})
 
 def services2(request,ak):
-    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
     return render(request,'services.html',{'admindata':admindata})
 
 def contact2(request,ak):
-    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
     return render(request,'contact.html',{'admindata':admindata})
 
 def book_event2(request,ak):
-    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
     return render(request,'book_event.html',{'admindata':admindata})
 
 def book_room2(request,ak):
-    admindata = {'id': ak,'name': 'Ajay','email': 'admin325@gmail.com'}
+    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
     return render(request,'book_room.html',{'admindata':admindata})
 
 

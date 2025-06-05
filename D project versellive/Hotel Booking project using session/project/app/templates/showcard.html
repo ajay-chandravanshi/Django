@@ -1,0 +1,117 @@
+{% extends "common.html" %}
+{% load static %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/showcard.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
+
+  <div class="section">
+  
+    {% if cart %}
+          {% for i in cart %}
+            <div class="card alt">
+              <div class="image">
+                <img src="{{ i.room_image.url }}" class="user-avatar" alt="User">
+              </div>
+              <div class="text">
+                <h2>{{i.room_name}}</h2>
+                <div class="price-row">
+                  <div class="price-green">{{i.room_price}}$</div>
+                  <div class="per-day">/ Night</div>
+                </div>
+
+                <div class="room-info">
+                  {{i.room_info}}
+                </div>
+                {% if userdata %}
+                <button><a href="{% url 'showcard' pk=userdata.id %}" class="anchstyle">BOOK NOW</a></button>
+
+                <button id="addcart"><a href="{% url 'delete' cpk=i.id pk=userdata.id %}" class="anchstyle">Delete</a></button>
+            
+                {% else %}
+                
+                {% endif %}
+            
+              </div>
+            </div>
+
+          {% endfor %}
+      {% endif %}
+  </div>
+  <h1>Total amount: {{total_amt}}</h1>
+  <a href="#" class="card-link">Buy Now</a> 
+
+
+<script>
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const triggerPoint = window.innerHeight * 0.9;
+
+    if (window.scrollY >= triggerPoint) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  document.querySelectorAll('.fade-in-up').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+<!-- all messages JS code Start here -->
+{% if msg %}
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+</script>
+{% endif  %}
+{% endblock %}
+

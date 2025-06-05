@@ -1,0 +1,944 @@
+{% extends "common.html" %}
+
+{% block title %}
+Book_room
+{% endblock  %}
+
+{% block css %}
+{{ block.super }}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/book_room.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content %}
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'email_error' %}
+      <i class="fas fa-envelope"></i>
+    {% elif msg_type == 'password_mismatch' %}
+      <i class="fas fa-lock"></i>
+    {% elif msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
+<!-- Book Room Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-heading">Discover Comfort,<br> Discover RoomRoot</h1>
+        <p class="hero-subheading">Where every stay feels like home.</p>
+    </div>
+</section>
+
+ 
+<!-- sections second  -->
+  <!-- heading for room card section  -->
+<div class="room-heading">
+  <h2>Discover Our Luxurious Rooms</h2>
+  <p>Choose the perfect stay for your comfort and style.</p>
+</div>
+
+<!-- Room Filter Section -->
+<div class="room-filter-section">
+  <h2 class="filter-title">Filter Rooms</h2>
+  <form id="roomFilterForm" class="filter-form">
+    <div class="form-group">
+      <label for="priceFilter">Price (less than):</label>
+      <input type="number" id="priceFilter" placeholder="e.g. 200">
+    </div>
+    <div class="form-group">
+      <label for="capacityFilter">Capacity:</label>
+      <select id="capacityFilter">
+        <option value="">All</option>
+        <option value="2">Max person 2</option>
+        <option value="3">Max person 3</option>
+        <option value="4">Max person 4</option>
+        <option value="5">Max person 5</option>
+        <option value="6">Max person 6</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="serviceFilter">Services:</label>
+      <input type="text" id="serviceFilter" placeholder="e.g. Wifi, TV">
+    </div>
+    <div class="form-buttons">
+      <button type="submit" class="apply-btn">Apply Filter</button>
+      <button type="button" id="resetFilter" class="reset-btn">Reset</button>
+    </div>
+  </form>
+</div>
+
+<!-- filter section end here  -->
+ 
+<!-- card section start here  -->
+<div class="section">
+  <!-- Card 1 -->
+
+    {% comment %} <div class="card">
+    <div class="image">
+      <img src="/static/image/rooms/rooms.jpg" alt="Suite Room">
+    </div>
+    <div class="text">
+      <h2>Suite Room</h2>
+      <div class="price-row">
+        <div class="price-green">450$</div>
+        <div class="per-day">/ Night</div>
+      </div>
+
+      <div class="room-info">
+        <div><strong>Size:</strong> <span>30 ft</span></div>
+        <div><strong>Capacity:</strong> <span>Max person 5</span></div>
+        <div><strong>Bed:</strong> <span>King beds</span></div>
+        <div><strong>Services:</strong> <span>Wifi, television</span></div>
+      </div>
+
+      <button>BOOK NOW</button>
+    </div>
+
+  </div> {% endcomment %}
+  {% if data %}
+      {% for i in data %}
+        <div class="card alt">
+          <div class="image">
+            <img src="{{ i.room_image.url }}" class="user-avatar" alt="User">
+          </div>
+          <div class="text">
+            <h2>{{i.room_name}}</h2>
+            <div class="price-row">
+              <div class="price-green">{{i.room_price}}$</div>
+              <div class="per-day">/ Night</div>
+            </div>
+
+            <div class="room-info">
+              {{i.room_info}}
+            </div>
+            {% if userdata %}
+            <button><a href="{% url 'showcard' pk=userdata.id %}" class="anchstyle">BOOK NOW</a></button>
+
+            <button id="addcart"><a href="{% url 'addcard' cpk=i.id pk=userdata.id %}" class="anchstyle">ADD TO CART</a></button>
+            
+            {% else %}
+            <button><a href="{% url 'login' %}" class="anchstyle">BOOK NOW</a></button>
+            <button id="addcart"><a href="{% url 'login' %}" class="anchstyle">ADD TO CART</a></button>
+            {% endif %}
+            
+          </div>
+        </div>
+
+      {% endfor %}
+  {% endif %}
+
+  {% comment %} <div class="card">
+    <div class="image">
+      <img src="/static/image/rooms/rooms.jpg" alt="Suite Room">
+    </div>
+    <div class="text">
+      <h2>Suite Room</h2>
+      <div class="price-row">
+        <div class="price-green">450$</div>
+        <div class="per-day">/ Night</div>
+      </div>
+
+      <div class="room-info">
+        <div><strong>Size:</strong> <span>30 ft</span></div>
+        <div><strong>Capacity:</strong> <span>Max person 5</span></div>
+        <div><strong>Bed:</strong> <span>King beds</span></div>
+        <div><strong>Services:</strong> <span>Wifi, television</span></div>
+      </div>
+
+      <button>BOOK NOW</button>
+    </div>
+
+  </div> {% endcomment %}
+
+  <!-- Card 2 (alternate layout) -->
+  {% comment %} <div class="card alt">
+    <div class="image">
+      <img src="/static/image/rooms/room-1.jpg" alt="Family Room">
+    </div>
+    <div class="text">
+      <h2>Family Room</h2>
+      <div class="price-row">
+        <div class="price-green">450$</div>
+        <div class="per-day">/ Night</div>
+      </div>
+
+      <div class="room-info">
+        <div><strong>Size:</strong> <span>30 ft</span></div>
+        <div><strong>Capacity:</strong> <span>Max person 4</span></div>
+        <div><strong>Bed:</strong> <span>Queen beds</span></div>
+        <div><strong>Services:</strong> <span>Wifi, AC</span></div>
+      </div>
+
+      <button>BOOK NOW</button>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <div class="image">
+      <img src="/static/image/rooms/room-2.jpg" alt="Deluxe Room">
+    </div>
+    <div class="text">
+      <h2>Deluxe Room</h2>
+      <div class="price-row">
+        <div class="price-green">450$</div>
+        <div class="per-day">/ Night</div>
+      </div>
+
+      <div class="room-info">
+        <div><strong>Size:</strong> <span>35 ft</span></div>
+        <div><strong>Capacity:</strong> <span>Max person 3</span></div>
+        <div><strong>Bed:</strong> <span>Double beds</span></div>
+        <div><strong>Services:</strong> <span>Wifi, AC</span></div>
+      </div>
+
+      <button>BOOK NOW</button>
+    </div>
+
+  </div>
+  <!-- Card 4 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-3.jpg" alt="Executive Room">
+  </div>
+  <div class="text">
+    <h2>Executive Room</h2>
+    <div class="price-row">
+      <div class="price-green">100$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>28 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 2</span></div>
+      <div><strong>Bed:</strong> <span>Single bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, TV</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+
+</div>
+
+<!-- Card 5 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-4.jpg" alt="Superior Room">
+  </div>
+  <div class="text">
+    <h2>Superior Room</h2>
+    <div class="price-row">
+      <div class="price-green">125$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>40 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 3</span></div>
+      <div><strong>Bed:</strong> <span>Double bed</span></div>
+      <div><strong>Services:</strong> <span>AC, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-5.jpg" alt="Classic Room">
+  </div>
+  <div class="text">
+    <h2>Classic Room</h2>
+    <div class="price-row">
+      <div class="price-green">150$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>32 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 4</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, AC</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Cards 7 to 35 -->
+<!-- Card 7 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-6.jpg" alt="Royal Room">
+  </div>
+  <div class="text">
+    <h2>Royal Room</h2>
+    <div class="price-row">
+      <div class="price-green">175$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>45 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 2</span></div>
+      <div><strong>Bed:</strong> <span>King bed</span></div>
+      <div><strong>Services:</strong> <span>TV, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 8 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-7.jpg" alt="Urban Room">
+  </div>
+  <div class="text">
+    <h2>Urban Room</h2>
+    <div class="price-row">
+      <div class="price-green">200$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>38 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 3</span></div>
+      <div><strong>Bed:</strong> <span>Double bed</span></div>
+      <div><strong>Services:</strong> <span>AC, Wifi</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 9 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-8.jpg" alt="Ocean View">
+  </div>
+  <div class="text">
+    <h2>Ocean View</h2>
+    <div class="price-row">
+      <div class="price-green">225$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>50 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 4</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>TV, Wifi</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 10 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-9.jpg" alt="Nature Nest">
+  </div>
+  <div class="text">
+    <h2>Nature Nest</h2>
+    <div class="price-row">
+      <div class="price-green">250$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>55 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 5</span></div>
+      <div><strong>Bed:</strong> <span>King bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, AC</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+<!-- Card 11 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-10.jpg" alt="Garden Villa">
+  </div>
+  <div class="text">
+    <h2>Garden Villa</h2>
+    <div class="price-row">
+      <div class="price-green">275$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>60 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 6</span></div>
+      <div><strong>Bed:</strong> <span>Queen beds</span></div>
+      <div><strong>Services:</strong> <span>Wifi, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 12 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-11.jpg" alt="Hillside Cabin">
+  </div>
+  <div class="text">
+    <h2>Hillside Cabin</h2>
+    <div class="price-row">
+      <div class="price-green">300$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>40 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 2</span></div>
+      <div><strong>Bed:</strong> <span>Single bed</span></div>
+      <div><strong>Services:</strong> <span>AC, TV</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 13 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-12.jpg" alt="Luxury Loft">
+  </div>
+  <div class="text">
+    <h2>Luxury Loft</h2>
+    <div class="price-row">
+      <div class="price-green">325$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>70 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 3</span></div>
+      <div><strong>Bed:</strong> <span>Double bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, TV</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 14 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-13.jpg" alt="Mountain View">
+  </div>
+  <div class="text">
+    <h2>Mountain View</h2>
+    <div class="price-row">
+      <div class="price-green">350$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>65 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 4</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>AC, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 15 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-14.jpg" alt="Skyline Suite">
+  </div>
+  <div class="text">
+    <h2>Skyline Suite</h2>
+    <div class="price-row">
+      <div class="price-green">375$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>75 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 5</span></div>
+      <div><strong>Bed:</strong> <span>King bed</span></div>
+      <div><strong>Services:</strong> <span>TV, Wifi</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+<!-- Card 16 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-15.jpg" alt="Executive Room">
+  </div>
+  <div class="text">
+    <h2>Executive Room</h2>
+    <div class="price-row">
+      <div class="price-green">400$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>68 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 4</span></div>
+      <div><strong>Bed:</strong> <span>King bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, AC</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 17 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-16.jpg" alt="Tropical Room">
+  </div>
+  <div class="text">
+    <h2>Tropical Room</h2>
+    <div class="price-row">
+      <div class="price-green">425$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>72 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 2</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>TV, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 18 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-17.jpg" alt="Ocean Breeze">
+  </div>
+  <div class="text">
+    <h2>Ocean Breeze</h2>
+    <div class="price-row">
+      <div class="price-green">450$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>85 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 3</span></div>
+      <div><strong>Bed:</strong> <span>Double bed</span></div>
+      <div><strong>Services:</strong> <span>AC, Wifi</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 19 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-18.jpg" alt="Panorama Room">
+  </div>
+  <div class="text">
+    <h2>Panorama Room</h2>
+    <div class="price-row">
+      <div class="price-green">475$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>90 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 4</span></div>
+      <div><strong>Bed:</strong> <span>King bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 20 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-19.jpg" alt="Zen Den">
+  </div>
+  <div class="text">
+    <h2>Zen Den</h2>
+    <div class="price-row">
+      <div class="price-green">500$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>95 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 5</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>AC, TV</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+<!-- Card 21 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-20.jpg" alt="Sunset View">
+  </div>
+  <div class="text">
+    <h2>Sunset View</h2>
+    <div class="price-row">
+      <div class="price-green">525$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>98 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 3</span></div>
+      <div><strong>Bed:</strong> <span>Double bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, AC</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 22 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-21.jpg" alt="Forest Retreat">
+  </div>
+  <div class="text">
+    <h2>Forest Retreat</h2>
+    <div class="price-row">
+      <div class="price-green">550$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>102 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 2</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>TV, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 23 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-22.jpg" alt="Golden Suite">
+  </div>
+  <div class="text">
+    <h2>Golden Suite</h2>
+    <div class="price-row">
+      <div class="price-green">575$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>108 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 5</span></div>
+      <div><strong>Bed:</strong> <span>King bed</span></div>
+      <div><strong>Services:</strong> <span>AC, Wifi</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 24 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-23.jpg" alt="Amber Room">
+  </div>
+  <div class="text">
+    <h2>Amber Room</h2>
+    <div class="price-row">
+      <div class="price-green">600$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>112 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 4</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>TV, Wifi</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 25 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-24.jpg" alt="Royal Residence">
+  </div>
+  <div class="text">
+    <h2>Royal Residence</h2>
+    <div class="price-row">
+      <div class="price-green">625$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>115 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 5</span></div>
+      <div><strong>Bed:</strong> <span>King bed</span></div>
+      <div><strong>Services:</strong> <span>AC, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+<!-- Card 26 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-25.jpg" alt="Ocean Escape">
+  </div>
+  <div class="text">
+    <h2>Ocean Escape</h2>
+    <div class="price-row">
+      <div class="price-green">650$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>118 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 4</span></div>
+      <div><strong>Bed:</strong> <span>Double bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, AC</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 27 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-26.jpg" alt="Mountain Luxe">
+  </div>
+  <div class="text">
+    <h2>Mountain Luxe</h2>
+    <div class="price-row">
+      <div class="price-green">675$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>122 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 3</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>TV, Wifi</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 28 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-27.jpg" alt="Coral Haven">
+  </div>
+  <div class="text">
+    <h2>Coral Haven</h2>
+    <div class="price-row">
+      <div class="price-green">700$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>128 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 2</span></div>
+      <div><strong>Bed:</strong> <span>King bed</span></div>
+      <div><strong>Services:</strong> <span>AC, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 29 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-28.jpg" alt="Zen Chamber">
+  </div>
+  <div class="text">
+    <h2>Zen Chamber</h2>
+    <div class="price-row">
+      <div class="price-green">725$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>132 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 3</span></div>
+      <div><strong>Bed:</strong> <span>Double bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, AC</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 30 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-29.jpg" alt="Vista Villa">
+  </div>
+  <div class="text">
+    <h2>Vista Villa</h2>
+    <div class="price-row">
+      <div class="price-green">750$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>135 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 5</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>TV, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+<!-- Card 31 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-30.jpg" alt="Harbor Retreat">
+  </div>
+  <div class="text">
+    <h2>Harbor Retreat</h2>
+    <div class="price-row">
+      <div class="price-green">775$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>138 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 4</span></div>
+      <div><strong>Bed:</strong> <span>Double bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, AC</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+<!-- Card 32 -->
+<div class="card">
+  <div class="image">
+    <img src="/static/image/rooms/room-31.jpg" alt="Cloud Nest">
+  </div>
+  <div class="text">
+    <h2>Cloud Nest</h2>
+    <div class="price-row">
+      <div class="price-green">800$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>142 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 2</span></div>
+      <div><strong>Bed:</strong> <span>King bed</span></div>
+      <div><strong>Services:</strong> <span>TV, minibar</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+  
+</div>
+
+<!-- Card 33 -->
+<div class="card alt">
+  <div class="image">
+    <img src="/static/image/rooms/room-32.jpg" alt="Golden Stay">
+  </div>
+  <div class="text">
+    <h2>Golden Stay</h2>
+    <div class="price-row">
+      <div class="price-green">825$</div>
+      <div class="per-day">/ Night</div>
+    </div>
+    <div class="room-info">
+      <div><strong>Size:</strong> <span>145 ft</span></div>
+      <div><strong>Capacity:</strong> <span>Max person 3</span></div>
+      <div><strong>Bed:</strong> <span>Queen bed</span></div>
+      <div><strong>Services:</strong> <span>Wifi, TV</span></div>
+    </div>
+    <button>BOOK NOW</button>
+  </div>
+</div>
+
+
+ {% endcomment %}
+</div>
+
+
+
+
+
+<script>
+  document.getElementById("roomFilterForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const maxPrice = parseFloat(document.getElementById("priceFilter").value) || Infinity;
+    const capacity = document.getElementById("capacityFilter").value;
+    const servicesInput = document.getElementById("serviceFilter").value.toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+      const priceText = card.querySelector(".price-green").innerText.replace("$", "");
+      const price = parseFloat(priceText);
+
+      const capacityText = card.innerText.match(/Max person \d+/);
+      const cardCapacity = capacityText ? capacityText[0].match(/\d+/)[0] : null;
+
+      const servicesText = card.innerText.toLowerCase();
+
+      let matches = true;
+
+      if (price > maxPrice) matches = false;
+
+      if (capacity && cardCapacity !== capacity) matches = false;
+
+      if (servicesInput.length) {
+        for (const service of servicesInput) {
+          if (!servicesText.includes(service)) {
+            matches = false;
+            break;
+          }
+        }
+      }
+
+      card.style.display = matches ? "flex" : "none";
+    });
+  });
+
+  document.getElementById("resetFilter").addEventListener("click", function () {
+    document.getElementById("roomFilterForm").reset();
+    document.querySelectorAll(".card").forEach(card => {
+      card.style.display = "flex";
+    });
+  });
+</script>
+
+<script>
+    window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const triggerPoint = window.innerHeight * 0.9;
+
+    if (window.scrollY >= triggerPoint) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+    });
+
+</script>
+
+<!-- all messages JS code Start here -->
+{% if msg %}
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+</script>
+{% endif  %}
+
+{% endblock  %}

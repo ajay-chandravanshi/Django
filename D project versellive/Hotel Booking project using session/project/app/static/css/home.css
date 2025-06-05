@@ -1,0 +1,731 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.hero-section {
+  position: static;
+  background: url('/static/image/home.webp') center/cover no-repeat fixed;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  /* width: 100%; */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-title {
+  font-family: 'Noto Serif', serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.hero-subtitle span {
+  width: 60px;
+  height: 2px;
+  background: #dcb86c;
+}
+
+.booking-form-container {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.booking-form {
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/*----------------------------------*/
+/* 🖤 NAVBAR SCROLL EFFECT */
+/*----------------------------------*/
+.navbar {
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.925);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/*----------------------------------*/
+/* 💬 TESTIMONIAL SECTION */
+/*----------------------------------*/
+.testimonial-wrapper {
+  padding: 80px 10%;
+  background-color: #f5f7ff;
+}
+
+.testimonial-card {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.testimonial-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.testimonial-left h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.testimonial-left p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 500px;
+}
+
+.testimonial-btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.testimonial-btn {
+  background-color: #fdbb42;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.testimonial-btn:hover {
+  background-color: #e6a832;
+}
+
+.testimonial-link {
+  color: #fdbb42;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.testimonial-right {
+  flex: 1;
+  min-width: 400px;
+  margin-top: 50px;
+  position: relative;
+}
+
+.testimonial-img-wrapper {
+  position: relative;
+}
+
+.main-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+.circle-img {
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  max-width: 250px;
+  border-radius: 50%;
+  border: 10px solid #f2f4fb;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+/*----------------------------------*/
+/* 🛏️ ROOMS SECTION */
+/*----------------------------------*/
+.rooms-section {
+  margin-top: 35px;
+  padding: 80px 10%;
+  background: #fff;
+  text-align: center;
+}
+
+.rooms-header h2 {
+  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.rooms-header p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+.rooms-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 30px;
+  overflow-x: auto;
+}
+
+.room-box {
+  width: 350px;
+  overflow: hidden;
+}
+
+.room-box img {
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.room-box:hover img {
+  transform: scale(1.08);
+}
+
+.room-box h2 {
+  font-size: 30px;
+  font-family: 'Playfair Display', serif;
+  margin: 25px 0 8px;
+  font-weight: normal;
+}
+
+.room-box span {
+  font-size: 18px;
+  color: #fdbb42;
+}
+
+/*----------------------------------*/
+/* 🔢 COUNTER SECTION */
+/*----------------------------------*/
+.stats-section {
+  margin-top: 100px;
+  background: #000;
+  color: #d6b17b;
+  padding-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.stat-box {
+  flex: 1;
+}
+
+.line {
+  height: 80px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 auto;
+}
+
+.stat-number {
+  font-size: 40px;
+  color: #c5a880;
+  font-weight: 600;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #ccc;
+}
+
+/*----------------------------------*/
+/* 🔁 FLIP CARD SECTION */
+/*----------------------------------*/
+.leadership-section {
+  padding: 60px 30px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 60px;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  margin: 100px 0;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-front img {
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 10px;
+}
+
+.card-info h4 {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.card-info p {
+  color: #777;
+  margin: 2px 0;
+}
+
+.card-back {
+  background: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/*----------------------------------*/
+/* 📝 BLOG SECTION */
+/*----------------------------------*/
+.recent-blog-section {
+  background: #fff;
+  padding: 80px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.subheading {
+  color: #c2a16c;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.main-heading {
+  font-family: "Old Standard TT", serif;
+  font-size: 64px;
+  font-weight: 400;
+  margin-bottom: 50px;
+  color: #222;
+}
+
+.blog-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.blog-card {
+  width: calc(25% - 15px);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.blog-meta {
+  font-size: 13px;
+  color: #777;
+  padding: 15px 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.blog-title {
+  font-family: "Old Standard TT", serif;
+  font-size: 22px;
+  margin: 10px 20px 5px;
+  color: #000;
+}
+
+.blog-text {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  padding: 0 20px 20px;
+}
+
+/*----------------------------------*/
+/* 📸 INSTAGRAM GALLERY */
+/*----------------------------------*/
+.insta-gallery {
+  background: #fff;
+  padding: 80px 20px;
+}
+
+.insta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.insta-item {
+  position: relative;
+  width: calc(33.33% - 15px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.insta-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.insta-item:hover img {
+  transform: scale(1.05);
+}
+
+.insta-item .overlay {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.5s ease;
+}
+
+.insta-item:hover .overlay {
+  left: 0;
+}
+
+.insta-item .overlay i {
+  font-size: 30px;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.insta-item:hover .overlay i {
+  transform: scale(1.2);
+}
+
+/*----------------------------------*/
+/* 📱 RESPONSIVE STYLES */
+/*----------------------------------*/
+/* @media (max-width: 1200px) {
+  .blog-card {
+    width: calc(33.33% - 15px);
+  }
+}
+
+@media (max-width: 992px) {
+  .insta-item {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    gap: 10px;
+  }
+
+  .booking-form-container {
+    padding: 0 15px;
+    bottom: -100px;
+  }
+
+  .testimonial-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .circle-img {
+    bottom: -40px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .blog-card {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .hero-subtitle span {
+    display: none;
+  }
+
+  .blog-card,
+  .insta-item {
+    width: 100%;
+  }
+
+  .main-heading {
+    font-size: 28px;
+  }
+} */
+
+/* 📱✅ Combined Responsive Media Queries */
+@media (max-width: 1200px) {
+  .blog-card {
+    width: calc(33.33% - 15px);
+  }
+}
+
+@media (max-width: 992px) {
+  .row>* {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .insta-item {
+    width: calc(50% - 10px);
+  }
+
+  .rooms-container {
+    overflow-x: auto;
+  }
+
+  .rooms-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .hero-section {
+  position: relative;
+  background: url('/static/image/home.webp');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  
+  /* width: 100%; */
+}
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    gap: 10px;
+  }
+
+  .booking-form-container {
+    /* opacity: 0; */
+    display: none;
+  }
+
+  .testimonial-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .testimonial-card {
+    /* width: 100%; */
+    flex-direction: column;
+    text-align: center;
+  }
+
+.testimonial-left {
+  flex: 1;
+  width: 20.46vw;
+  min-width: 316px;
+}
+
+.main-img {
+    width: 84vw;
+    height: auto;
+    border-radius: 10px;
+    display:unset;
+}
+  .testimonial-btn-group {
+    justify-content: center;
+    align-items: center;
+  }
+  .circle-img {
+    bottom: -40px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+.stats{
+  width: 100vw;
+  height:fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stats-section {
+  margin-top: 0px;
+  margin-left: 10vw;
+  width: 80vw;
+  height: 100px;
+  background: #000;
+  color: #d6b17b;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.leadership-section {
+    padding: 2px 30px;
+    background: #f9f9f9;
+    text-align: center;
+}
+.stat-label {
+    font-size: 9px;
+    color: #ccc;
+}
+
+.line {
+    height: 25px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 auto;
+}
+.stat-number {
+    font-size: 20px;
+    color: #c5a880;
+    font-weight: 600;
+}
+
+  .blog-card {
+    width: calc(50% - 10px);
+  }
+
+  .insta-item {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .hero-subtitle span {
+    display: none;
+  }
+
+  .blog-card,
+  .insta-item {
+    width: 100%;
+  }
+
+  .main-heading {
+    font-size: 28px;
+  }
+
+  .circle-img {
+    max-width: 150px;
+  }
+}
