@@ -36,4 +36,11 @@ def student_detail(request,pk):
                 return Response(serializer.data)
             return Response(serializer.errors)
         
-
+        elif request.method=='PATCH':
+            Student = Student.objects.get(id=pk)
+            serializer = StudentSerializer(Student, data=request.data,partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors)
+        
