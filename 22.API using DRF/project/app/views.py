@@ -44,3 +44,11 @@ def student_detail(request,pk):
                 return Response(serializer.data)
             return Response(serializer.errors)
         
+        elif request.method=='DELETE':
+            Student = Student.objects.get(id=pk)
+            Student.delete()
+            return Response({'msg':"Data deleted successfully"})
+        
+        else:
+            res={'msg':"Not Present in database!!"}
+            return Response(res)
