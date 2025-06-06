@@ -42,3 +42,19 @@ class student_detail(APIView):
     
 
    
+class student_list(APIView):
+    """
+    List all snippets, or create a new snippet.
+    """
+    def get(self, request, format=None):
+        student = Student.objects.all()
+        serializer = StudentSerializer(student, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = StudentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+  
