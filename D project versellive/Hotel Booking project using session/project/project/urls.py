@@ -21,6 +21,20 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('admin/home/', views.admin_home, name='admin_home'),
+    path('home/',views.home2,name='home2'),
+    path('about/',views.about2,name='about2'),
+    path('contact/',views.contact2,name='contact2'),
+    path('gallery/',views.gallery2,name='gallery2'),
+    path('services/',views.services2,name='services2'),
+    path('book_event/',views.book_event2,name='book_event2'),
+    path('book_room/',views.book_room2,name='book_room2'),
+
+
+
+
+
     path('',views.home,name='home'),
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
@@ -52,20 +66,14 @@ urlpatterns = [
     # admin dashboard code
     # path('admindash/<int:id>/<str:a_name>/<str:a_email>/<str:a_password>', views.admindash, name='admindash'),
     # path('admindash/', views.admindash, name='admindash'),
-    path('admindash1/<int:ak>', views.admindash1, name='admindash1'),
+    path('admindash1/', views.admindash1, name='admindash1'),
     path('addcard/<int:cpk>/<int:pk>',views.addcard,name='addcard'),
 
-    path('showcard/<int:ak>', views.showcard, name='showcard'),
+    path('showcard/', views.showcard, name='showcard'),
     path('showcard/<int:pk>', views.showcard, name='showcard'),
     path('delete/<int:pk>/<int:cpk>',views.delete,name='delete'),
 
-    path('home/<int:ak>',views.home2,name='home2'),
-    path('about/<int:ak>',views.about2,name='about2'),
-    path('contact/<int:ak>',views.contact2,name='contact2'),
-    path('gallery/<int:ak>',views.gallery2,name='gallery2'),
-    path('services/<int:ak>',views.services2,name='services2'),
-    path('book_event/<int:ak>',views.book_event2,name='book_event2'),
-    path('book_room/<int:ak>',views.book_room2,name='book_room2'),
+
     
 
 

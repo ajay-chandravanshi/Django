@@ -24,29 +24,30 @@ def student_detail(request,pk):
     id=Student.objects.filter(id=pk)
     if id:
         if request.method=='GET':
-            Student = Student.objects.get(id=pk)
-            serializer = student_detail(Student)
+            student = Student.objects.get(id=pk)
+            print(student)
+            serializer = StudentSerializer(student)
             return Response(serializer.data)
         
         elif request.method=='PUT':
-            Student = Student.objects.get(id=pk)
-            serializer = StudentSerializer(Student, data=request.data)
+            student = Student.objects.get(id=pk)
+            serializer = StudentSerializer(student, data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
             return Response(serializer.errors)
         
         elif request.method=='PATCH':
-            Student = Student.objects.get(id=pk)
-            serializer = StudentSerializer(Student, data=request.data,partial=True)
+            student = Student.objects.get(id=pk)
+            serializer = StudentSerializer(student, data=request.data,partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
             return Response(serializer.errors)
         
         elif request.method=='DELETE':
-            Student = Student.objects.get(id=pk)
-            Student.delete()
+            student = Student.objects.get(id=pk)
+            student.delete()
             return Response({'msg':"Data deleted successfully"})
         
         else:

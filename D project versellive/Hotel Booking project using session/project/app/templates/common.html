@@ -39,39 +39,39 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
              
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'home2' ak=admindata.id %}">Home</a>
+                  <a class="nav-link active" aria-current="page" href="{% url 'home2'  %}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'about2' ak=admindata.id %}">About</a>
+                  <a class="nav-link active" aria-current="page" href="{% url 'about2'  %}">About</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'gallery2' ak=admindata.id %}">Gallery</a>
+                  <a class="nav-link active" aria-current="page" href="{% url 'gallery2'  %}">Gallery</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'services2' ak=admindata.id %}">Sevices</a>
+                  <a class="nav-link active" aria-current="page" href="{% url 'services2'  %}">Sevices</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'contact2' ak=admindata.id %}">Contact</a>
+                  <a class="nav-link active" aria-current="page" href="{% url 'contact2'  %}">Contact</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'book_event2' ak=admindata.id %}">Book Event</a>
+                  <a class="nav-link active" aria-current="page" href="{% url 'book_event2'  %}">Book Event</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'book_room2' ak=admindata.id %}">Book Room</a>
+                  <a class="nav-link active" aria-current="page" href="{% url 'book_room2' %}">Book Room</a>
                 </li>
 
             </ul>
             <form class="d-flex">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="cart_icon ">
-                  <a href="{% url 'showcard' ak=admindata.id %}"><img src="{% static 'image/cart_icon/header_cart-eed150.jpg' %}" alt=""></a>
+                  <a href="{% url 'showcard'  %}"><img src="{% static 'image/cart_icon/header_cart-eed150.jpg' %}" alt=""></a>
                 </li>
                 <li class="nav-item dropdown">
 
                   <a class="nav-link active dropdown-toggle" id="navbarDropdown" aria-current="page" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">{{ admindata.name }}</a>
 
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{% url 'admindash1' ak=admindata.id %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'admindash1'  %}">Profile</a></li>
                   </ul>
 
                 </li>

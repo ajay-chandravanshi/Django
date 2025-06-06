@@ -67,53 +67,41 @@ def register(request):
         return render(request,'register.html')
 
 def login(request):
-    # Admin login code Start here
-    adminemail='admin325@gmail.com'
-    adminpass='ajay123'
+    # Admin credentials
+    adminemail = 'admin325@gmail.com'
+    adminpass = 'ajay123'
     a_name = 'Anjali'
     a_id = 122
-    if request.method=='POST':
-        em=request.POST.get('email')
-        ps=request.POST.get('password')
-        if em==adminemail and ps==adminpass:
-            # return redirect('admindash',{'id':a_id,'name':a_name,'a_email':adminemail,'a_password':adminpass})
-            url = reverse('admindash1', args=[a_id])
-            data =urlencode({'id':a_id,'name':a_name,'a_email':adminemail,'a_password':adminpass})
-            return redirect(f'{url}?{data}')
-        # Admin login code End here
+
+    if request.method == 'POST':
+        em = request.POST.get('email')
+        ps = request.POST.get('password')
+
+        # Admin login check
+        if em == adminemail and ps == adminpass:
+            request.session['admin_id'] = a_id
+            request.session['admin_name'] = a_name
+            request.session['admin_email'] = adminemail
+            return redirect('admindash1')
 
         # User login code start here 
-        eml=request.POST.get('email')
-        psw=request.POST.get('password')
-        user=Client.objects.filter(clt_email=eml)
+        user = Client.objects.filter(clt_email=em)
 
         if user:
-            userdata=Client.objects.get(clt_email=eml)
-            psw1=userdata.clt_password
-            if psw==psw1:
-                msg="Login Successfully"
-                return render(request,'dashboard.html',{'userdata':userdata,'msg':msg,'msg_type': 'success','dashboard': True})
-            
+            userdata = Client.objects.get(clt_email=em)
+            psw1 = userdata.clt_password
+            if ps == psw1:
+                msg = "Login Successfully"
+                return render(request, 'dashboard.html', {'userdata': userdata, 'msg': msg, 'msg_type': 'success', 'dashboard': True})
             else:
-                msg="Passwords don’t match"
-                return render(request,'login.html',{'email':eml,'msg':msg,'msg_type': 'password_mismatch'})
-
+                msg = "Passwords don’t match"
+                return render(request, 'login.html', {'email': em, 'msg': msg, 'msg_type': 'password_mismatch'})
         else:
-            msg="Email address not found."
-            return render(request,'register.html',{'msg':msg,'msg_type': 'email_error'})
-        
-        # User login code Ende here 
+            msg = "Email address not found."
+            return render(request, 'register.html', {'msg': msg, 'msg_type': 'email_error'})
+        # User login code End here 
 
-        # Admin login code start here
-    elif request.method=='POST':
-        
-        
-        if em==adminemail and ps==adminpass:
-            return redirect('admindash')
-
-    else:
-        return render(request,'login.html')
-    
+    return render(request, 'login.html')
 # userdata code
     
 def home1(request,pk):
@@ -144,41 +132,6 @@ def book_room1(request,pk):
     userdata=Client.objects.get(id=pk)
     all_card=Room.objects.all()
     return render(request,'book_room.html',{'userdata':userdata,'data':all_card})
-
-# admindata code 
-
-def home2(request,ak):
-    admindata = {
-            'id': request.GET.get("id"),
-            'name': request.GET.get("name"),
-            'email': request.GET.get("a_email")
-        }
-    return render(request,'home.html',{'admindata':admindata})
-
-def about2(request,ak):
-    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
-    return render(request,'about.html',{'admindata':admindata})
-
-def gallery2(request,ak):
-    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
-    return render(request,'gallery.html',{'admindata':admindata})
-
-def services2(request,ak):
-    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
-    return render(request,'services.html',{'admindata':admindata})
-
-def contact2(request,ak):
-    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
-    return render(request,'contact.html',{'admindata':admindata})
-
-def book_event2(request,ak):
-    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
-    return render(request,'book_event.html',{'admindata':admindata})
-
-def book_room2(request,ak):
-    admindata = {'id': ak,'name': 'Anjali','email': 'admin325@gmail.com'}
-    return render(request,'book_room.html',{'admindata':admindata})
-
 
 def dashboard(request,pk):
     userdata=Client.objects.get(id=pk)
@@ -266,6 +219,69 @@ def search(request, pk):
         'searchData': searchData
     })
 
+# admindata code 
+
+def home2(request):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+    # id=request.session.get('admin_id')
+    # print(id,"***********************************************************************")
+    return render(request, 'home.html', {'admindata': admindata})
+
+def about2(request):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+    print("ADMINDATA:", admindata)
+    return render(request, 'about.html',{'admindata': admindata})
+
+def gallery2(request):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+    return render(request, 'gallery.html', {'admindata': admindata})
+
+def services2(request):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+    return render(request, 'services.html', {'admindata': admindata})
+
+def contact2(request):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+    return render(request, 'contact.html', {'admindata': admindata})
+
+def book_event2(request):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+    return render(request, 'book_event.html', {'admindata': admindata})
+
+def book_room2(request):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+    return render(request, 'book_room.html', {'admindata': admindata})
+
+
+
 # def admindash(request):
     
 #     print(x,y,z)
@@ -274,8 +290,26 @@ def search(request, pk):
 #     return render(request,'admindash.html',{'data':all_card,'admindata':admindata})
 
 
-def admindash1(request, ak):
-    if request.method == "POST":
+def admindash1(request):
+    
+
+    if request.method == "GET":
+        
+        if 'admin_id' in request.session:
+            admin_id = request.session['admin_id']
+            admin_name = request.session['admin_name']
+            admin_email = request.session['admin_email']
+        
+            admindata = {
+                'id': admin_id,
+                'name': admin_name,
+                'email': admin_email
+            }
+            return render(request, 'admindash.html', {'admindata': admindata})
+        else:
+            return redirect('login')
+    
+    elif request.method == "POST":
         # room add form se aaya h
         rimage = request.FILES.get('room-image')
         rname = request.POST.get('room_name')
@@ -283,17 +317,7 @@ def admindash1(request, ak):
         rinfo = request.POST.get('room_info')
         print(rimage, rname, rprice, rinfo)
         Room.objects.create(room_image=rimage, room_name=rname, room_price=rprice, room_info=rinfo)
-        
         return redirect('book_room')
-
-    elif request.method == "GET":
-        # jab admin login karke redirect hota hai tab ye chalega
-        admindata = {
-            'id': request.GET.get("id"),
-            'name': request.GET.get("name"),
-            'email': request.GET.get("a_email")
-        }
-        return render(request, 'admindash.html', {'admindata': admindata})
 
     else:
         return render(request, 'login.html')
