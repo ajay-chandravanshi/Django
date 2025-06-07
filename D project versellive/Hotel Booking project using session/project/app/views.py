@@ -377,3 +377,4 @@ def admin_card_delete(request,pk):
     return render(request, 'book_room.html',{'msg':msg,'admindata': admindata,'data':all_card})
 
 
+def admin_card_edit(request,pk):

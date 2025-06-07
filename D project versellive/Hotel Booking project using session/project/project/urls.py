@@ -77,6 +77,8 @@ urlpatterns = [
     path('ad/book_room/', views.admin_book_room, name='admin_book_room'),
 
     path('ad/delete/<int:pk>',views.admin_card_delete,name='admin_card_delete'),
+    path('ad/edit/<int:pk>',views.admin_card_edit,name='admin_card_edit'),
+
 
 
     # admin dashboard code
