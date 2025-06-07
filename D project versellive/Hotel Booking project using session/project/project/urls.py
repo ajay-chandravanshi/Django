@@ -73,7 +73,10 @@ urlpatterns = [
     path('ad/contact/', views.admin_contact, name='admin_contact'),
     path('ad/gallery/', views.admin_gallery, name='admin_gallery'),
     path('ad/services/', views.admin_services, name='admin_services'),
+    path('ad/book_event/', views.admin_book_event, name='admin_book_event'),
+    path('ad/book_room/', views.admin_book_room, name='admin_book_room'),
 
+    path('ad/delete/<int:pk>',views.admin_card_delete,name='admin_card_delete'),
 
 
     # admin dashboard code
