@@ -102,7 +102,8 @@ def login(request):
         # User login code End here 
 
     return render(request, 'login.html')
-# userdata code
+
+# userdata code start here
     
 def home1(request,pk):
     userdata=Client.objects.get(id=pk)
@@ -137,6 +138,55 @@ def dashboard(request,pk):
     userdata=Client.objects.get(id=pk)
     return render(request,'dashboard.html',{'userdata':userdata,'dashboard': True})
 
+def showcard(request,pk):
+    userdata=Client.objects.get(id=pk)
+    cart = request.session.get('cart',[])
+    # print(cart)
+    all_data1 = []
+    total_amt=0
+    for i in cart:
+        item = Room.objects.get(id=i)
+        total_amt+=(item.room_price)
+        all_data1.append(item)
+    return render(request,'showcard.html',{'cart':all_data1,'total_amt':total_amt,'userdata':userdata})
+
+def addcard(request,cpk,pk):
+    userdata=Client.objects.get(id=pk)
+    # print(pk)
+    cart = request.session.get('cart',[])
+    # print(cart)
+    if cpk in cart:
+        msg = "Already added"
+        all_items = Room.objects.all()
+        msg="Card Already Added"
+        return render(request,'book_room.html',{'userdata':userdata,'data':all_items,'msg': msg, 'msg_type': 'email_error'})
+    else:
+        userdata=Client.objects.get(id=pk)
+        cart.append(cpk)
+        # print(cart)
+        msg = 'Added Successfully...'
+        request.session['cart']=cart
+        all_items = Room.objects.all()
+        return render(request,'book_room.html',{'data':all_items,'userdata':userdata,'msg':msg,'msg_type': 'success'})
+
+def delete(request,cpk,pk):
+    userdata=Client.objects.get(id=pk)
+    cart = request.session['cart']
+    print(cart)
+    if cpk in cart:
+        cart.remove(cpk)
+    # print(cart)
+    request.session['cart']=cart
+    all_data = []
+    total_amt=0
+    for i in cart:
+        item = Room.objects.get(id=i)
+        total_amt+=(item.room_price)
+        all_data.append(item)
+    msg="Deleted Successfully"
+    return render(request,'showcard.html',{'cart':all_data,'total_amt':total_amt,'userdata':userdata,'msg':msg,'msg_type': 'success'})
+
+# user query code start here 
 def query(request,pk):
     userdata=Client.objects.get(id=pk)
 
@@ -218,29 +268,28 @@ def search(request, pk):
         'querydetail': all_data, 
         'searchData': searchData
     })
+# user query code End here 
+# userdata  Code End Here 
 
-# admindata code 
+# admindata code Start Here
 
-def home2(request):
+def admin_home(request):
     admindata = {
         'id': request.session.get('admin_id'),
         'name': request.session.get('admin_name'),
         'email': request.session.get('admin_email')
     }
-    # id=request.session.get('admin_id')
-    # print(id,"***********************************************************************")
     return render(request, 'home.html', {'admindata': admindata})
 
-def about2(request):
+def admin_about(request):
     admindata = {
         'id': request.session.get('admin_id'),
         'name': request.session.get('admin_name'),
         'email': request.session.get('admin_email')
     }
-    print("ADMINDATA:", admindata)
     return render(request, 'about.html',{'admindata': admindata})
 
-def gallery2(request):
+def admin_gallery(request):
     admindata = {
         'id': request.session.get('admin_id'),
         'name': request.session.get('admin_name'),
@@ -248,7 +297,7 @@ def gallery2(request):
     }
     return render(request, 'gallery.html', {'admindata': admindata})
 
-def services2(request):
+def admin_services(request):
     admindata = {
         'id': request.session.get('admin_id'),
         'name': request.session.get('admin_name'),
@@ -256,7 +305,7 @@ def services2(request):
     }
     return render(request, 'services.html', {'admindata': admindata})
 
-def contact2(request):
+def admin_contact(request):
     admindata = {
         'id': request.session.get('admin_id'),
         'name': request.session.get('admin_name'),
@@ -264,7 +313,7 @@ def contact2(request):
     }
     return render(request, 'contact.html', {'admindata': admindata})
 
-def book_event2(request):
+def admin_book_event(request):
     admindata = {
         'id': request.session.get('admin_id'),
         'name': request.session.get('admin_name'),
@@ -272,27 +321,16 @@ def book_event2(request):
     }
     return render(request, 'book_event.html', {'admindata': admindata})
 
-def book_room2(request):
+def admin_book_room(request):
     admindata = {
         'id': request.session.get('admin_id'),
         'name': request.session.get('admin_name'),
         'email': request.session.get('admin_email')
     }
-    return render(request, 'book_room.html', {'admindata': admindata})
-
-
-
-# def admindash(request):
-    
-#     print(x,y,z)
-#     admindata={'id':x,'name':y,'email':z}
-#     all_card=Room.objects.all()
-#     return render(request,'admindash.html',{'data':all_card,'admindata':admindata})
-
+    all_card=Room.objects.all()
+    return render(request, 'book_room.html', {'admindata': admindata,'data':all_card})
 
 def admindash1(request):
-    
-
     if request.method == "GET":
         
         if 'admin_id' in request.session:
@@ -324,50 +362,6 @@ def admindash1(request):
 
 
 
-def showcard(request,pk):
-    userdata=Client.objects.get(id=pk)
-    cart = request.session.get('cart',[])
-    # print(cart)
-    all_data1 = []
-    total_amt=0
-    for i in cart:
-        item = Room.objects.get(id=i)
-        total_amt+=(item.room_price)
-        all_data1.append(item)
-    return render(request,'showcard.html',{'cart':all_data1,'total_amt':total_amt,'userdata':userdata})
 
-def addcard(request,cpk,pk):
-    userdata=Client.objects.get(id=pk)
-    # print(pk)
-    cart = request.session.get('cart',[])
-    # print(cart)
-    if cpk in cart:
-        msg = "Already added"
-        all_items = Room.objects.all()
-        msg="Card Already Added"
-        return render(request,'book_room.html',{'userdata':userdata,'data':all_items,'msg': msg, 'msg_type': 'email_error'})
-    else:
-        userdata=Client.objects.get(id=pk)
-        cart.append(cpk)
-        # print(cart)
-        msg = 'Added Successfully...'
-        request.session['cart']=cart
-        all_items = Room.objects.all()
-        return render(request,'book_room.html',{'data':all_items,'userdata':userdata,'msg':msg,'msg_type': 'success'})
 
-def delete(request,cpk,pk):
-    userdata=Client.objects.get(id=pk)
-    cart = request.session['cart']
-    print(cart)
-    if cpk in cart:
-        cart.remove(cpk)
-    # print(cart)
-    request.session['cart']=cart
-    all_data = []
-    total_amt=0
-    for i in cart:
-        item = Room.objects.get(id=i)
-        total_amt+=(item.room_price)
-        all_data.append(item)
-    msg="Deleted Successfully"
-    return render(request,'showcard.html',{'cart':all_data,'total_amt':total_amt,'userdata':userdata,'msg':msg,'msg_type': 'success'})
+

@@ -126,6 +126,12 @@ Book_room
 
             <button id="addcart"><a href="{% url 'addcard' cpk=i.id pk=userdata.id %}" class="anchstyle">ADD TO CART</a></button>
             
+            {% elif admindata %}
+            <button><a href="{% url 'admin_book_room' %}" class="anchstyle">Edit</a></button>
+
+            <button id="addcart"><a href="{% url 'admin_card_delete' pk=i.id %}" class="anchstyle">Delete</a></button>
+
+
             {% else %}
             <button><a href="{% url 'login' %}" class="anchstyle">BOOK NOW</a></button>
             <button id="addcart"><a href="{% url 'login' %}" class="anchstyle">ADD TO CART</a></button>
