@@ -364,4 +364,16 @@ def admindash1(request):
 
 
 
+def admin_card_delete(request,pk):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+    all_card=Room.objects.all()
+    deledata=Room.objects.get(id=pk)
+    deledata.delete()
+    msg="Card Deleted Successfully"
+    return render(request, 'book_room.html',{'msg':msg,'admindata': admindata,'data':all_card})
+
 
