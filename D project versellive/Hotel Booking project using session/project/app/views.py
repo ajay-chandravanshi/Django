@@ -387,11 +387,11 @@ def admin_card_edit(request,pk):
     # carddata=Room.objects.get(room_name=rname)
     return render(request, 'admindash.html',{'admindata': admindata,'editdata':editdata,'carddata':rname})
 
-def edit(request,pk):
-    editdata=Query.objects.get(id=pk)
-    email=editdata.stu_email
-    userdata=Client.objects.get(clt_email=email)
-    return render(request,'dashboard.html',{'userdata':userdata,'editdata':editdata})
+# def edit(request,pk):
+#     editdata=Query.objects.get(id=pk)
+#     email=editdata.stu_email
+#     userdata=Client.objects.get(clt_email=email)
+#     return render(request,'dashboard.html',{'userdata':userdata,'editdata':editdata})
 
 def admin_card_update(request,pk):
     admindata = {
@@ -422,16 +422,16 @@ def admin_card_update(request,pk):
         return render(request, 'book_room.html',{'carddetail':carddetail,'carddata':carddata,'admindata':admindata,'data':all_card}) 
 
 
-# def queryupdate(request,pk):
-#     if request.method=='POST':
-#         name=request.POST.get('name')
-#         email=request.POST.get('email')
-#         query=request.POST.get('query')
-#         old_query=Query.objects.get(id=pk)
-#         old_query.stu_name=name
-#         old_query.stu_email=email
-#         old_query.stu_query=query
-#         old_query.save()
-#         querydetail=Query.objects.filter(stu_email=email)
-#         userdata=Client.objects.get(clt_email=email)
-#         return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})    
+def queryupdate(request,pk):
+    if request.method=='POST':
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        query=request.POST.get('query')
+        old_query=Query.objects.get(id=pk)
+        old_query.stu_name=name
+        old_query.stu_email=email
+        old_query.stu_query=query
+        old_query.save()
+        querydetail=Query.objects.filter(stu_email=email)
+        userdata=Client.objects.get(clt_email=email)
+        return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})    
