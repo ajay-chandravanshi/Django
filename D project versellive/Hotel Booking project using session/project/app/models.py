@@ -26,3 +26,4 @@ class Room(models.Model):
     room_name=models.CharField(max_length=30)
     room_price=models.IntegerField()
     room_info=models.CharField(max_length=20)
+

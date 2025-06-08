@@ -322,6 +322,7 @@ def admin_book_event(request):
     return render(request, 'book_event.html', {'admindata': admindata})
 
 def admin_book_room(request):
+    admin_id = request.session.get('admin_id')
     admindata = {
         'id': request.session.get('admin_id'),
         'name': request.session.get('admin_name'),
@@ -361,9 +362,6 @@ def admindash1(request):
         return render(request, 'login.html')
 
 
-
-
-
 def admin_card_delete(request,pk):
     admindata = {
         'id': request.session.get('admin_id'),
@@ -378,3 +376,62 @@ def admin_card_delete(request,pk):
 
 
 def admin_card_edit(request,pk):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+    
+    editdata=Room.objects.get(id=pk)
+    rname=editdata.room_name
+    # carddata=Room.objects.get(room_name=rname)
+    return render(request, 'admindash.html',{'admindata': admindata,'editdata':editdata,'carddata':rname})
+
+# def edit(request,pk):
+#     editdata=Query.objects.get(id=pk)
+#     email=editdata.stu_email
+#     userdata=Client.objects.get(clt_email=email)
+#     return render(request,'dashboard.html',{'userdata':userdata,'editdata':editdata})
+
+def admin_card_update(request,pk):
+    admindata = {
+        'id': request.session.get('admin_id'),
+        'name': request.session.get('admin_name'),
+        'email': request.session.get('admin_email')
+    }
+
+    if request.method=='POST':
+        rimage = request.FILES.get('room-image')
+        rname = request.POST.get('room_name')
+        rprice = request.POST.get('room_price')
+        rinfo = request.POST.get('room_info')
+
+        old_data=Room.objects.get(id=pk)
+
+        if rimage:
+            old_data.room_image = rimage
+
+        old_data.room_name=rname
+        old_data.room_price=rprice
+        old_data.room_info=rinfo
+        old_data.save()
+        all_card=Room.objects.all()
+        carddetail=Room.objects.filter(room_name=rname)
+        carddata = Room.objects.get(id=pk)
+
+        return render(request, 'book_room.html',{'carddetail':carddetail,'carddata':carddata,'admindata':admindata,'data':all_card}) 
+
+
+# def queryupdate(request,pk):
+#     if request.method=='POST':
+#         name=request.POST.get('name')
+#         email=request.POST.get('email')
+#         query=request.POST.get('query')
+#         old_query=Query.objects.get(id=pk)
+#         old_query.stu_name=name
+#         old_query.stu_email=email
+#         old_query.stu_query=query
+#         old_query.save()
+#         querydetail=Query.objects.filter(stu_email=email)
+#         userdata=Client.objects.get(clt_email=email)
+#         return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})    

@@ -127,7 +127,8 @@ Book_room
             <button id="addcart"><a href="{% url 'addcard' cpk=i.id pk=userdata.id %}" class="anchstyle">ADD TO CART</a></button>
             
             {% elif admindata %}
-            <button><a href="{% url 'admin_book_room' %}" class="anchstyle">Edit</a></button>
+            <button><a href="{% url 'admin_card_edit' pk=i.id %}" class="anchstyle">Edit</a></button>
+
 
             <button id="addcart"><a href="{% url 'admin_card_delete' pk=i.id %}" class="anchstyle">Delete</a></button>
 
@@ -141,6 +142,23 @@ Book_room
         </div>
 
       {% endfor %}
+  {% elif carddetail %}
+      {% for i in carddetail %}
+        <div class="card alt">
+          <div class="image">
+            <img src="{{ i.room_image.url }}" class="user-avatar" alt="User">
+          </div>
+          <div class="text">
+            <h2>{{i.room_name}}</h2>
+            <div class="price-row">
+              <div class="price-green">{{i.room_price}}$</div>
+              <div class="per-day">/ Night</div>
+            </div>
+
+            <div class="room-info">
+              {{i.room_info}}
+            </div>
+        {% endfor %}    
   {% endif %}
 
   {% comment %} <div class="card">
