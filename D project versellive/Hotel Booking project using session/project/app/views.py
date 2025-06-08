@@ -387,11 +387,11 @@ def admin_card_edit(request,pk):
     # carddata=Room.objects.get(room_name=rname)
     return render(request, 'admindash.html',{'admindata': admindata,'editdata':editdata,'carddata':rname})
 
-# def edit(request,pk):
-#     editdata=Query.objects.get(id=pk)
-#     email=editdata.stu_email
-#     userdata=Client.objects.get(clt_email=email)
-#     return render(request,'dashboard.html',{'userdata':userdata,'editdata':editdata})
+def edit(request,pk):
+    editdata=Query.objects.get(id=pk)
+    email=editdata.stu_email
+    userdata=Client.objects.get(clt_email=email)
+    return render(request,'dashboard.html',{'userdata':userdata,'editdata':editdata})
 
 def admin_card_update(request,pk):
     admindata = {
