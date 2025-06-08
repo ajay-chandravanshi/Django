@@ -76,7 +76,9 @@ urlpatterns = [
     path('ad/book_event/', views.admin_book_event, name='admin_book_event'),
     path('ad/book_room/', views.admin_book_room, name='admin_book_room'),
 
-    
+    path('ad/delete/<int:pk>',views.admin_card_delete,name='admin_card_delete'),
+    path('ad/edit/<int:pk>',views.admin_card_edit,name='admin_card_edit'),
+    path('ad/update/<int:pk>',views.admin_card_update,name='admin_card_update'),
 
 
 
