@@ -117,10 +117,14 @@ Book_room
               <div class="price-green">{{i.room_price}}$</div>
               <div class="per-day">/ Night</div>
             </div>
-
             <div class="room-info">
-              {{i.room_info}}
+              <div><strong>Size:</strong> <span>{{i.room_size}} ft</span></div>
+              <div><strong>Capacity:</strong> <span>Max person {{i.room_capacity}}</span></div>
+              <div><strong>Bed:</strong> <span>{{i.room_bed}}</span></div>
+              <div><strong>Services:</strong> <span>{{i.room_services}}</span></div>
             </div>
+
+
             {% if userdata %}
             <button><a href="{% url 'showcard' pk=userdata.id %}" class="anchstyle">BOOK NOW</a></button>
 

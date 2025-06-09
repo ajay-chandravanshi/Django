@@ -25,5 +25,7 @@ class Room(models.Model):
     room_image=models.ImageField(upload_to='image/')
     room_name=models.CharField(max_length=30)
     room_price=models.IntegerField()
-    room_info=models.CharField(max_length=20)
-
+    room_size=models.IntegerField()
+    room_capacity=models.IntegerField()
+    room_bed=models.CharField(max_length=25)
+    room_services=models.CharField(max_length=30)
