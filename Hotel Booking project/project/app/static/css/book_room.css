@@ -14,6 +14,85 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* alert message Code Css Start Here */
+
+.toast {
+  position: fixed;
+  top: 80px;
+  left: 37%;
+  transform: translateX(-50%) translateY(-30px);
+  background: #333;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0px 6px 12px rgba(0,0,0,0.2);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 1s ease;
+  z-index: 9999;
+  min-width: 280px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.toast-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast.success {
+  background: linear-gradient(135deg, #00c851, #007e33);
+}
+
+.toast.email_error {
+  background-color: #e53935; /* Deep Red for email already exists */
+  color: white;
+}
+
+.toast.password_mismatch {
+  background-color: #ff7043; /* Light Red-Orange for password mismatch */
+  color: white;
+}
+
+.toast i {
+  font-size: 22px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  transform-origin: left;
+  animation: progress 3s linear forwards;
+  border-radius: 0px 0px 8px 8px;
+}
+
+@keyframes progress {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
 /* section First  */
 .hero-section {
     background-image: url('/static/image/rooms/rooms.jpg');
@@ -249,12 +328,30 @@
 }
 
 .card .text button {
-  padding: 10px 20px;
+  /* padding: 10px 20px;
   border: 1px solid #000;
   background: rgb(20, 20, 20);
   color: white;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.3s ease; */
+    padding: 14px 8px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
+    width: 45%;
+    border: none;
+    cursor: pointer;
+    /* float: left; */
+    background: #ff9f00;
+    color: #fff;
+    transition: 0.3s ease; 
+}
+#addcart{
+  background: #fb641b; 
+
+}
+.anchstyle{
+  text-decoration: none;
+  color: white;
 }
 
 .card .image {
@@ -286,7 +383,7 @@
 
 /* 🔥 Hover Effect */
 .card:hover .image::after {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .card:hover .text {
@@ -305,6 +402,16 @@
   background: #310add;
   color: white;
   border: 1px solid white;
+}
+.card:hover #addcart  {
+  background: #310add;
+  color: white;
+  border: 1px solid white;
+}
+.card:hover .anchstyle  {
+  background:none;
+  color: white;
+  border:none;
 }
 
 /* ✅ Additions based on new layout */

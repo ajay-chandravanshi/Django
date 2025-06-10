@@ -56,7 +56,7 @@ urlpatterns = [
     path('addcard/<int:cpk>/<int:pk>',views.addcard,name='addcard'),
     path('showcard/', views.showcard, name='showcard'),
     path('showcard/<int:pk>', views.showcard, name='showcard'),
-    path('delete/<int:pk>/<int:cpk>',views.delete,name='delete'),
+    path('delete/<int:pk>/<int:cpk>/',views.addcarddelete,name='addcarddelete'),
     
     # for query code start for user use
     path('query/<int:pk>',views.query,name='query'),

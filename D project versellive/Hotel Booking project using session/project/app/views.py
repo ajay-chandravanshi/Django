@@ -169,7 +169,7 @@ def addcard(request,cpk,pk):
         all_items = Room.objects.all()
         return render(request,'book_room.html',{'data':all_items,'userdata':userdata,'msg':msg,'msg_type': 'success'})
 
-def delete(request,cpk,pk):
+def addcarddelete(request,cpk,pk):
     userdata=Client.objects.get(id=pk)
     cart = request.session['cart']
     print(cart)
@@ -424,18 +424,3 @@ def admin_card_update(request,pk):
         carddata = Room.objects.get(id=pk)
 
         return render(request, 'book_room.html',{'carddetail':carddetail,'carddata':carddata,'admindata':admindata,'data':all_card}) 
-
-
-# def queryupdate(request,pk):
-#     if request.method=='POST':
-#         name=request.POST.get('name')
-#         email=request.POST.get('email')
-#         query=request.POST.get('query')
-#         old_query=Query.objects.get(id=pk)
-#         old_query.stu_name=name
-#         old_query.stu_email=email
-#         old_query.stu_query=query
-#         old_query.save()
-#         querydetail=Query.objects.filter(stu_email=email)
-#         userdata=Client.objects.get(clt_email=email)
-#         return render(request,'dashboard.html',{'userdata':userdata,'querydetail':querydetail})    
