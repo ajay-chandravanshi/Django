@@ -8,7 +8,7 @@ class StudentViewSets(viewsets.ModelViewSet):
     A simple ViewSet for viewing and editing accounts.
     """
 
-    permission_classes = [IsAuthenticated] 
+    # permission_classes = [IsAuthenticated] 
     # permission_classes = [AllowAny] 
     # permission_classes = [IsAdminUser] 
     permission_classes = [IsAuthenticatedOrReadOnly] 
