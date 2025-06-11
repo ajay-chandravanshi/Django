@@ -144,11 +144,22 @@ def showcard(request,pk):
     # print(cart)
     all_data1 = []
     total_amt=0
+    final_amt=0
     for i in cart:
         item = Room.objects.get(id=i)
+        
+        room_charges=300
+        discount=100
+        taxes=100
+        nights=2
         total_amt+=(item.room_price)
+        final_amt+=int((item.room_price + total_amt/18 - discount))
+        print(final_amt,'*****************************')
+        
         all_data1.append(item)
-    return render(request,'showcard.html',{'cart':all_data1,'total_amt':total_amt,'userdata':userdata})
+
+
+    return render(request,'showcard.html',{'cart':all_data1,'total_amt':total_amt,'final_amt':final_amt,'userdata':userdata,'room_charges':room_charges,'discount':discount,'taxes':taxes})
 
 def addcard(request,cpk,pk):
     userdata=Client.objects.get(id=pk)

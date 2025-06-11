@@ -442,6 +442,10 @@ body {
   color: #2ecc71;
 }
 
+.cart-summary p strong {
+  float: right;
+}
+
 .total-payable {
   font-size: 18px;
   font-weight: bold;

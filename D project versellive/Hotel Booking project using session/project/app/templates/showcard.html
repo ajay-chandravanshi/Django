@@ -68,13 +68,13 @@ Home
   <h2>Price Details</h2>
 
   <div class="room-details">
-    <p>Room Charges ({{ nights }} nights): <strong>{{ room_charges }} Rs</strong></p>
+    <p>Total Rooms price: <strong>{{ total_amt }} Rs</strong></p>
     {% if discount > 0 %}
       <p>Discount: <strong class="green">-{{ discount }} Rs</strong></p>
     {% endif %}
     <p>Taxes & Fees: <strong>{{ taxes }} Rs</strong></p>
     <hr />
-    <p class="total-payable">Total Payable: <strong>{{ total_amt }} Rs</strong></p>
+    <p class="total-payable">Total Payable: <strong>{{ final_amt }} Rs</strong></p>
   </div>
 
   <a href="#" class="buy-btn">Buy Now</a>
