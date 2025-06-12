@@ -145,21 +145,25 @@ def showcard(request,pk):
     all_data1 = []
     total_amt=0
     final_amt=0
+    discount=0
     for i in cart:
         item = Room.objects.get(id=i)
-        
-        room_charges=300
-        discount=100
-        taxes=100
+        taxes=400
         nights=2
         total_amt+=(item.room_price)
-        final_amt+=int((item.room_price + total_amt/18 - discount))
-        print(final_amt,'*****************************')
-        
         all_data1.append(item)
 
+    discount=0
+    if total_amt >=2200:
+        discount= int(total_amt *5 / 100)
 
-    return render(request,'showcard.html',{'cart':all_data1,'total_amt':total_amt,'final_amt':final_amt,'userdata':userdata,'room_charges':room_charges,'discount':discount,'taxes':taxes})
+    taxes=int(total_amt * 18 / 100) 
+    
+    
+    final_amt=int(((total_amt+taxes)-discount))
+    
+
+    return render(request,'showcard.html',{'cart':all_data1,'total_amt':total_amt,'final_amt':final_amt,'userdata':userdata,'discount':discount,'taxes':taxes})
 
 def addcard(request,cpk,pk):
     userdata=Client.objects.get(id=pk)
@@ -190,12 +194,27 @@ def addcarddelete(request,cpk,pk):
     request.session['cart']=cart
     all_data = []
     total_amt=0
+    final_amt=0
+    discount=0
     for i in cart:
         item = Room.objects.get(id=i)
         total_amt+=(item.room_price)
         all_data.append(item)
+
+    discount=0
+    if total_amt >=2200:
+        discount= int(total_amt * 5 / 100)
+
+    taxes=int(total_amt * 18 / 100) 
+    
+    
+    final_amt=int(((total_amt+taxes)-discount))
+
     msg="Deleted Successfully"
-    return render(request,'showcard.html',{'cart':all_data,'total_amt':total_amt,'userdata':userdata,'msg':msg,'msg_type': 'success'})
+    return render(request,'showcard.html',{'cart':all_data,'total_amt':total_amt,'userdata':userdata,'final_amt':final_amt,'discount':discount,'taxes':taxes,'msg':msg,'msg_type': 'success'})
+
+    
+
 
 # user query code start here 
 def query(request,pk):

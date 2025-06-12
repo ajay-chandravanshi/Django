@@ -58,11 +58,35 @@ Home
   </div>
 
   <!-- Cart Summary -->
-  <div class="cart-summary">
+  {% comment %} <div class="cart-summary">
     <h2>Price Details</h2>
     <p>Total Amount: <strong>{{ total_amt }} Rs</strong></p>
     <a href="#" class="buy-btn">Buy Now</a>
+  </div> {% endcomment %}
+
+  <div class="cart-summary">
+  <h2>Price Details</h2>
+
+  <div class="room-details">
+    <p>Total Rooms price: <strong>{{ total_amt }} Rs</strong></p>
+    {% if discount > 0 %}
+      <p>Discount: <strong class="green">-{{ discount }} Rs</strong></p>
+    
+    {% elif discount < 2200 %}
+
+      <p>Discount: <strong class="green">-{{ discount }} Rs</strong></p>
+
+    {% endif %}
+    
+    <p>Taxes & Fees: <strong>{{ taxes }} Rs</strong></p>
+    <p><strong style="color: #888; font-size: 15px;">Book for ₹2200+ to get 5% off</strong></p>
+    <hr />
+    <p class="total-payable">Total Payable: <strong>{{ final_amt }} Rs</strong></p>
   </div>
+
+  <a href="#" class="buy-btn">Buy Now</a>
+</div>
+
 
 </div>
 
