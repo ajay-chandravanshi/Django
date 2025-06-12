@@ -1,6 +1,7 @@
 from .models import Student
 from .serializers import StudentSerializer
-from rest_framework.permissions import IsAuthenticated , AllowAny , IsAdminUser , 
+from rest_framework.permissions import IsAuthenticated , AllowAny , IsAdminUser , IsAuthenticatedOrReadOnly
+from rest_framework import viewsets
 
 class StudentViewSets(viewsets.ModelViewSet):
     """
