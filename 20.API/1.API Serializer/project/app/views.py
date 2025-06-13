@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Student
-
 from .serializers import StudentSerializer
 # Create your views here.
 
