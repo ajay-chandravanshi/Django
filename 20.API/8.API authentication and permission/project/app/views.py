@@ -9,13 +9,9 @@ class StudentViewSets(viewsets.ModelViewSet):
     """
 
     permission_classes = [IsAuthenticated] 
-    # permission_classes = [AllowAny] 
-    # permission_classes = [IsAdminUser] 
+    permission_classes = [AllowAny] 
+    permission_classes = [IsAdminUser] 
     permission_classes = [IsAuthenticatedOrReadOnly] 
     queryset = Student.objects.all()
-    serializer_class = StudentSerializer  
-    serializer_class = StudentSerializer  
-    serializer_class = StudentSerializer  
-    serializer_class = StudentSerializer  
     serializer_class = StudentSerializer  
         
