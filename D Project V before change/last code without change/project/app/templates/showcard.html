@@ -1,0 +1,142 @@
+{% extends "common.html" %}
+{% load static %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/showcard.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
+
+<div class="cart-container">
+
+  <!-- Cart Items -->
+  <div class="cart-items">
+    {% if cart %}
+      {% for i in cart %}
+        <div class="cart-item">
+          <img src="{{ i.room_image.url }}" alt="{{ i.room_name }}">
+          <div class="item-info">
+            <h3>{{ i.room_name }}</h3>
+            <p>{{ i.room_info }}</p>
+            <p class="price">{{ i.room_price }} Rs / Night</p>
+
+            <!-- ✅ Extra Room Details -->
+            <div class="room-details">
+              <p><strong>Size:</strong> {{ i.room_size }}</p>
+              <p><strong>Capacity:</strong> Max person {{ i.room_capacity }}</p>
+              <p><strong>Bed:</strong> {{ i.room_bed }}</p>
+              <p><strong>Services:</strong> {{ i.room_services }}</p>
+            </div>
+
+            {% if userdata %}
+            <div class="actions">
+              <a href="{% url 'showcard' pk=userdata.id %}" class="btn">BOOK NOW</a>
+              <a href="{% url 'addcarddelete' cpk=i.id pk=userdata.id %}" class="btn delete">Delete</a>
+            </div>
+            {% endif %}
+          </div>
+          <div >hello ji sir ji</div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- Cart Summary -->
+  {% comment %} <div class="cart-summary">
+    <h2>Price Details</h2>
+    <p>Total Amount: <strong>{{ total_amt }} Rs</strong></p>
+    <a href="#" class="buy-btn">Buy Now</a>
+  </div> {% endcomment %}
+
+  <div class="cart-summary">
+  <h2>Price Details</h2>
+
+  <div class="room-details">
+    <p>Total Rooms price: <strong>{{ total_amt }} Rs</strong></p>
+    {% if discount > 0 %}
+      <p>Discount: <strong class="green">-{{ discount }} Rs</strong></p>
+    
+    {% elif discount < 2200 %}
+
+      <p>Discount: <strong class="green">-{{ discount }} Rs</strong></p>
+
+    {% endif %}
+    
+    <p>Taxes & Fees: <strong>{{ taxes }} Rs</strong></p>
+    <p><strong style="color: #888; font-size: 15px;">Book for ₹2200+ to get 5% off</strong></p>
+    <hr />
+    <p class="total-payable">Total Payable: <strong>{{ final_amt }} Rs</strong></p>
+  </div>
+
+  <a href="#" class="buy-btn">Buy Now</a>
+</div>
+
+
+</div>
+
+<script>
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const triggerPoint = window.innerHeight * 0.9;
+
+    if (window.scrollY >= triggerPoint) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  document.querySelectorAll('.fade-in-up').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+{% if msg %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+</script>
+{% endif %}
+{% endblock %}

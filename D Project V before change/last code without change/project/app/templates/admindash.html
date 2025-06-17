@@ -1,0 +1,173 @@
+{% extends "common.html" %}
+{% load static %}
+
+{% block title %}
+Admindash
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
+
+
+{% block content %}
+{% if editdata %}
+    <!-- ❗ Edit form dikhao jab editdata mile -->
+    <div class="dashboard-form-container dashboard">
+        <h2 class="form-heading">Edit Card Details</h2>
+        <form action="{% url 'admin_card_update' pk=editdata.id %}" method="post" enctype="multipart/form-data"   class="dashboard-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Room Image</label>
+                <input type="file" name="room-image" accept=".jpeg, .png, .jpg, .webp">
+            </div>
+            <div class="form-group">
+                <label for="room_name">Room Name</label>
+                <input type="text" name="room_name" value="{{editdata.room_name}}" placeholder="Enter room name">
+            </div>
+            <div class="form-group">
+                <label for="room_price">Room Price</label>
+                <input type="text" name="room_price" value="{{editdata.room_price}}" placeholder="Enter price">
+            </div>
+            <div class="form-group">
+                <label for="room_info">Room Info</label>
+                <input type="text" name="room_info" value="{{editdata.room_info}}" placeholder="Enter description">
+            </div>
+            <div class="form-group submit-btn">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+{% else %}
+    <!-- ✅ Add form dikhao jab editdata NA ho -->
+    {% if admindata %}
+    <div class="dashboard-form-container dashboard">
+        <h2 class="form-heading">Add New Card Details</h2>
+        <form action="{% url 'admindash1' %}" method="post" enctype="multipart/form-data" class="dashboard-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Room Image</label>
+                <input type="file" name="room-image" accept=".jpeg, .png, .jpg, .webp" required="True">
+            </div>
+            <div class="form-group">
+                <label for="room_name">Room Name</label>
+                <input type="text" name="room_name" placeholder="Enter room name" pattern="[A-Za-z ]+" title="Only letters and spaces allowed" >
+            </div>
+            <div class="form-group">
+                <label for="room_price">Room Price</label>
+                <input type="number" name="room_price" max="20000" placeholder="Enter price">
+            </div>
+            <div class="form-group custom-select" >
+                <label for="room_size">Room Size</label>
+                <select name="room_size" required class="form-control">
+                    <option value="">Select size</option>
+                    <option value="25">25 ft</option>
+                    <option value="28">28 ft</option>
+                    <option value="30">30 ft</option>
+                    <option value="32">32 ft</option>
+                    <option value="35">35 ft</option>
+                    <option value="38">38 ft</option>
+                    <option value="40">40 ft</option>
+                    <option value="45">45 ft</option>
+                    <option value="50">50 ft</option>
+                    <option value="55">55 ft</option>
+                    <option value="60">60 ft</option>
+                    <option value="65">65 ft</option>
+                    <option value="68">68 ft</option>
+                    <option value="70">70 ft</option>
+                </select>
+            </div>
+
+            <div class="form-group custom-select">
+                <label for="room_capacity">Capacity</label>
+                <select name="room_capacity" required class="form-control">
+                    <option value="">Select capacity</option>
+                    <option value="1">Max person 1</option>
+                    <option value="2">Max person 2</option>
+                    <option value="3">Max person 3</option>
+                    <option value="4">Max person 4</option>
+                    <option value="5">Max person 5</option>
+                    <option value="6">Max person 6</option>
+                </select>
+            </div>
+
+            <div class="form-group custom-select">
+                <label for="room_bed">Bed</label>
+                <select name="room_bed" required class="form-control">
+                    <option value="">Select bed type</option>
+                    <option value="Single bed">Single bed</option>
+                    <option value="Double beds">Double beds</option>
+                    <option value="Queen beds">Queen beds</option>
+                    <option value="King beds">King beds</option>
+                </select>
+            </div>
+
+            <div class="form-group custom-select">
+                <label for="room_services">Services</label>
+                <select name="room_services" required class="form-control">
+                    <option value="">Select services</option>
+                    <option value="Wifi, AC">Wifi, AC</option>
+                    <option value="Wifi, television">Wifi, television</option>
+                    <option value="TV, minibar">TV, minibar</option>
+                    <option value="Wifi only">Wifi only</option>
+                    <option value="Wifi, minibar">Wifi, minibar</option>
+                    <option value="AC only">AC only</option>
+                    <option value="AC, minibar">AC, minibar</option>
+                    <option value="AC, TV">AC, TV</option>
+                </select>
+            </div>
+
+            <div class="form-group submit-btn">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+    {% endif %}
+{% endif %}
+
+
+{% if msg %}
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+ 
+
+</script>
+{% endif %}
+
+
+{% endblock %}

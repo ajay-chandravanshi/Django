@@ -1,0 +1,212 @@
+{% extends "common.html" %}
+{% load static %}
+{% block title %}
+Services
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<!-- section first  -->
+ <section class="services-hero">
+  <div class="overlay"></div>
+  <div class="content">
+    <span>SERVICES</span>
+    <h1>Facilities & Services</h1>
+  </div>
+</section>
+
+<!-- section second  -->
+
+<section class="service-intro">
+  <div class="container">
+    <p class="welcome-text">WELCOME TO ROOM ROOT HOTEL</p>
+    <h2 class="main-heading">You'll Never Want To Leave</h2>
+    <div class="service-cards">
+      <div class="card">
+        <div class="icon">
+          <!-- Bell Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#00c58e" viewBox="0 0 24 24">
+            <path d="M12 2C10.346 2 9 3.346 9 5v1.528A6.996 6.996 0 0 0 6 13v2l-2 2v1h16v-1l-2-2v-2a6.996 6.996 0 0 0-3-5.472V5c0-1.654-1.346-3-3-3zM12 22a2.998 2.998 0 0 0 2.816-2H9.184A2.998 2.998 0 0 0 12 22z"/>
+          </svg>
+        </div>
+        <p>Friendly Service</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">
+          <!-- Cloche Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#00c58e" viewBox="0 0 24 24">
+            <path d="M12 4a7 7 0 0 0-7 7H3l1 2h16l1-2h-2a7 7 0 0 0-7-7zm0 14a5.978 5.978 0 0 1-4.472-2h8.944A5.978 5.978 0 0 1 12 18z"/>
+          </svg>
+        </div>
+        <p>Get Breakfast</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">
+          <!-- Car Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#00c58e" viewBox="0 0 24 24">
+            <path d="M5 11h14l-1.5-4.5h-11L5 11zm16 0a1 1 0 0 1 1 1v6h-2v-2H4v2H2v-6a1 1 0 0 1 1-1h18zM7 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+          </svg>
+        </div>
+        <p>Transfer Services</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">
+          <!-- Spa Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#00c58e" viewBox="0 0 24 24">
+            <path d="M12 3a5 5 0 0 1 5 5c0 4-5 8-5 8s-5-4-5-8a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3c0 2.5 3 5.5 3 5.5S15 10.5 15 8a3 3 0 0 0-3-3z"/>
+          </svg>
+        </div>
+        <p>Suits & SPA</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">
+          <!-- Bed Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#00c58e" viewBox="0 0 24 24">
+            <path d="M20 10V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2H2v10h2v-2h16v2h2V10h-2zm-2 0H6V8h12v2z"/>
+          </svg>
+        </div>
+        <p>Cozy Rooms</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- section third  -->
+
+<section class="services-two">
+  <div class="container">
+    <p class="section-subtitle">WHAT WE DO</p>
+    <h2 class="section-title">Discover Our Services</h2>
+
+    <div class="service-grid">
+      <div class="service-box">
+        <div class="icon">🚍</div>
+        <h3>Travel Plan</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+
+      <div class="service-box">
+        <div class="icon">🍽️</div>
+        <h3>Catering Service</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+
+      <div class="service-box">
+        <div class="icon">🛏️</div>
+        <h3>Babysitting</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+
+      <div class="service-box">
+        <div class="icon">🧺</div>
+        <h3>Laundry</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+
+      <div class="service-box">
+        <div class="icon">🧍‍♂️</div>
+        <h3>Hire Driver</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+
+      <div class="service-box">
+        <div class="icon">🍸</div>
+        <h3>Bar & Drink</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- section Fourth  -->
+
+<section class="menu-section">
+  <div class="small-heading">RESTAURANT</div>
+  <h2 class="main-heading">Restaurant</h2>
+
+  <div class="menu-grid">
+    <div class="menu-card">
+      <img src="/static/image/menu-1.jpg" alt="menu 1">
+      <div class="menu-info">
+        <h3>Delightful Pastry Haven <span>$22.00</span></h3>
+        <p>A small river named Duden flows by their place and supplies</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="/static/image/menu-2.jpg" alt="menu 2">
+      <div class="menu-info">
+        <h3>Fruity Choco Delight" <span>$14.00</span></h3>
+        <p>A small river named Duden flows by their place and supplies</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="/static/image/menu-3.jpg" alt="menu 3">
+      <div class="menu-info">
+        <h3>Grilled Crab with Onion <span>$20.00</span></h3>
+        <p>A small river named Duden flows by their place and supplies</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="/static/image/menu-4.jpg" alt="menu 4">
+      <div class="menu-info">
+        <h3>Bharat Bhojan Thali <span>$11.00</span></h3>
+        <p>A small river named Duden flows by their place and supplies</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="/static/image/menu-5.jpg" alt="menu 5">
+      <div class="menu-info">
+        <h3>Platter of Pleasures <span>$25.00</span></h3>
+        <p>A small river named Duden flows by their place and supplies</p>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <img src="/static/image/menu-6.jpg" alt="menu 6">
+      <div class="menu-info">
+        <h3>Choco Delight Cake <span>$10.00</span></h3>
+        <p>A small river named Duden flows by their place and supplies</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const triggerPoint = window.innerHeight * 0.9;
+
+    if (window.scrollY >= triggerPoint) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+    });
+
+</script>
+{% endblock  %}

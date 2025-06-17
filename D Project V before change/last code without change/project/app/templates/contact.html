@@ -1,0 +1,104 @@
+{% extends "common.html" %}
+{% load static %}
+{% block title %}
+Services
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+{% if msg %}
+<div id="toast" class="toast {{ msg_type }}">
+  <div class="toast-content">
+    {% if msg_type == 'success' %}
+      <i class="fas fa-check-circle"></i>
+    {% endif %}
+    <span>{{ msg }}</span>
+    <button id="close-toast" class="close-btn">&times;</button>
+  </div>
+  <div class="progress-bar"></div>
+</div>
+{% endif %}
+
+<!-- First Section  -->
+<section class="contact-hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <p class="mini-heading">CONTACT US</p>
+    <h1 class="main-heading">Get In Touch</h1>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-content">
+    <h2 class="form-heading">Contact Us</h2>
+    <p>We’d love to hear from you. Fill out the form below.</p>
+    <form class="contact-form" action="{% url 'contact' %}" method="post">
+  {% csrf_token %}
+  
+  <div class="form-group">
+    <input type="text" name="name" placeholder="Your Name" required />
+  </div>
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Your Email" required />
+  </div>
+  <div class="form-group">
+    <input type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" placeholder="Your Phone Number" required />
+  </div>
+  <div class="form-group">
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+  </div>
+  <button type="submit" class="submit-btn">Send Message</button>
+</form>
+
+  </div>
+</section>
+
+
+{% if msg %}
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toast = document.getElementById("toast");
+    var closeBtn = document.getElementById("close-toast");
+
+    if (toast) {
+        toast.classList.add("show");
+
+        // Auto hide after 3 sec
+        var hideTimeout = setTimeout(function() {
+            toast.classList.remove("show");
+        }, 3000);
+
+        // Manual close
+        closeBtn.addEventListener("click", function() {
+            toast.classList.remove("show");
+            clearTimeout(hideTimeout);
+        });
+    }
+});
+ 
+
+</script>
+{% endif %}
+<script>
+    window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+    const triggerPoint = window.innerHeight * 0.9;
+
+    if (window.scrollY >= triggerPoint) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+    });
+
+</script>
+{% endblock  %}

@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.admin-nav {
+  background-color: #36d900;
+}
+
+.admin-navcolor {
+  background-color: #28a745; /* Updated for softer tone */
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.admin-navcolor .btn {
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 6px 16px;
+  margin-left: 10px;
+}
+.admin-navcolor .btn-outline-light {
+  color: #fff;
+  border-color: #fff;
+}
+.admin-navcolor .btn-outline-light:hover {
+  background-color: #fff;
+  color: #28a745;
+}
+
+
+/* .dashboard {
+  display: flex;
+  position: relative;
+  top: 80px;
+  height: 100vh;
+  background-color: #00c851;
+} */
+
+.dashboard-form-container {
+    max-width: 500px;
+    margin: 89px auto;
+    background: #ffffff;
+    padding: 23px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.dashboard-form .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-form label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.dashboard-form input[type="text"],
+.dashboard-form input[type="number"] {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.dashboard-form input[type="text"]:focus,
+.dashboard-form input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.submit-btn {
+    text-align: center;
+}
+
+.dashboard-form input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dashboard-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.form-control {
+    width: 100%;
+    
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    
+}
+
+.custom-select {
+    position: relative;
+}
+
+.custom-select select {
+    appearance: none; /* Remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* Custom arrow icon */
+.custom-select::after {
+    content: '▼';
+    position: absolute;
+    top: 72%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #555;
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* alert message Code Css Start Here */
+.toast {
+  position: fixed;
+  top: 80px;
+  left: 37%;
+  transform: translateX(-50%) translateY(-30px);
+  background: #333;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0px 6px 12px rgba(0,0,0,0.2);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 1s ease;
+  z-index: 9999;
+  min-width: 280px;
+}
+
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.toast-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast.success {
+  background: linear-gradient(135deg, #00c851, #007e33);
+}
+
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  transform-origin: left;
+  animation: progress 3s linear forwards;
+  border-radius: 0px 0px 8px 8px;
+}
+
+@keyframes progress {
+  0% { width: 100%; }
+  100% { width: 0%; }
+}
