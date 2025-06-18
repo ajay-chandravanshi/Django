@@ -50,11 +50,11 @@ def cart(request):
         data = ItemInfo.objects.get(id=cart[i])
         print(quantity[j])
         total = total + (data.item_price)*quantity[j]
-        # print(data.id)
-        # print(data.iten_name)
-        # print(data.item_desc)
-        # print(data.item_price)
-        # print(data.item_image)
+        print(data.id)
+        print(data.iten_name)
+        print(data.item_desc)
+        print(data.item_price)
+        print(data.item_image)
         alldata.append({
             'id':data.id,
             'iten_name':data.iten_name,
