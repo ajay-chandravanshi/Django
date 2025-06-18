@@ -50,11 +50,11 @@ def cart(request):
         data = ItemInfo.objects.get(id=cart[i])
         print(quantity[j])
         total = total + (data.item_price)*quantity[j]
-        print(data.id)
-        print(data.iten_name)
-        print(data.item_desc)
-        print(data.item_price)
-        print(data.item_image)
+        # print(data.id)
+        # print(data.iten_name)
+        # print(data.item_desc)
+        # print(data.item_price)
+        # print(data.item_image)
         alldata.append({
             'id':data.id,
             'iten_name':data.iten_name,
@@ -76,9 +76,9 @@ def deletecart(request,pk):
     print("Quantity :",quantity)
     print("pk=",pk)
     x = cart.index(pk)
-    # print("Cart index no:",x)
-    # y = quantity[x]
-    # print("Quantity of that card index:",y)
+    print("Cart index no:",x)
+    y = quantity[x]
+    print("Quantity of that card index:",y)
     cart1=[]
     y = len(cart)   
     i=0
@@ -115,11 +115,11 @@ def deletecart(request,pk):
         data = ItemInfo.objects.get(id=cart[i])
         print(quantity[j])
         total = total + (data.item_price)*quantity[j]
-        # print(data.id)
-        # print(data.item_name)
-        # print(data.item_desc)
-        # print(data.item_price)
-        # print(data.item_image)
+        print(data.id)
+        print(data.item_name)
+        print(data.item_desc)
+        print(data.item_price)
+        print(data.item_image)
         alldata.append({
             'id':data.id,
             'iten_name':data.iten_name,
