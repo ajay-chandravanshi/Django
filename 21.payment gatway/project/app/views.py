@@ -167,8 +167,6 @@ def payment(request):
             j+=1
         # print(payment)
         return render(request,'app/cart.html',{'key':alldata,'amount':total,'payment':payment})
-        return render(request,'app/cart.html',{'key':alldata,'amount':total,'payment':payment})
-        return render(request,'app/cart.html',{'key':alldata,'amount':total,'payment':payment})
     
 @csrf_exempt
 def payment_status(request):
