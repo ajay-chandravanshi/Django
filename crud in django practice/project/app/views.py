@@ -7,7 +7,6 @@ def register(request):
         uname=request.POST.get('name')
         uemail=request.POST.get('email')
         ucity=request.POST.get('city')
-        print(uname,uemail,ucity)
         Student.objects.create(name=uname,email=uemail,city=ucity)
         return redirect('dashboard')
     return render(request,'register.html')
@@ -18,12 +17,6 @@ def dashboard(request):
 
 def edit(request,id):
     student=Student.objects.get(id=id)
-    # if request.method=='POST':
-    #     student.name=request.POST.get('name')
-    #     student.email=request.POST.get('email')
-    #     student.city=request.POST.get('city')
-    #     student.save()
-    #     return redirect('dashboard')
     return render(request,'edit.html',{'student':student})
 
 def update(request,id):
@@ -32,7 +25,6 @@ def update(request,id):
         student.name=request.POST.get('name')
         student.email=request.POST.get('email')
         student.city=request.POST.get('city')
-        print(student.name,student.email,student.city)
         student.save()
         return redirect('dashboard')
     
