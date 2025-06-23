@@ -1,5 +1,7 @@
 from django.db import models
 
+
+
 class Client(models.Model):
     clt_username=models.CharField(max_length=50)
     clt_email=models.EmailField(unique=True)

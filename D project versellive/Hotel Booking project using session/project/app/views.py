@@ -3,6 +3,8 @@ from .models import Client,Query,Room
 from django.urls import reverse
 from urllib.parse import urlencode
 
+
+
 def home(request):
     return render(request,'home.html')
 def about(request):
@@ -418,6 +420,12 @@ def admin_card_edit(request,pk):
     rname=editdata.room_name
     # carddata=Room.objects.get(room_name=rname)
     return render(request, 'admindash.html',{'admindata': admindata,'editdata':editdata,'carddata':rname})
+
+# def edit(request,pk):
+#     editdata=Query.objects.get(id=pk)
+#     email=editdata.stu_email
+#     userdata=Client.objects.get(clt_email=email)
+#     return render(request,'dashboard.html',{'userdata':userdata,'editdata':editdata})
 
 def admin_card_update(request,pk):
     admindata = {
