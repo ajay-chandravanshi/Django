@@ -22,6 +22,16 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    
+    
+    # path('home/',views.home2,name='home2'),
+    # path('about/',views.about2,name='about2'),
+    # path('contact/',views.contact2,name='contact2'),
+    # path('gallery/',views.gallery2,name='gallery2'),
+    # path('services/',views.services2,name='services2'),
+    # path('book_event/',views.book_event2,name='book_event2'),
+    # path('book_room/',views.book_room2,name='book_room2'),
+
     # Normal URLs without login
     path('',views.home,name='home'),
     path('about/',views.about,name='about'),
@@ -69,6 +79,12 @@ urlpatterns = [
     path('ad/delete/<int:pk>',views.admin_card_delete,name='admin_card_delete'),
     path('ad/edit/<int:pk>',views.admin_card_edit,name='admin_card_edit'),
     path('ad/update/<int:pk>',views.admin_card_update,name='admin_card_update'),
+
+
+
+    # admin dashboard code
+    # path('admindash/<int:id>/<str:a_name>/<str:a_email>/<str:a_password>', views.admindash, name='admindash'),
+    # path('admindash/', views.admindash, name='admindash'),
     
     path('admindash1/', views.admindash1, name='admindash1'),
     
