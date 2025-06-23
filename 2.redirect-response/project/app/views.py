@@ -1,17 +1,18 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
+
 # Create your views here.
 
 def home(request):
-    # return redirect("https://www.google.com")
-    name,city='ajay','Bhopal'
-    return redirect(f"/index/?name={name}&city={city}")
+    x="<h1>Hello sir ji<h1/>"
+    return HttpResponse(x)
 
-def index(request):
-    print(request.method)
-    print(request.GET)
-    x=request.GET.get('name')
-    y=request.GET.get('city')
-    return render(request,'index.html',{'key1':x,'key2':y})
-    
+def jsonfile(request):
+    data={'name':True,'age':False,'year':None}
+    return JsonResponse(data)
 
+def renderfile(request):
+    return redirect('https://www.google.com')
+
+def htmlfile(request):
+    return render(request,'index.html')

@@ -20,6 +20,8 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',views.home,name="home"),
-    path('index/',views.index,name="index")
+    path('home/',views.home,name='home'),
+    path('jsonfile/',views.jsonfile,name='jsonfile'),
+    path('renderfile/',views.renderfile,name='renderfile'),
+    path('htmlfile/',views.htmlfile,name='htmlfile')
 ]

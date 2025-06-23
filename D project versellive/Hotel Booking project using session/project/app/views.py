@@ -420,8 +420,6 @@ def admin_card_edit(request,pk):
     rname=editdata.room_name
     # carddata=Room.objects.get(room_name=rname)
     return render(request, 'admindash.html',{'admindata': admindata,'editdata':editdata,'carddata':rname})
-    return render(request, 'admindash.html',{'admindata': admindata,'editdata':editdata,'carddata':rname})
-    return render(request, 'admindash.html',{'admindata': admindata,'editdata':editdata,'carddata':rname})
 
 # def edit(request,pk):
 #     editdata=Query.objects.get(id=pk)

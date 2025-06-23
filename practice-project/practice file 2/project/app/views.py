@@ -11,8 +11,10 @@ def jsonfile(request):
     data={'name':True,'age':False,'year':None}
     return JsonResponse(data)
 
-def renderfile(request):
+def directfile(request):
     return redirect('https://www.google.com')
+
 
 def htmlfile(request):
     return render(request,'index.html')
+
