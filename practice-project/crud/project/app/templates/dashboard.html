@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dashboard</title>
+</head>
+<body>
+    <p>All STudent Data</p>
+    {% if data %}
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for student in data %}
+        <tr>
+            <td>{{student.name}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.city}}</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+        
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
