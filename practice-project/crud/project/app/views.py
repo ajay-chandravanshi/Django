@@ -4,3 +4,6 @@ from .models import Student
 
 
 
+def dashboard(request):
+    data=Student.objects.all()
+    return render(request,'dashboard.html',{'data':data})
