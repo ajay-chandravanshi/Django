@@ -14,3 +14,6 @@ def register(request):
 def dashboard(request):
     data=Student.objects.all()
     return render(request,'dashboard.html',{'data':data})
+def dashboard(request):
+    data=Student.objects.all()
+    return render(request,'dashboard.html',{'data':data})
